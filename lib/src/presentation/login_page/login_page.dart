@@ -212,7 +212,7 @@ class LoginPage extends GetView<LoginController> {
       height: 50,
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () => controller.onclickLoginbtn(),
+        onPressed: () => controller.onLogin(),
         child: const Text(
           'LOGIN',
           style: kButtonLogin,

@@ -1,4 +1,5 @@
 import 'package:event_app/src/app/app_routes/app_routes.dart';
+import 'package:event_app/src/common/widget/alert_dialog_widget.dart';
 import 'package:event_app/src/repositories/user_repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,10 +12,6 @@ class LoginController extends GetxController {
   final UserRepositories userRepositories;
 
   LoginController(this.userRepositories);
-
-  onclickLoginbtn() {
-    Get.offAllNamed(AppRoutes.homePage);
-  }
 
   onclickRememberme(bool value) {
     rememberMe.value = value;
@@ -37,7 +34,15 @@ class LoginController extends GetxController {
 
   Future<void> onLogin() async {
     if (formKey.currentState == null) {
-      // AlertDialogWidget.show();
-    } else if (formKey.currentState!.validate()) {}
+      AlertDialogWidget.show();
+    } else if (formKey.currentState!.validate()) {
+      final loginRes = await userRepositories.login(
+          emailController.text, passwordController.text);
+      if (loginRes.isSuccess()) {
+        Get.toNamed(AppRoutes.homePage);
+      } else {
+        AlertDialogWidget.show(content: loginRes.message);
+      }
+    }
   }
 }

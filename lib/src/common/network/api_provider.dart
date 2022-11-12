@@ -31,12 +31,10 @@ class ApiProvider {
   }
 
   Future<dynamic> get(String path,
-      {Map<String, dynamic>? params,
-      CancelToken? cancelToken}) async {
+      {Map<String, dynamic>? params, CancelToken? cancelToken}) async {
     final response =
         await _dio.get(path, queryParameters: params, cancelToken: cancelToken);
-    final responseData =
-        await _throwIfNotSucess(response: response);
+    final responseData = await _throwIfNotSucess(response: response);
     return responseData;
   }
 
@@ -46,18 +44,14 @@ class ApiProvider {
     Map<String, dynamic>? data,
     CancelToken? cancelToken,
   }) async {
-
     final response = await _dio.post(path,
         queryParameters: params, data: data, cancelToken: cancelToken);
-    final responseData =
-        await _throwIfNotSucess(response: response);
+    final responseData = await _throwIfNotSucess(response: response);
     return responseData;
   }
 
-
-  _throwIfNotSucess(
-      {required Response response}) async {
-    final responseData = response.data;
+  _throwIfNotSucess({required Response response}) async {
+    final responseData = response.data['result'];
 
     switch (response.statusCode) {
       case 200:
