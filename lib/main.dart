@@ -1,4 +1,5 @@
 import 'package:event_app/src/app/app_binding.dart';
+import 'package:event_app/src/app/app_config/app_theme.dart';
 import 'package:event_app/src/app/app_routes/app_routes.dart';
 import 'package:event_app/src/app/app_routes/page_routes.dart';
 import 'package:event_app/src/presentation/login_page/login_page.dart';
@@ -14,13 +15,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(home: const LoginPage(),
-        title: 'Event App',
-        debugShowCheckedModeBanner: false,
-        defaultTransition: Transition.fade,
-        getPages: AppPages.routes,
-        initialRoute: AppRoutes.login,
-        initialBinding: AppBinding(),
-       );
+    return GetMaterialApp(
+      home: const LoginPage(),
+      title: 'Event App',
+      theme: lightTheme,
+      debugShowCheckedModeBanner: false,
+      defaultTransition: Transition.fade,
+      getPages: AppPages.routes,
+      initialRoute: AppRoutes.login,
+      initialBinding: AppBinding(),
+    );
   }
 }

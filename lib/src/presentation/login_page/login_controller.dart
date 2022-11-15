@@ -39,7 +39,7 @@ class LoginController extends GetxController {
       final loginRes = await userRepositories.login(
           emailController.text, passwordController.text);
       if (loginRes.isSuccess()) {
-        Get.toNamed(AppRoutes.homePage);
+        Get.offAllNamed(AppRoutes.homePage);
       } else {
         AlertDialogWidget.show(content: loginRes.message);
       }
