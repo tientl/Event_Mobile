@@ -1,3 +1,4 @@
+import 'package:event_app/src/app/app_manager.dart';
 import 'package:event_app/src/app/app_routes/app_routes.dart';
 import 'package:event_app/src/common/widget/alert_dialog_widget.dart';
 import 'package:event_app/src/repositories/user_repositories.dart';
@@ -38,7 +39,8 @@ class LoginController extends GetxController {
     } else if (formKey.currentState!.validate()) {
       final loginRes = await userRepositories.login(
           emailController.text, passwordController.text);
-      if (loginRes.isSuccess()) {
+      if (loginRes.isSuccess() && loginRes.data != null) {
+        AppManager().onLogin(loginRes.data!);
         Get.offAllNamed(AppRoutes.homePage);
       } else {
         AlertDialogWidget.show(content: loginRes.message);

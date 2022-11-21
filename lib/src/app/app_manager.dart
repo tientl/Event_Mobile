@@ -12,4 +12,7 @@ class AppManager {
 
   isSignIn() => _currentUser != null;
 
+  Future<void> onLogin(User user) async {
+    _currentUser = user;
+  }
 }

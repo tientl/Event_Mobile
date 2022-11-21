@@ -16,7 +16,7 @@ class InternetImageWidget extends StatelessWidget {
       this.borderRadius = 10,
       this.width = 60,
       this.height = 60,
-      this.replaceImgUrl = 'asset/image/default/images.jpeg',
+      this.replaceImgUrl = 'images/default/images.jpeg',
       this.fit = BoxFit.cover,
       this.circularProgressIndicatorRadius = 30});
 

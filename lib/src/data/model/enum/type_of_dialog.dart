@@ -8,11 +8,11 @@ extension TypeOfDialogExt on TypeOfDialog {
   String get iconPath {
     switch (this) {
       case TypeOfDialog.error:
-        return "assets/images/illustration/error_icon.png";
+        return "assets/images/error_icon.png";
       case TypeOfDialog.warning:
-        return "assets/images/illustration/warning_icon.png";
+        return "assets/images/warning_icon.png";
       default:
-        return "assets/images/illustration/success_icon.png";
+        return "assets/images/success_icon.png";
     }
   }
 

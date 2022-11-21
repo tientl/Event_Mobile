@@ -42,7 +42,7 @@ class LoginPage extends GetView<LoginController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   const Text(
-                    'SIGN IN',
+                    'ĐĂNG NHẬP',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'OpenSans',
@@ -124,7 +124,7 @@ class LoginPage extends GetView<LoginController> {
                 Icons.email,
                 color: Colors.white,
               ),
-              hintText: 'Enter your Email',
+              hintText: 'Nhập email',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -160,7 +160,7 @@ class LoginPage extends GetView<LoginController> {
                 Icons.lock,
                 color: Colors.white,
               ),
-              hintText: 'Enter your password',
+              hintText: 'Nhập mật khẩu',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -199,7 +199,7 @@ class LoginPage extends GetView<LoginController> {
                     },
                   ))),
           const Text(
-            'Remember me',
+            'Lưu tài khoản',
             style: kLabelStyle,
           )
         ],
@@ -214,7 +214,7 @@ class LoginPage extends GetView<LoginController> {
       child: ElevatedButton(
         onPressed: () => controller.onLogin(),
         child: const Text(
-          'LOGIN',
+          'ĐĂNG NHẬP',
           style: kButtonLogin,
         ),
         style: ButtonStyle(
