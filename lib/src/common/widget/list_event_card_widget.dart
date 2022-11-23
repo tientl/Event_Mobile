@@ -2,7 +2,6 @@ import 'package:event_app/src/common/widget/button_widget.dart';
 import 'package:event_app/src/common/widget/internet_image_widget.dart';
 import 'package:event_app/src/data/model/event.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:event_app/src/common/utils/util_datetime.dart';
 
 class EventCard extends StatelessWidget {

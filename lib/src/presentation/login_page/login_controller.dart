@@ -9,7 +9,7 @@ class LoginController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final rememberMe = false.obs;
-  final formKey = GlobalKey<FormState>();
+  final formKey = const GlobalObjectKey<FormState>(1);
   final UserRepositories userRepositories;
 
   LoginController(this.userRepositories);

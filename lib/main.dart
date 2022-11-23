@@ -4,9 +4,11 @@ import 'package:event_app/src/app/app_routes/app_routes.dart';
 import 'package:event_app/src/app/app_routes/page_routes.dart';
 import 'package:event_app/src/presentation/login_page/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-void main() {
+Future<void> main() async {
+  await ScreenUtil.ensureScreenSize();
   runApp(const MyApp());
 }
 
@@ -15,15 +17,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      home: const LoginPage(),
-      title: 'Event App',
-      theme: lightTheme,
-      debugShowCheckedModeBanner: false,
-      defaultTransition: Transition.fade,
-      getPages: AppPages.routes,
-      initialRoute: AppRoutes.login,
-      initialBinding: AppBinding(),
-    );
+    return ScreenUtilInit(
+        designSize: const Size(411, 843),
+        builder: ((context, child) {
+          return GetMaterialApp(
+            home: const LoginPage(),
+            title: 'Event App',
+            theme: lightTheme,
+            debugShowCheckedModeBanner: false,
+            defaultTransition: Transition.fade,
+            getPages: AppPages.routes,
+            initialRoute: AppRoutes.login,
+            initialBinding: AppBinding(),
+          );
+        }));
   }
 }
