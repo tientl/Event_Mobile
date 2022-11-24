@@ -70,9 +70,9 @@ class EventCard extends StatelessWidget {
                     Icons.calendar_month_outlined,
                     size: 24,
                   ),
-                  const SizedBox(
-                    width: 30,
-                  ),
+                  // const SizedBox(
+                  //   width: 30,
+                  // ),
                   Text(
                     '${event.dateStart?.hhmmddmmyyyy} - ${event.dateEnd?.hhmmddmmyyyy}',
                     style: const TextStyle(
