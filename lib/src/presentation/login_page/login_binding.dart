@@ -9,6 +9,6 @@ class LoginBinding extends Bindings {
     final apiProvider = Get.find<ApiProvider>();
     final UserRepositories userRepositories = UserRepositories(apiProvider);
 
-    Get.lazyPut<LoginController>(() => LoginController(userRepositories));
+    Get.put<LoginController>( LoginController(userRepositories));
   }
 }
