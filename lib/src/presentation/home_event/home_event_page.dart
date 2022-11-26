@@ -18,6 +18,7 @@ class HomeEventPage extends StatelessWidget {
                 Wrap(
                   children: [
                     InternetImageWidget(
+                      borderRadius: 0,
                       imgUrl:
                           'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZXZlbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
                       width: Get.width,

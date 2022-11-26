@@ -31,7 +31,7 @@ class HomePage extends GetView<HomeController> {
             )),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 16.h),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -63,7 +63,7 @@ class HomePage extends GetView<HomeController> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -76,6 +76,7 @@ class HomePage extends GetView<HomeController> {
                                         BorderRadius.all(Radius.circular(25))),
                                 child: Obx(
                                   () => TabBar(
+                                      padding: EdgeInsets.zero,
                                       labelStyle:
                                           Theme.of(context).textTheme.bodyText1,
                                       labelColor: Colors.white,
