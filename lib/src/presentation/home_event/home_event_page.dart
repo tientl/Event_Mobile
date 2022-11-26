@@ -1,9 +1,10 @@
 import 'package:event_app/src/common/widget/internet_image_widget.dart';
+import 'package:event_app/src/presentation/home_event/home_event_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class HomeEventPage extends StatelessWidget {
+class HomeEventPage extends GetView<HomeEventController> {
   const HomeEventPage({super.key});
 
   @override
@@ -96,7 +97,7 @@ class HomeEventPage extends StatelessWidget {
                               ?.copyWith(color: Colors.black),
                         ),
                         TextButton(
-                            onPressed: () => {},
+                            onPressed: () => controller.onNavigateToListSponsor(),
                             child: Text(
                               'Xem tat ca',
                               style: Theme.of(context)
@@ -199,7 +200,7 @@ class HomeEventPage extends StatelessWidget {
                               ?.copyWith(color: Colors.black),
                         ),
                         TextButton(
-                            onPressed: () => {},
+                            onPressed: () => controller.onNavigateToListSpeaker(),
                             child: Text(
                               'Xem tat ca',
                               style: Theme.of(context)

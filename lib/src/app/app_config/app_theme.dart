@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 final lightTheme = ThemeData(
     brightness: Brightness.light,
     fontFamily: "roboto",
-    scaffoldBackgroundColor: AppColors.black,
+    primaryColor: AppColors.kFFFF0F75BD,
+    scaffoldBackgroundColor: Color.fromARGB(255, 238, 244, 250),
     canvasColor: AppColors.white,
+    iconTheme: const IconThemeData(color: AppColors.kFF6B779A),
     textTheme: const TextTheme(
         headline4: TextStyle(
             fontSize: 30, fontWeight: FontWeight.bold, color: AppColors.white),

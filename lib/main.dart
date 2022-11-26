@@ -5,6 +5,7 @@ import 'package:event_app/src/app/app_routes/page_routes.dart';
 import 'package:event_app/src/presentation/login_page/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
@@ -29,6 +30,11 @@ class MyApp extends StatelessWidget {
             getPages: AppPages.routes,
             initialRoute: AppRoutes.login,
             initialBinding: AppBinding(),
+             localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              DefaultWidgetsLocalizations.delegate
+            ],
           );
         }));
   }

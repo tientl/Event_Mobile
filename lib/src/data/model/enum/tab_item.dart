@@ -8,9 +8,9 @@ extension TabItemExt on TabItem {
     switch (this) {
       case TabItem.home:
         return 'Trang chủ';
-      case TabItem.barcode:
-        return 'Lịch trình';
       case TabItem.schedule:
+        return 'Lịch trình';
+      case TabItem.barcode:
         return 'Barcode';
       case TabItem.profile:
         return 'Hồ sơ';

@@ -1,5 +1,5 @@
 import 'package:event_app/src/common/widget/internet_image_widget.dart';
-import 'package:event_app/src/common/widget/list_event_card_widget.dart';
+import 'package:event_app/src/common/widget/event_card_widget.dart';
 import 'package:event_app/src/common/widget/search_bar_widget.dart';
 import 'package:event_app/src/presentation/home_page/home_controller.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +63,7 @@ class HomePage extends GetView<HomeController> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    padding: EdgeInsets.symmetric(horizontal: 0.w),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
