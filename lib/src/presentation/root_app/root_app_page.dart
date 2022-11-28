@@ -10,9 +10,9 @@ class RootApp extends GetView<RootAppController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
-          backgroundColor: Theme.of(context).backgroundColor,
+          backgroundColor:Colors.white,
           body: controller.getBody(controller.currentTab.value),
-          appBar: controller.getAppBar(tabItem: controller.currentTab.value),
+          appBar: controller.getAppBar(tabItem: controller.currentTab.value, context: context),
           bottomNavigationBar: getBottomBarnavigation(context),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
@@ -42,6 +42,7 @@ class RootApp extends GetView<RootAppController> {
       ),
       decoration: BoxDecoration(
           color: Theme.of(context).backgroundColor,
+        
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20.r),
               bottomRight: Radius.circular(20.r)),

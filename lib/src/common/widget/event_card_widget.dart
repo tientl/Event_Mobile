@@ -3,6 +3,7 @@ import 'package:event_app/src/common/widget/internet_image_widget.dart';
 import 'package:event_app/src/data/model/event.dart';
 import 'package:flutter/material.dart';
 import 'package:event_app/src/common/utils/util_datetime.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EventCard extends StatelessWidget {
   const EventCard({Key? key, required this.event, this.padding, this.onPressed})
@@ -22,6 +23,7 @@ class EventCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: Color(0xff5A75A7)),
                 boxShadow: [
                   BoxShadow(
                       color: Theme.of(context).indicatorColor.withOpacity(0.2),
@@ -38,26 +40,28 @@ class EventCard extends StatelessWidget {
                     imgUrl: event.urlImage,
                     borderRadius: 16,
                   ),
-                  const SizedBox(
-                    width: 8,
+                   SizedBox(
+                    width: 8.w,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        event.name ?? '',
-                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                            color: const Color.fromARGB(236, 4, 37, 87)),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        event.company ?? '',
-                        style: const TextStyle(
-                            color: Color.fromARGB(255, 2, 2, 2)),
-                      )
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          event.name ?? '',
+                          style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                              color: const Color.fromARGB(236, 4, 37, 87)),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ), Text(
+                            event.company ?? '',
+                            style: const TextStyle(
+                                color: Color.fromARGB(255, 2, 2, 2)),
+                        
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
@@ -68,18 +72,19 @@ class EventCard extends StatelessWidget {
                 children: [
                   const Icon(
                     Icons.calendar_month_outlined,
-                    size: 24,
+                    size: 20,
                   ),
-                  // const SizedBox(
-                  //   width: 30,
-                  // ),
+                   SizedBox(
+                    width: 4.w,
+                  ),
                   Text(
                     '${event.dateStart?.hhmmddmmyyyy} - ${event.dateEnd?.hhmmddmmyyyy}',
                     style: const TextStyle(
-                        fontSize: 15, color: Color.fromARGB(255, 10, 77, 1)),
+                        fontSize: 14, color: Color.fromARGB(255, 10, 77, 1)),
                   ),
                 ],
               ),
+              
               const SizedBox(
                 height: 20,
               ),

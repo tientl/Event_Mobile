@@ -1,9 +1,10 @@
 import 'package:event_app/src/common/widget/internet_image_widget.dart';
+import 'package:event_app/src/presentation/home_event/home_event_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class HomeEventPage extends StatelessWidget {
+class HomeEventPage extends GetView<HomeEventController> {
   const HomeEventPage({super.key});
 
   @override
@@ -18,6 +19,7 @@ class HomeEventPage extends StatelessWidget {
                 Wrap(
                   children: [
                     InternetImageWidget(
+                      borderRadius: 0,
                       imgUrl:
                           'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZXZlbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
                       width: Get.width,
@@ -95,7 +97,7 @@ class HomeEventPage extends StatelessWidget {
                               ?.copyWith(color: Colors.black),
                         ),
                         TextButton(
-                            onPressed: () => {},
+                            onPressed: () => controller.onNavigateToListSponsor(),
                             child: Text(
                               'Xem tat ca',
                               style: Theme.of(context)
@@ -198,7 +200,7 @@ class HomeEventPage extends StatelessWidget {
                               ?.copyWith(color: Colors.black),
                         ),
                         TextButton(
-                            onPressed: () => {},
+                            onPressed: () => controller.onNavigateToListSpeaker(),
                             child: Text(
                               'Xem tat ca',
                               style: Theme.of(context)
