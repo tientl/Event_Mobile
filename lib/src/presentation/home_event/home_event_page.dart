@@ -1,8 +1,10 @@
 import 'package:event_app/src/common/widget/internet_image_widget.dart';
+import 'package:event_app/src/data/model/sponsor.dart';
 import 'package:event_app/src/presentation/home_event/home_event_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:event_app/src/common/utils/util_datetime.dart';
 
 class HomeEventPage extends GetView<HomeEventController> {
   const HomeEventPage({super.key});
@@ -20,8 +22,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                   children: [
                     InternetImageWidget(
                       borderRadius: 0,
-                      imgUrl:
-                          'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZXZlbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+                      imgUrl: controller.currentEvent.value?.eventImage,
                       width: Get.width,
                       height: Get.height / 3,
                     ),
@@ -39,13 +40,14 @@ class HomeEventPage extends GetView<HomeEventController> {
                           width: Get.width - 40.w,
                           padding: EdgeInsets.all(20.r),
                           decoration: BoxDecoration(
+                              border: Border.all(color: Colors.blueGrey),
                               borderRadius: BorderRadius.circular(20.r),
                               color: Colors.white),
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Event name',
+                                  controller.currentEvent.value?.name ?? '',
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyText1
@@ -55,7 +57,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                                   height: 4.h,
                                 ),
                                 Text(
-                                  '12/03/2022 - 12/03/2022',
+                                  '${controller.currentEvent.value!.dateStart?.ddmmyyyy} - ${controller.currentEvent.value?.dateEnd?.ddmmyyyy}',
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyText2
@@ -65,7 +67,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                                   height: 8.h,
                                 ),
                                 Text(
-                                  'Can Tho',
+                                  controller.currentEvent.value?.address ?? '',
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyText1
@@ -90,16 +92,17 @@ class HomeEventPage extends GetView<HomeEventController> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Nha tai tro',
+                          'Nhà tài trợ',
                           style: Theme.of(context)
                               .textTheme
                               .bodyText1
                               ?.copyWith(color: Colors.black),
                         ),
                         TextButton(
-                            onPressed: () => controller.onNavigateToListSponsor(),
+                            onPressed: () =>
+                                controller.onNavigateToListSponsor(),
                             child: Text(
-                              'Xem tat ca',
+                              'Xem tất cả',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyText2
@@ -116,22 +119,25 @@ class HomeEventPage extends GetView<HomeEventController> {
                       height: 68.h,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: 5,
-                        itemBuilder: (context, index) => SponsorCardWidget(),
+                        itemCount:
+                            controller.currentEvent.value?.sponsor?.length ?? 0,
+                        itemBuilder: (context, index) => SponsorCardWidget(
+                          sponsor:
+                              controller.currentEvent.value!.sponsor![index],
+                        ),
                       ),
                     ),
                     SizedBox(
                       height: 12.h,
                     ),
-                    Text('Gioi thieu',
+                    Text('Giới thiệu',
                         style: Theme.of(context).textTheme.bodyText1?.copyWith(
                               color: Colors.black,
                             )),
                     SizedBox(
                       height: 12.h,
                     ),
-                    Text(
-                        'Sân khấu FWD Music Tour đầu tiên tại miền Tây Nam Bộ được dự đoán sẽ bùng nổ với sự xuất hiện của 9 nghệ sĩ đang được yêu mến, sự kết hợp giữa những ca khúc bất hủ “đi cùng năm tháng” cùng những bản hit trending trên bảng xếp hạng âm nhạc hiện nay',
+                    Text(controller.currentEvent.value?.description ?? '',
                         style: Theme.of(context).textTheme.bodyText2?.copyWith(
                               color: Colors.grey,
                             )),
@@ -167,7 +173,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                                   width: 12.w,
                                 ),
                                 Text(
-                                  'nguoi tham gia',
+                                  'Người tham gia',
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyText2
@@ -193,16 +199,17 @@ class HomeEventPage extends GetView<HomeEventController> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Dien da',
+                          'Diễn giả',
                           style: Theme.of(context)
                               .textTheme
                               .bodyText1
                               ?.copyWith(color: Colors.black),
                         ),
                         TextButton(
-                            onPressed: () => controller.onNavigateToListSpeaker(),
+                            onPressed: () =>
+                                controller.onNavigateToListSpeaker(),
                             child: Text(
-                              'Xem tat ca',
+                              'Xem tất cả',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyText2
@@ -217,12 +224,10 @@ class HomeEventPage extends GetView<HomeEventController> {
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: 5,
-                        itemBuilder: (context, index) =>  SpeakerCardWidget(),
+                        itemBuilder: (context, index) => SpeakerCardWidget(),
                       ),
-                    
                     ),
-                    SizedBox(height: 20.h
-                    )
+                    SizedBox(height: 20.h)
                   ],
                 ),
               )
@@ -242,7 +247,7 @@ class SpeakerCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 8.w),
+      padding: EdgeInsets.symmetric(horizontal: 8.w),
       child: Row(
         children: [
           InternetImageWidget(
@@ -275,7 +280,9 @@ class SpeakerCardWidget extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 20.h,)
+          SizedBox(
+            height: 20.h,
+          )
         ],
       ),
     );
@@ -283,9 +290,8 @@ class SpeakerCardWidget extends StatelessWidget {
 }
 
 class SponsorCardWidget extends StatelessWidget {
-  const SponsorCardWidget({
-    Key? key,
-  }) : super(key: key);
+  final Sponsor sponsor;
+  const SponsorCardWidget({Key? key, required this.sponsor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -295,8 +301,7 @@ class SponsorCardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           InternetImageWidget(
-            imgUrl:
-                'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+            imgUrl: sponsor.urlImage ?? '',
             borderRadius: 100.r,
             height: 52.r,
             width: 52.r,
@@ -308,7 +313,7 @@ class SponsorCardWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Nguyen Van A',
+                sponsor.name ?? '',
                 style: Theme.of(context)
                     .textTheme
                     .bodyText1

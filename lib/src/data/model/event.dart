@@ -1,32 +1,48 @@
+import 'package:event_app/src/data/model/sponsor.dart';
+
 class Event {
   final int id;
   final String? name;
   final String? company;
-  final String? urlImage;
+  final String? eventImage;
+  final String? mapImage;
   final DateTime? dateStart;
   final DateTime? dateEnd;
   bool isComfirm;
+  String? address;
+  String? description;
+  final List<Sponsor>? sponsor;
 
   Event(
       {required this.id,
       this.name,
       this.company,
-      this.urlImage,
+      this.eventImage,
+      this.mapImage,
       this.dateStart,
       this.dateEnd,
-      this.isComfirm = false});
+      this.isComfirm = false,
+      this.address,
+      this.description,
+      this.sponsor});
 
   factory Event.fromJson(Map<String, dynamic> json) => Event(
       id: json['id'] ?? 0,
       name: json['name'] ?? '',
       company: json['company_name'] ?? '',
-      urlImage: json['url_image'] ?? '',
+      eventImage: json['event_image'] ?? '',
+      mapImage: json['map_image'] ?? '',
       dateStart: json['date_begin'] == null
           ? null
           : DateTime.parse(json['date_begin']),
       dateEnd:
           json['date_end'] == null ? null : DateTime.parse(json['date_end']),
-      isComfirm: json['is_confirm'] ?? false);
+      isComfirm: json['is_confirm'] ?? false,
+      description: json['event_description'] ?? '',
+      address: json['address'] ?? '',
+      sponsor: json['sponsors'] == null
+          ? null
+          : Sponsor.getListSponsorFromJson(json['sponsors']));
 
   static List<Event>? getListEventFromJson(List? listEventJson) {
     if (listEventJson == null) return null;

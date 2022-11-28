@@ -37,10 +37,10 @@ class EventCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   InternetImageWidget(
-                    imgUrl: event.urlImage,
+                    imgUrl: event.eventImage,
                     borderRadius: 16,
                   ),
-                   SizedBox(
+                  SizedBox(
                     width: 8.w,
                   ),
                   Expanded(
@@ -49,16 +49,19 @@ class EventCard extends StatelessWidget {
                       children: [
                         Text(
                           event.name ?? '',
-                          style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                              color: const Color.fromARGB(236, 4, 37, 87)),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              ?.copyWith(
+                                  color: const Color.fromARGB(236, 4, 37, 87)),
                         ),
                         const SizedBox(
                           height: 8,
-                        ), Text(
-                            event.company ?? '',
-                            style: const TextStyle(
-                                color: Color.fromARGB(255, 2, 2, 2)),
-                        
+                        ),
+                        Text(
+                          event.company ?? '',
+                          style: const TextStyle(
+                              color: Color.fromARGB(255, 2, 2, 2)),
                         )
                       ],
                     ),
@@ -74,7 +77,7 @@ class EventCard extends StatelessWidget {
                     Icons.calendar_month_outlined,
                     size: 20,
                   ),
-                   SizedBox(
+                  SizedBox(
                     width: 4.w,
                   ),
                   Text(
@@ -84,7 +87,6 @@ class EventCard extends StatelessWidget {
                   ),
                 ],
               ),
-              
               const SizedBox(
                 height: 20,
               ),

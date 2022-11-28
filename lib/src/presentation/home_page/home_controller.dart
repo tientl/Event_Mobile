@@ -51,7 +51,8 @@ class HomeController extends GetxController
     }
   }
 
-  void onNavigateEventRootApp() {
-    Get.toNamed(AppRoutes.rootApp);
+  void onNavigateEventRootApp(Event event) {
+
+    Get.toNamed(AppRoutes.rootApp, arguments: event);
   }
 }

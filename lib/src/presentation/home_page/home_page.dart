@@ -120,8 +120,11 @@ class HomePage extends GetView<HomeController> {
                                             controller.listEventConfirm.length,
                                         itemBuilder: (context, index) =>
                                             EventCard(
-                                              onPressed: controller
-                                                  .onNavigateEventRootApp,
+                                              onPressed: () => controller
+                                                  .onNavigateEventRootApp(
+                                                      controller
+                                                              .listEventConfirm[
+                                                          index]),
                                               event: controller
                                                   .listEventConfirm[index],
                                             )),
