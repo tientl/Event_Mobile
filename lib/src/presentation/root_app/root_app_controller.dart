@@ -49,8 +49,8 @@ class RootAppController extends GetxController {
         return const HomeEventPage();
       case TabItem.schedule:
         return const SchedulePage();
-      case TabItem.barcode:
-        return const BarcodePage();
+      // case TabItem.barcode:
+      //   return const BarcodePage();
       default:
         return const ProfileEventPage();
     }

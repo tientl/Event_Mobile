@@ -1,4 +1,5 @@
 import 'package:event_app/src/common/widget/internet_image_widget.dart';
+import 'package:event_app/src/data/model/speaker.dart';
 import 'package:event_app/src/data/model/sponsor.dart';
 import 'package:event_app/src/presentation/home_event/home_event_controller.dart';
 import 'package:flutter/material.dart';
@@ -161,7 +162,11 @@ class HomeEventPage extends GetView<HomeEventController> {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8.r),
                                       color: Colors.grey.withOpacity(0.5)),
-                                  child: Text('1236+',
+                                  child: Text(
+                                      controller.currentEvent.value
+                                              ?.registrations?.length
+                                              .toString() ??
+                                          '0',
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyText2
@@ -187,7 +192,8 @@ class HomeEventPage extends GetView<HomeEventController> {
                                   color: Theme.of(context).primaryColor),
                               child: IconButton(
                                   color: Colors.white,
-                                  onPressed: () => {},
+                                  onPressed: () => controller
+                                      .onNavigateToListResgistration(),
                                   icon: const Icon(Icons.arrow_forward_ios)),
                             ),
                           ]),
@@ -240,8 +246,10 @@ class HomeEventPage extends GetView<HomeEventController> {
 }
 
 class SpeakerCardWidget extends StatelessWidget {
+  final Speaker speaker;
   const SpeakerCardWidget({
     Key? key,
+    required this.speaker,
   }) : super(key: key);
 
   @override

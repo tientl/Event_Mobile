@@ -28,11 +28,15 @@ class HomeEventController extends GetxController {
   }
 
   onNavigateToListSponsor() {
-    
     Get.toNamed(AppRoutes.listSponsor, arguments: currentEvent.value?.sponsor);
   }
 
   onNavigateToListSpeaker() {
-    Get.toNamed(AppRoutes.listUser);
+    Get.toNamed(AppRoutes.listUser, arguments: currentEvent.value?.speakers);
+  }
+
+  onNavigateToListResgistration() {
+    Get.toNamed(AppRoutes.listUser,
+        arguments: currentEvent.value?.registrations);
   }
 }

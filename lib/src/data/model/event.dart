@@ -1,3 +1,5 @@
+import 'package:event_app/src/data/model/registration.dart';
+import 'package:event_app/src/data/model/speaker.dart';
 import 'package:event_app/src/data/model/sponsor.dart';
 
 class Event {
@@ -12,6 +14,8 @@ class Event {
   String? address;
   String? description;
   final List<Sponsor>? sponsor;
+  final List<Registration>? registrations;
+  final List<Speaker>? speakers;
 
   Event(
       {required this.id,
@@ -24,7 +28,9 @@ class Event {
       this.isComfirm = false,
       this.address,
       this.description,
-      this.sponsor});
+      this.sponsor,
+      this.registrations,
+      this.speakers});
 
   factory Event.fromJson(Map<String, dynamic> json) => Event(
       id: json['id'] ?? 0,
@@ -42,7 +48,13 @@ class Event {
       address: json['address'] ?? '',
       sponsor: json['sponsors'] == null
           ? null
-          : Sponsor.getListSponsorFromJson(json['sponsors']));
+          : Sponsor.getListSponsorFromJson(json['sponsors']),
+      registrations: json['registrations'] == null
+          ? null
+          : Registration.getListRegistrationFromJson(json['registrations']),
+      speakers: json['speakers'] == null
+          ? null
+          : Speaker.getListSpeakerFromJson(json['speakers']));
 
   static List<Event>? getListEventFromJson(List? listEventJson) {
     if (listEventJson == null) return null;
