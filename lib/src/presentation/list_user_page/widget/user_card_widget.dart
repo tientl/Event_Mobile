@@ -19,10 +19,10 @@ class UserCardWidget extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.r),
-                border: Border.all(color: Color(0xff5A75A7)),
+                border: Border.all(color: const Color(0xff5A75A7)),
                 boxShadow: [
                   BoxShadow(
                       color: Theme.of(context).indicatorColor.withOpacity(0.2),
@@ -37,6 +37,8 @@ class UserCardWidget extends StatelessWidget {
                 children: [
                   InternetImageWidget(
                     imgUrl: registration.urlImage ?? '',
+                    height: 100,
+                    width: 100,
                     borderRadius: 16.r,
                   ),
                   SizedBox(
@@ -45,6 +47,7 @@ class UserCardWidget extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(height: 8.h,),
                       Text(
                         registration.name ?? '',
                         style: Theme.of(context)
@@ -55,61 +58,65 @@ class UserCardWidget extends StatelessWidget {
                       SizedBox(
                         height: 8.h,
                       ),
-                      Text(
-                        registration.company ?? '',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText2
-                            ?.copyWith(color: Theme.of(context).primaryColor),
-                      ),
+                      registration.company != null &&
+                              registration.company!.isNotEmpty
+                          ? Text(
+                              registration.company ?? '',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  ?.copyWith(
+                                      color: Theme.of(context).primaryColor),
+                            )
+                          : const SizedBox(),
                       SizedBox(
                         height: 8.h,
                       ),
                       Text(
                         registration.function ?? '',
                         style: TextStyle(
-                            color: Color(0xff677294), fontSize: 14.sp),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              Divider(
-                height: 36.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.phone,
-                        size: 24.r,
+                            color: const Color(0xff677294), fontSize: 14.sp),
                       ),
                       SizedBox(
-                        width: 8.w,
+                        height: 12.h,
                       ),
-                      Text(
-                        registration.mobile ?? '',
-                        style: TextStyle(
-                            color: Color(0xff677294), fontSize: 14.sp),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.access_time,
-                        size: 24.r,
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.phone,
+                            size: 16.r,
+                          ),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Text(
+                            registration.mobile ?? '',
+                            style: TextStyle(
+                                color: const Color(0xff677294),
+                                fontSize: 14.sp),
+                          ),
+                        ],
                       ),
                       SizedBox(
-                        width: 8.w,
+                        height: 8.h,
                       ),
-                      Text(
-                        registration.email ?? '',
-                        style: TextStyle(
-                            color: Color(0xff677294), fontSize: 14.sp),
-                      )
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.email,
+                            size: 16.r,
+                          ),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Text(
+                            registration.email ?? '',
+                            style: TextStyle(
+                                color: const Color(0xff677294),
+                                fontSize: 14.sp),
+                          ),
+                        ],
+                      ),
                     ],
                   )
                 ],
