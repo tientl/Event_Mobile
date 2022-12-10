@@ -1,5 +1,8 @@
+import 'dart:ui';
+
+import 'package:event_app/src/app/app_config/app_constant.dart';
 import 'package:event_app/src/common/widget/internet_image_widget.dart';
-import 'package:event_app/src/data/model/speaker.dart';
+import 'package:event_app/src/data/model/registration.dart';
 import 'package:event_app/src/data/model/sponsor.dart';
 import 'package:event_app/src/presentation/home_event/home_event_controller.dart';
 import 'package:flutter/material.dart';
@@ -33,17 +36,16 @@ class HomeEventPage extends GetView<HomeEventController> {
                   ],
                 ),
                 Positioned(
-                    bottom: 10,
-                    child: Wrap(children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    bottom: 0,
+                    child: ClipRect(
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                         child: Container(
-                          width: Get.width - 40.w,
-                          padding: EdgeInsets.all(20.r),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.blueGrey),
-                              borderRadius: BorderRadius.circular(20.r),
-                              color: Colors.white),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20.w, vertical: 12.h),
+                          width: AppConstant.width,
+                          color:
+                              Theme.of(context).primaryColor.withOpacity(0.2),
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -51,21 +53,25 @@ class HomeEventPage extends GetView<HomeEventController> {
                                   controller.currentEvent.value?.name ?? '',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText1
-                                      ?.copyWith(color: Colors.black),
+                                      .headline5
+                                      ?.copyWith(
+                                          color: const Color.fromARGB(
+                                              255, 22, 10, 77),
+                                          fontWeight: FontWeight.normal),
                                 ),
                                 SizedBox(
-                                  height: 4.h,
+                                  height: 8.h,
                                 ),
                                 Text(
                                   '${controller.currentEvent.value!.dateStart?.ddmmyyyy} - ${controller.currentEvent.value?.dateEnd?.ddmmyyyy}',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText2
-                                      ?.copyWith(color: Colors.grey),
+                                      .bodyText1
+                                      ?.copyWith(
+                                          color: Colors.black.withOpacity(0.6)),
                                 ),
                                 SizedBox(
-                                  height: 8.h,
+                                  height: 4.h,
                                 ),
                                 Text(
                                   controller.currentEvent.value?.address ?? '',
@@ -73,13 +79,12 @@ class HomeEventPage extends GetView<HomeEventController> {
                                       .textTheme
                                       .bodyText1
                                       ?.copyWith(
-                                          color:
-                                              Theme.of(context).primaryColor),
+                                          color: Colors.black.withOpacity(0.6)),
                                 ),
                               ]),
                         ),
                       ),
-                    ]))
+                    ))
               ]),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -117,7 +122,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                       height: 8.h,
                     ),
                     SizedBox(
-                      height: 68.h,
+                      height: 80.h,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount:
@@ -129,7 +134,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                       ),
                     ),
                     SizedBox(
-                      height: 12.h,
+                      height: 20.h,
                     ),
                     Text('Giới thiệu',
                         style: Theme.of(context).textTheme.bodyText1?.copyWith(
@@ -138,51 +143,37 @@ class HomeEventPage extends GetView<HomeEventController> {
                     SizedBox(
                       height: 12.h,
                     ),
-                    Text(controller.currentEvent.value?.description ?? '',
+                    Text(
+                        controller.currentEvent.value?.description ??
+                            'Chưa có thông tin giới thiệu',
                         style: Theme.of(context).textTheme.bodyText2?.copyWith(
                               color: Colors.grey,
                             )),
                     SizedBox(
-                      height: 12.h,
+                      height: 20.h,
                     ),
                     Container(
                       width: Get.width,
-                      padding: EdgeInsets.all(12.r),
+                      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: Colors.grey.withOpacity(0.2)),
+                          borderRadius: BorderRadius.circular(28.r),
+                          color: Theme.of(context).primaryColor.withOpacity(0.14)),
                       child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               children: [
-                                Container(
-                                  padding: EdgeInsets.all(4.r),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.r),
-                                      color: Colors.grey.withOpacity(0.5)),
-                                  child: Text(
-                                      controller.currentEvent.value
-                                              ?.registrations?.length
-                                              .toString() ??
-                                          '0',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText2
-                                          ?.copyWith(
-                                            color: Colors.black,
-                                          )),
-                                ),
                                 SizedBox(
                                   width: 12.w,
                                 ),
                                 Text(
-                                  'Người tham gia',
+                                  '${ controller.currentEvent.value
+                                              ?.registrations?.length} người tham gia',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText2
-                                      ?.copyWith(color: Colors.grey),
+                                      .bodyText1
+                                      ?.copyWith(color: const Color.fromARGB(255, 24, 39, 66)),
                                 ),
                               ],
                             ),
@@ -192,6 +183,8 @@ class HomeEventPage extends GetView<HomeEventController> {
                                   color: Theme.of(context).primaryColor),
                               child: IconButton(
                                   color: Colors.white,
+                                  iconSize: 16.r,
+                                  constraints: const BoxConstraints(),
                                   onPressed: () => controller
                                       .onNavigateToListResgistration(),
                                   icon: const Icon(Icons.arrow_forward_ios)),
@@ -199,7 +192,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                           ]),
                     ),
                     SizedBox(
-                      height: 8.h,
+                      height: 16.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -222,15 +215,20 @@ class HomeEventPage extends GetView<HomeEventController> {
                                   ?.copyWith(
                                       color: Theme.of(context).primaryColor,
                                       fontWeight: FontWeight.bold),
-                            ))
+                            )),
+                      
                       ],
                     ),
-                    SizedBox(
-                      height: 60.h,
+                     SizedBox(
+                      height: 100.h,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: 5,
-                        itemBuilder: (context, index) => SpeakerCardWidget(),
+                        itemCount:
+                            controller.currentEvent.value?.speakers?.length ?? 0,
+                        itemBuilder: (context, index) => SpeakerCardWidget(
+                          speaker:
+                              controller.currentEvent.value!.speakers![index],
+                        ),
                       ),
                     ),
                     SizedBox(height: 20.h)
@@ -246,7 +244,7 @@ class HomeEventPage extends GetView<HomeEventController> {
 }
 
 class SpeakerCardWidget extends StatelessWidget {
-  final Speaker speaker;
+  final Registration speaker;
   const SpeakerCardWidget({
     Key? key,
     required this.speaker,
@@ -254,13 +252,27 @@ class SpeakerCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8.w),
+    return Container(
+      width: AppConstant.width - 100.w,
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+        decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12.r),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+              offset:const Offset(0, 3),
+              color: Theme.of(context).primaryColor.withOpacity(0.2),
+              blurRadius: 5),
+          BoxShadow(offset:const Offset(3, 3),  color: Theme.of(context).primaryColor.withOpacity(0.2),
+              blurRadius: 5),
+          BoxShadow(offset:const Offset(3, 0),  color: Theme.of(context).primaryColor.withOpacity(0.2),
+              blurRadius: 5)
+        ]),
       child: Row(
         children: [
           InternetImageWidget(
             imgUrl:
-                'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+               speaker.urlImage,
             borderRadius: 8.r,
           ),
           SizedBox(
@@ -269,18 +281,20 @@ class SpeakerCardWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 8.h,),
               Text(
-                'Nguyen Van A',
+                speaker.name ?? 'Nguyễn Văn A',
                 style: Theme.of(context)
                     .textTheme
                     .bodyText1
                     ?.copyWith(color: Colors.black),
+                    overflow: TextOverflow.ellipsis,
               ),
               SizedBox(
                 height: 8.h,
               ),
               Text(
-                'CEO in Intes',
+                speaker.company ?? 'CEO in Intes',
                 style: Theme.of(context)
                     .textTheme
                     .bodyText2
@@ -288,9 +302,7 @@ class SpeakerCardWidget extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
-            height: 20.h,
-          )
+        
         ],
       ),
     );
@@ -303,8 +315,21 @@ class SponsorCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.w),
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 12.h, vertical: 12.w),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.r),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                offset:const Offset(0, 3),
+                color: Theme.of(context).primaryColor.withOpacity(0.2),
+                blurRadius: 5),
+            BoxShadow(offset:const Offset(3, 3),  color: Theme.of(context).primaryColor.withOpacity(0.2),
+                blurRadius: 5),
+            BoxShadow(offset:const Offset(3, 0),  color: Theme.of(context).primaryColor.withOpacity(0.2),
+                blurRadius: 5)
+          ]),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

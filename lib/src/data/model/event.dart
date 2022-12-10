@@ -1,5 +1,4 @@
 import 'package:event_app/src/data/model/registration.dart';
-import 'package:event_app/src/data/model/speaker.dart';
 import 'package:event_app/src/data/model/sponsor.dart';
 
 class Event {
@@ -15,7 +14,7 @@ class Event {
   String? description;
   final List<Sponsor>? sponsor;
   final List<Registration>? registrations;
-  final List<Speaker>? speakers;
+  final List<Registration>? speakers;
 
   Event(
       {required this.id,
@@ -44,7 +43,7 @@ class Event {
       dateEnd:
           json['date_end'] == null ? null : DateTime.parse(json['date_end']),
       isComfirm: json['is_confirm'] ?? false,
-      description: json['event_description'] ?? '',
+      description: json['event_description'] ?? 'Chưa có thông tin giới thiệu',
       address: json['address'] ?? '',
       sponsor: json['sponsors'] == null
           ? null
@@ -54,7 +53,7 @@ class Event {
           : Registration.getListRegistrationFromJson(json['registrations']),
       speakers: json['speakers'] == null
           ? null
-          : Speaker.getListSpeakerFromJson(json['speakers']));
+          : Registration.getListRegistrationFromJson(json['speakers']));
 
   static List<Event>? getListEventFromJson(List? listEventJson) {
     if (listEventJson == null) return null;
