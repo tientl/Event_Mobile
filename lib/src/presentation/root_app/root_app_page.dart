@@ -42,10 +42,7 @@ class RootApp extends GetView<RootAppController> {
       ),
       decoration: BoxDecoration(
           color: Theme.of(context).backgroundColor,
-        
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20.r),
-              bottomRight: Radius.circular(20.r)),
+          borderRadius: BorderRadius.all(Radius.circular(20.r)),
           boxShadow: [
             BoxShadow(
                 color: Theme.of(context).primaryColor.withOpacity(0.2),

@@ -33,6 +33,6 @@ class User {
         passWord: json['password'] ?? '',
         listEvent: json['events'] == null
             ? null
-            : Event.getListEventFromJson(json['events']),
+            : Event.getListEventFromJson(json['events'] as List),
       );
 }

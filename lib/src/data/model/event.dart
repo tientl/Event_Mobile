@@ -1,20 +1,34 @@
 import 'package:event_app/src/data/model/registration.dart';
 import 'package:event_app/src/data/model/sponsor.dart';
+import 'package:event_app/src/data/model/sub_schedule.dart';
 
 class Event {
   final int id;
-  final String? name;
-  final String? company;
-  final String? eventImage;
-  final String? mapImage;
-  final DateTime? dateStart;
-  final DateTime? dateEnd;
+   String? name;
+   String? company;
+   String? eventImage;
+   String? mapImage;
+   DateTime? dateStart;
+   DateTime? dateEnd;
   bool isComfirm;
   String? address;
   String? description;
-  final List<Sponsor>? sponsor;
-  final List<Registration>? registrations;
-  final List<Registration>? speakers;
+  List<Sponsor>? sponsor;
+  List<Registration>? registrations;
+  List<Registration>? speakers;
+  List<SubSchedule>? listSubScheduler;
+
+  List<DateTime> get listDate  {
+    if (dateStart == null) return [];
+    late DateTime date = dateStart!;
+    late List<DateTime> listDate = [];
+    while (date != dateEnd){
+      listDate.add(date);
+      date = date.add( const Duration(days: 1));
+    }
+    return listDate;
+  }
+
 
   Event(
       {required this.id,
@@ -29,7 +43,9 @@ class Event {
       this.description,
       this.sponsor,
       this.registrations,
-      this.speakers});
+      this.speakers, 
+      this.listSubScheduler,
+      });
 
   factory Event.fromJson(Map<String, dynamic> json) => Event(
       id: json['id'] ?? 0,
@@ -53,7 +69,10 @@ class Event {
           : Registration.getListRegistrationFromJson(json['registrations']),
       speakers: json['speakers'] == null
           ? null
-          : Registration.getListRegistrationFromJson(json['speakers']));
+          : Registration.getListRegistrationFromJson(json['speakers']),
+           listSubScheduler: json['sub_schedules'] == null
+          ? null
+          : SubSchedule.getListSubScheduler(json['sub_schedules'] as List));
 
   static List<Event>? getListEventFromJson(List? listEventJson) {
     if (listEventJson == null) return null;

@@ -1,41 +1,55 @@
-import 'package:event_app/src/common/utils/util_datetime.dart';
+import 'package:event_app/src/app/app_config/app_constant.dart';
+import 'package:event_app/src/data/model/entry/date_widget_entry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class DayWidget extends StatelessWidget {
-  const DayWidget(
-      {Key? key, required this.day, this.backgoundColor, this.textColor})
+class DateWidget extends StatelessWidget {
+  const DateWidget({Key? key, this.groupValue, required this.value, this.onTap})
       : super(key: key);
-
-  final DateTime day;
-  final Color? backgoundColor;
-  final Color? textColor;
+  DateWidgetEntry get dateWidgetEntry => DateWidgetEntry(value: value);
+  bool get isSelected => value == groupValue;
+  final DateTime value;
+  final DateTime? groupValue;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 44.w,
-      padding: EdgeInsets.only(top: 4.h),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.r),
-             color: backgoundColor ?? Colors.white),
-      child: Column(children: [
-        Text(
-          day.day.toString(),
-          style:
-              Theme.of(context).textTheme.bodyText1?.copyWith(color: textColor ?? Colors.black),
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 8.w),
+        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 12.h),
+        width: AppConstant.width / 5,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(20.r),
+            ),
+            color: isSelected ? Theme.of(context).primaryColor : Colors.white,
+            border: Border.all(
+                color: Theme.of(context).primaryColor.withOpacity(0.2))),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              dateWidgetEntry.date,
+              style: TextStyle(
+                  fontSize: 26.sp,
+                  color: isSelected ? Colors.white : const Color(0xff6B779A),
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            Text(
+              dateWidgetEntry.weekDate,
+              style: TextStyle(
+                  fontSize: 14.sp,
+                  color: isSelected ? Colors.white : const Color(0xff6B779A),
+                  fontWeight: FontWeight.w500),
+            )
+          ],
         ),
-        SizedBox(
-          height: 4.h,
-        ),
-        Text(
-          day.weekDayString,
-          style: Theme.of(context)
-              .textTheme
-              .bodyText2
-              ?.copyWith(color:textColor ?? Colors.black),
-        )
-      ]),
+      ),
     );
   }
 }
