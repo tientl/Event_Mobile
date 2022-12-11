@@ -45,7 +45,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                               horizontal: 20.w, vertical: 12.h),
                           width: AppConstant.width,
                           color:
-                              Theme.of(context).primaryColor.withOpacity(0.2),
+                              Colors.black.withOpacity(0.3),
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -55,31 +55,30 @@ class HomeEventPage extends GetView<HomeEventController> {
                                       .textTheme
                                       .headline5
                                       ?.copyWith(
-                                          color: const Color.fromARGB(
-                                              255, 22, 10, 77),
+                                          color: Colors.white,
                                           fontWeight: FontWeight.normal),
                                 ),
                                 SizedBox(
                                   height: 8.h,
                                 ),
                                 Text(
-                                  '${controller.currentEvent.value!.dateStart?.ddmmyyyy} - ${controller.currentEvent.value?.dateEnd?.ddmmyyyy}',
+                                  ' ${controller.currentEvent.value!.dateStart?.ddmmyyyy} - ${controller.currentEvent.value?.dateEnd?.ddmmyyyy}',
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyText1
                                       ?.copyWith(
-                                          color: Colors.black.withOpacity(0.6)),
+                                          color: Colors.white, fontWeight: FontWeight.normal),
                                 ),
                                 SizedBox(
                                   height: 4.h,
                                 ),
                                 Text(
-                                  controller.currentEvent.value?.address ?? '',
+                                  ' ${controller.currentEvent.value?.address}',
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyText1
                                       ?.copyWith(
-                                          color: Colors.black.withOpacity(0.6)),
+                                          color: Colors.white, fontWeight: FontWeight.normal),
                                 ),
                               ]),
                         ),
