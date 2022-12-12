@@ -60,9 +60,9 @@ class ItemSchedularCardWidget extends StatelessWidget {
                 height: 60.h,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 3,
+                    itemCount: subschedular.presentation?.speaker?.length ?? 0,
                     itemBuilder: ((context, index) => InternetImageWidget(
-                        padding: EdgeInsets.only(right: 8.w), imgUrl: null))),
+                        padding: EdgeInsets.only(right: 8.w), imgUrl: subschedular.presentation?.speaker?[index].urlImage))),
               ),
               Divider(
                 height: 32.h,

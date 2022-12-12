@@ -5,6 +5,12 @@ class Presentation {
   String? name;
   List<Registration>? speaker;
 
+   String get listSpeakerName {
+     late String result = '';
+    speaker
+        ?.forEach((e) { if (e.name != null) result += e.name!;} );
+        return result;
+   }
   Presentation({required this.id, this.name, this.speaker});
 
   factory Presentation.fromJson(Map<String, dynamic> json) => Presentation(

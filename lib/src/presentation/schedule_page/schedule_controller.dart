@@ -1,7 +1,9 @@
 import 'package:event_app/src/app/app_manager.dart';
+import 'package:event_app/src/app/app_routes/app_routes.dart';
 import 'package:event_app/src/data/model/event.dart';
 import 'package:event_app/src/data/model/sub_schedule.dart';
 import 'package:get/get.dart';
+import 'package:event_app/src/common/utils/util_datetime.dart';
 import 'package:event_app/src/common/utils/util_datetime.dart';
 
 class ScheduleController extends GetxController {
@@ -37,16 +39,13 @@ class ScheduleController extends GetxController {
           .toList();
   }
 
+  onNavigateToSubSchedulePage(SubSchedule subSchedule){
+    final argument = {
+      'subschedule': subSchedule,
+      'date': currentDate.value?.ddmmyyyy
+    };
+    Get.toNamed(AppRoutes.subSchedule,arguments: argument);
+  }
 
-
-  //   onDaySelected(DateTime selectedDate, DateTime focusedDate) {
-  //   currentDate.value = focusedDate;
-  //   selectedDay.value = selectedDate;
-
-  // }
-
-  // onNavigateDetailSchedularPage(){
-  //   Get.toNamed(AppRoutes.scheduleItem);
-  // }
 
 }

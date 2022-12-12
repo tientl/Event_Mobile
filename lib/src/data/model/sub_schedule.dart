@@ -1,4 +1,5 @@
 import 'package:event_app/src/data/model/presentation.dart';
+import 'package:event_app/src/common/utils/util_datetime.dart';
 
 class SubSchedule {
   final int id;
@@ -10,6 +11,8 @@ class SubSchedule {
   String? location;
   String? detail;
   Presentation? presentation;
+
+  String get beginEndTimeTotal => '${hourStart!.hhmm} - ${hourEnd!.hhmm} ($totalHour giờ)';
 
   SubSchedule(
       {required this.id,

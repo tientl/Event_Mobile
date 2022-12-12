@@ -54,6 +54,7 @@ class SchedulePage extends GetView<ScheduleController> {
               child: ListView.builder(
                   itemCount: controller.currentListSubSchedule.length,
                   itemBuilder: ((context, index) => ItemSchedularCardWidget(
+                    onTap: () => controller.onNavigateToSubSchedulePage(controller.currentListSubSchedule[index]),
                         subschedular: controller.currentListSubSchedule[index],
                       )))))
         ]),
