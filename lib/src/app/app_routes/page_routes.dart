@@ -5,10 +5,14 @@ import 'package:event_app/src/presentation/list_user_page/list_user_binding.dart
 import 'package:event_app/src/presentation/list_user_page/list_user_controller.dart';
 import 'package:event_app/src/presentation/list_user_page/list_user_page.dart';
 import 'package:event_app/src/presentation/login_page/login_binding.dart';
+import 'package:event_app/src/presentation/presentation_detail_page/presentation_detail_binding.dart';
+import 'package:event_app/src/presentation/presentation_detail_page/presentation_detail_page.dart';
 import 'package:event_app/src/presentation/root_app/root_app_binding.dart';
 import 'package:event_app/src/presentation/root_app/root_app_page.dart';
 import 'package:event_app/src/presentation/schedule_item_page/schedule_item_binding.dart';
 import 'package:event_app/src/presentation/schedule_page/schedule_page.dart';
+import 'package:event_app/src/presentation/sub_schedule_page/sub_schedule_binding.dart';
+import 'package:event_app/src/presentation/sub_schedule_page/sub_schedule_page.dart';
 import 'package:get/get.dart';
 import '../../presentation/home_page/home_page.dart';
 import '../../presentation/login_page/login_page.dart';
@@ -39,6 +43,14 @@ class AppPages {
     GetPage(
         name: AppRoutes.scheduleItem,
         page: () => const SchedulePage(),
-        binding: ScheduleItemBinding())
+        binding: ScheduleItemBinding()),
+    GetPage(
+        name: AppRoutes.subSchedule,
+        page: () => const SubSchedulePage(),
+        binding: SubScheduleBinding()),
+    GetPage(
+        name: AppRoutes.presentationDetail,
+        page: () => const PresentationDetailPage(),
+        binding: PresentationDetailBinding())
   ];
 }

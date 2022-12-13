@@ -42,27 +42,25 @@ class ItemSchedularCardWidget extends StatelessWidget {
                   ),
                  Visibility(
                   visible: isHappened,
-                  child: const  Chip(label: Text('Đã diễn ra')))
+                  child: const  Chip( padding: EdgeInsets.zero, label: Text('Đã diễn ra')))
                 ],
               ),
-              SizedBox(
-                height: 8.h,
-              ),
+        
               Text(
                 subschedular.location ?? 'Chưa cập nhật địa điểm',
                 style:
                     TextStyle(fontSize: 16.sp, color: const Color(0xff8696BB)),
               ),
               SizedBox(
-                height: 8.h,
+                height: 12.h,
               ),
               SizedBox(
                 height: 60.h,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 3,
+                    itemCount: subschedular.presentation?.speaker?.length ?? 0,
                     itemBuilder: ((context, index) => InternetImageWidget(
-                        padding: EdgeInsets.only(right: 8.w), imgUrl: null))),
+                        padding: EdgeInsets.only(right: 8.w), imgUrl: subschedular.presentation?.speaker?[index].urlImage))),
               ),
               Divider(
                 height: 32.h,
