@@ -1,4 +1,6 @@
+import 'package:event_app/src/app/app_routes/app_routes.dart';
 import 'package:event_app/src/common/widget/alert_dialog_widget.dart';
+import 'package:event_app/src/data/model/presentation.dart';
 import 'package:event_app/src/data/model/sub_schedule.dart';
 import 'package:get/get.dart';
 
@@ -28,5 +30,14 @@ class SubScheduleController extends GetxController {
     late String result = '';
     subSchedule.value?.presentation?.speaker
         ?.map((e) => result += e.name != null ? '${e.name} ' : '' );
+  }
+
+  onNavigateToPresentationDetailPage(Presentation presentation){
+    final argument = {
+      'presentation':presentation,
+      'total_hour': subSchedule.value?.totalHour ?? 0,
+      'location': subSchedule.value?.location ?? 'Chưa xác định'
+    };
+    Get.toNamed(AppRoutes.presentationDetail, arguments:argument );
   }
 }

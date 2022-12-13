@@ -1,4 +1,5 @@
 import 'package:event_app/src/common/widget/app_bar_widget.dart';
+import 'package:event_app/src/common/widget/row_infor_with_icon_widget.dart';
 import 'package:event_app/src/data/model/presentation.dart';
 import 'package:event_app/src/presentation/sub_schedule_page/sub_schedule_controller.dart';
 import 'package:flutter/material.dart';
@@ -60,6 +61,7 @@ class SubSchedulePage extends GetView<SubScheduleController> {
                   scrollDirection: Axis.horizontal,
                   child: Row(children: [
                     PresentationWidget(
+                      onTap: () => controller.onNavigateToPresentationDetailPage(controller.subSchedule.value!.presentation!),
                         present: controller.subSchedule.value!.presentation!)
                   ]),
                 )
@@ -85,87 +87,58 @@ class SubSchedulePage extends GetView<SubScheduleController> {
 }
 
 class PresentationWidget extends StatelessWidget {
-  const PresentationWidget({Key? key, required this.present}) : super(key: key);
+  const PresentationWidget({Key? key, required this.present, this.onTap}) : super(key: key);
   final Presentation present;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 20.h),
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.r),
-          color: Colors.white,
-          border: Border.all(color: const Color(0xff5A75A7))),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-        Row(children: [
-          CircleAvatar(
-            child: Image.asset('assets/images/default/file.png'),
-          ),
-          SizedBox(
-            width: 20.w,
-          ),
-          RichText(
-              text: TextSpan(children: <TextSpan>[
-            TextSpan(
-                text: '${present.name}\n',
-                style: TextStyle(
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w500,
-                    color: const Color(0xff0F2851))),
-            TextSpan(
-                text: '${present.id}',
-                style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold,
-                    color: const Color(0xff6B7280)))
-          ]))
-        ]),
-        Divider(
-          height: 40.h,
-          color: const Color(0xff6B7280),
-        ),
-        Text(
-         present.listSpeakerName ,
-          style: TextStyle(color: const Color(0xff0F75BD), fontSize: 16.sp),
-        )
-      ]),
-    );
-  }
-}
-
-class RowInfoWithIconWidget extends StatelessWidget {
-  const RowInfoWithIconWidget(
-      {Key? key, required this.content, required this.iconData})
-      : super(key: key);
-  final String content;
-  final IconData? iconData;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 20.h),
-      child: Row(
-        children: [
-          CircleAvatar(
-            backgroundColor: const Color(0xffE2E8ED),
-            child: Icon(
-              iconData,
-              size: 24.sp,
-              color: const Color(0xff0F2851),
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.r),
+            color: Colors.white,
+            border: Border.all(color: const Color(0xff5A75A7))),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+          Row(children: [
+            CircleAvatar(
+              child: Image.asset('assets/images/default/file.png'),
             ),
-          ),
-          SizedBox(
-            width: 16.w,
+            SizedBox(
+              width: 20.w,
+            ),
+            RichText(
+                text: TextSpan(children: <TextSpan>[
+              TextSpan(
+                  text: '${present.name}\n',
+                  style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w500,
+                      color: const Color(0xff0F2851))),
+              TextSpan(
+                  text: '${present.id}',
+                  style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xff6B7280)))
+            ]))
+          ]),
+          Divider(
+            height: 40.h,
+            color: const Color(0xff6B7280),
           ),
           Text(
-            content,
-            style: TextStyle(fontSize: 16.sp, color: const Color(0xff0F2851)),
+           present.listSpeakerName ,
+            style: TextStyle(color: const Color(0xff0F75BD), fontSize: 16.sp),
           )
-        ],
+        ]),
       ),
     );
   }
 }
+
