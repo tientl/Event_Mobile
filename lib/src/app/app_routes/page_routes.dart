@@ -2,7 +2,6 @@ import 'package:event_app/src/presentation/home_page/home_binding.dart';
 import 'package:event_app/src/presentation/list_sponsor_page/list_ponsor_binding.dart';
 import 'package:event_app/src/presentation/list_sponsor_page/list_sponsor_page.dart';
 import 'package:event_app/src/presentation/list_user_page/list_user_binding.dart';
-import 'package:event_app/src/presentation/list_user_page/list_user_controller.dart';
 import 'package:event_app/src/presentation/list_user_page/list_user_page.dart';
 import 'package:event_app/src/presentation/login_page/login_binding.dart';
 import 'package:event_app/src/presentation/presentation_detail_page/presentation_detail_binding.dart';

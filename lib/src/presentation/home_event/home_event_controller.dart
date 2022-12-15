@@ -5,21 +5,19 @@ import 'package:event_app/src/data/model/event.dart';
 import 'package:get/get.dart';
 
 class HomeEventController extends GetxController {
-  final user = AppManager().currentUser;
   final currentEvent = Rxn<Event>(null);
 
   @override
   void onInit() {
     final argument = Get.arguments;
     if (argument is Event) currentEvent.value = argument;
-
     super.onInit();
   }
 
   @override
   void onReady() {
     if (currentEvent.value == null) {
-      AlertDialogWidget.show();
+      AlertDialogWidget.show(onPress: () => Get.close(2));
     }
     super.onReady();
   }
@@ -32,8 +30,8 @@ class HomeEventController extends GetxController {
     Get.toNamed(AppRoutes.listUser, arguments: currentEvent.value?.speakers);
   }
 
-  onNavigateToListResgistration() {
-    Get.toNamed(AppRoutes.listUser,
+  onNavigateToListResgistration()async {
+    await  Get.toNamed(AppRoutes.listUser,
         arguments: currentEvent.value?.registrations);
   }
 }

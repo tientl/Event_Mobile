@@ -121,7 +121,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                       height: 8.h,
                     ),
                     SizedBox(
-                      height: 80.h,
+                      height: 88.h,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount:
@@ -219,7 +219,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                       ],
                     ),
                      SizedBox(
-                      height: 100.h,
+                      height: 108.h,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount:
@@ -253,6 +253,7 @@ class SpeakerCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: AppConstant.width - 100.w,
+       margin: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
         decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
@@ -315,6 +316,7 @@ class SponsorCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
       padding: EdgeInsets.symmetric(horizontal: 12.h, vertical: 12.w),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
