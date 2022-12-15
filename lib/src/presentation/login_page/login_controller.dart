@@ -21,14 +21,14 @@ class LoginController extends GetxController {
   //Validation
   String? onValidationUserName(String? value) {
     if (value == null || value.isEmpty) {
-      return 'please_enter_user_name'.tr;
+      return 'Vui lòng nhập tên đăng nhập'.tr;
     }
     return null;
   }
 
   String? onValidationPassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'please_enter_password'.tr;
+      return 'Vui lòng nhập mật khẩu'.tr;
     }
     return null;
   }
