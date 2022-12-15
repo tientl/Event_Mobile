@@ -19,6 +19,11 @@ class SubScheduleController extends GetxController {
     }
     super.onInit();
   }
+    @override
+  void dispose() {
+   ratingController.dispose();
+    super.dispose();
+  }
 
   @override
   void onReady() {

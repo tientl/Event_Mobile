@@ -21,6 +21,7 @@ class HomeController extends GetxController
     super.onReady();
   }
 
+
   @override
   void onInit() {
     tabController = TabController(length: 2, vsync: this);

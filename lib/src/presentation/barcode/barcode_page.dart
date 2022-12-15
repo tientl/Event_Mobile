@@ -1,5 +1,4 @@
 import 'package:event_app/src/app/app_config/app_constant.dart';
-import 'package:event_app/src/common/widget/app_bar_widget.dart';
 import 'package:event_app/src/presentation/barcode/barcode_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +11,6 @@ class QRCodePage extends GetView<BarcodeController> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-  
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

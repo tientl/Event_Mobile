@@ -1,6 +1,7 @@
 import 'package:event_app/src/data/model/registration.dart';
 import 'package:event_app/src/data/model/sponsor.dart';
 import 'package:event_app/src/data/model/sub_schedule.dart';
+import 'package:event_app/src/common/utils/util_datetime.dart';
 
 class Event {
   final int id;
@@ -22,7 +23,7 @@ class Event {
     if (dateStart == null) return [];
     late DateTime date = dateStart!;
     late List<DateTime> listDate = [];
-    while (date != dateEnd){
+    while (date.isSameDate(dateEnd)){
       listDate.add(date);
       date = date.add( const Duration(days: 1));
     }

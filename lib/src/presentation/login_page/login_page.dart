@@ -169,18 +169,6 @@ class LoginPage extends GetView<LoginController> {
     );
   }
 
-  Widget _forgotPassword() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: TextButton(
-        onPressed: () => debugPrint('forgot'),
-        child: const Text(
-          'Forgot Password',
-          style: kLabelStyle,
-        ),
-      ),
-    );
-  }
 
   Widget _rememberMeCheckbox() {
     return SizedBox(
@@ -213,16 +201,16 @@ class LoginPage extends GetView<LoginController> {
       width: double.infinity,
       child: ElevatedButton(
         onPressed: () => controller.onLogin(),
-        child: const Text(
-          'ĐĂNG NHẬP',
-          style: kButtonLogin,
-        ),
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.white),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ))),
+        child: const Text(
+          'ĐĂNG NHẬP',
+          style: kButtonLogin,
+        ),
       ),
     );
   }

@@ -4,12 +4,8 @@ import 'package:event_app/src/data/model/event.dart';
 import 'package:event_app/src/data/model/sub_schedule.dart';
 import 'package:get/get.dart';
 import 'package:event_app/src/common/utils/util_datetime.dart';
-import 'package:event_app/src/common/utils/util_datetime.dart';
 
 class ScheduleController extends GetxController {
-  final firstDate = DateTime.now();
-  final selectedDay = DateTime.now().obs;
-  final lstDate = DateTime.now().add(const Duration(days: 30));
   final listDate = <DateTime>[].obs;
   final listSubScheduler = <SubSchedule>[].obs;
   final currentUser = AppManager().currentUser;
@@ -20,9 +16,11 @@ class ScheduleController extends GetxController {
   void onInit() {
     final argument = Get.arguments;
     if (argument is Event) {
-      listSubScheduler.value = argument.listSubScheduler ?? [];
+      if (argument.listSubScheduler is List<SubSchedule>) {
+        listSubScheduler.value = argument.listSubScheduler ?? [];
+      }
       listDate.value = argument.listDate;
-      currentDate.value = listDate[0];
+      if (listDate.isNotEmpty) currentDate.value = listDate[0];
       onGetListSubscheduleByDate();
     }
     super.onInit();
@@ -34,18 +32,16 @@ class ScheduleController extends GetxController {
   }
 
   onGetListSubscheduleByDate() {
-     currentListSubSchedule.value = listSubScheduler
-          .where((p0) => p0.timeScheduler?.isSameDate(currentDate.value) ?? false)
-          .toList();
+    currentListSubSchedule.value = listSubScheduler
+        .where((p0) => p0.timeScheduler?.isSameDate(currentDate.value) ?? false)
+        .toList();
   }
 
-  onNavigateToSubSchedulePage(SubSchedule subSchedule){
+  onNavigateToSubSchedulePage(SubSchedule subSchedule) {
     final argument = {
       'subschedule': subSchedule,
       'date': currentDate.value?.ddmmyyyy
     };
-    Get.toNamed(AppRoutes.subSchedule,arguments: argument);
+    Get.toNamed(AppRoutes.subSchedule, arguments: argument);
   }
-
-
 }

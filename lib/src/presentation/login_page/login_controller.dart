@@ -14,6 +14,13 @@ class LoginController extends GetxController {
 
   LoginController(this.userRepositories);
 
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   onclickRememberme(bool value) {
     rememberMe.value = value;
   }
@@ -40,7 +47,7 @@ class LoginController extends GetxController {
       final loginRes = await userRepositories.login(
           emailController.text, passwordController.text);
       if (loginRes.isSuccess() && loginRes.data != null) {
-        AppManager().onLogin(loginRes.data!);
+       await AppManager().onLogin(loginRes.data!);
         Get.offAllNamed(AppRoutes.homePage);
       } else {
         AlertDialogWidget.show(content: loginRes.message);

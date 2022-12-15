@@ -1,7 +1,5 @@
 import 'package:event_app/src/common/widget/app_bar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ScheduleItemPage extends StatelessWidget {

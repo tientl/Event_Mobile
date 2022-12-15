@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:event_app/src/app/app_config/app_constant.dart';
 import 'package:event_app/src/app/app_manager.dart';
 
 class ApiIntercepter extends InterceptorsWrapper {
