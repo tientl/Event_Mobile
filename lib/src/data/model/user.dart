@@ -4,6 +4,8 @@ class User {
   final int id;
   final String? userName;
   final String? passWord;
+  final String? mobile;
+  final String? email;
   final List<Event>? listEvent;
   List<Event>? get listUnconfirmEvent => listEvent == null
       ? null
@@ -23,6 +25,8 @@ class User {
   User({
     required this.id,
     this.userName,
+    this.mobile,
+    this.email,
     this.passWord,
     this.listEvent,
   });
@@ -31,6 +35,8 @@ class User {
         id: json['id'] ?? 0,
         userName: json['user_name'] ?? '',
         passWord: json['password'] ?? '',
+        mobile: json['mobile'] ?? '',
+        email: json['email'] ?? '',
         listEvent: json['events'] == null
             ? null
             : Event.getListEventFromJson(json['events'] as List),

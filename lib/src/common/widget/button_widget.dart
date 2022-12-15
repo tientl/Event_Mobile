@@ -45,7 +45,7 @@ class ButtonWidget extends StatelessWidget {
           child: Text(
             lable,
             style: Theme.of(context).textTheme.button?.copyWith(
-                color: lableColor ?? Theme.of(context).backgroundColor),
+                color: lableColor ?? Colors.white),
           ),
         ));
   }

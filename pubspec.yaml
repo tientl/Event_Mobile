@@ -73,6 +73,8 @@ flutter:
   assets:
     - assets/images/default/images.jpeg
     - assets/images/default/file.png 
+    - assets/images/default/success.png
+    - assets/images/default/error.png
 
   fonts:
     - family: Roboto

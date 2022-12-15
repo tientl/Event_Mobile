@@ -1,9 +1,8 @@
-import 'package:event_app/src/app/app_routes/app_routes.dart';
+
 import 'package:event_app/src/common/widget/app_bar_widget.dart';
 import 'package:event_app/src/data/model/enum/tab_item.dart';
 import 'package:event_app/src/presentation/barcode/barcode_page.dart';
 import 'package:event_app/src/presentation/home_event/home_event_page.dart';
-import 'package:event_app/src/presentation/home_page/home_page.dart';
 import 'package:event_app/src/presentation/profile_event/profile_event_page.dart';
 import 'package:event_app/src/presentation/schedule_page/schedule_page.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,6 @@ class RootAppController extends GetxController {
       case TabItem.home:
         return null;
       case TabItem.schedule:
-    
       case TabItem.barcode:
        case TabItem.profile:
         return AppBarWidget(
@@ -49,8 +47,8 @@ class RootAppController extends GetxController {
         return const HomeEventPage();
       case TabItem.schedule:
         return const SchedulePage();
-      // case TabItem.barcode:
-      //   return const BarcodePage();
+      case TabItem.barcode:
+        return const QRCodePage();
       default:
         return const ProfileEventPage();
     }

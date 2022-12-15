@@ -80,6 +80,7 @@ class UserCardWidget extends StatelessWidget {
                       SizedBox(
                         height: 12.h,
                       ),
+                      if( registration.mobile?.isNotEmpty ?? false)
                       Row(
                         children: [
                           Icon(
@@ -99,7 +100,7 @@ class UserCardWidget extends StatelessWidget {
                       ),
                       SizedBox(
                         height: 8.h,
-                      ),
+                      ),   if( registration.email?.isNotEmpty ?? false)
                       Row(
                         children: [
                           Icon(
