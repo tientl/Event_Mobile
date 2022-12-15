@@ -17,20 +17,14 @@ extension TypeOfDialogExt on TypeOfDialog {
   String get title {
     switch (this) {
       case TypeOfDialog.error:
-        return "error".tr;
+        return "Lỗi".tr;
       default:
-        return "success".tr;
+        return "Thành công".tr;
     }
   }
 
   Color getTextColor(BuildContext context) {
-    switch (this) {
-      case TypeOfDialog.error:
-      case TypeOfDialog.success:
-        return Theme.of(context).backgroundColor;
-      default:
-        return Theme.of(context).backgroundColor;
-    }
+    return Colors.white;
   }
 
   Color getColor(BuildContext context) {

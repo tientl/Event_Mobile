@@ -16,21 +16,21 @@ extension StatusExt on Status {
   String get message {
     switch (this) {
       case Status.success:
-        return 'success_status';
+        return 'Thành công';
       case Status.cancel:
         return 'cancel_status';
       case Status.invalidParam:
-        return 'invalid_param_status';
+        return 'Param không đúng';
       case Status.resourceNotFound:
-        return 'resource_not_found_status';
+        return 'Không tìm thấy dữ liệu';
       case Status.timeOut:
-        return 'time_out_status';
+        return 'Thời gian gửi yêu cầu quá lâu, vui lòng thử lại sau';
       case Status.unAuthorized:
-        return 'unauthorized_status';
+        return 'Sai mật khẩu hoặc tên đăng nhập, vui lòng thử lại sau';
       case Status.serverError:
-        return 'server_error';
+        return 'Server đang quá tải, vui lòng thử lại sau';
       default:
-        return 'unknown_status';
+        return 'Lỗi không xác định';
     }
   }
 }
@@ -72,7 +72,7 @@ class ResponseData<T> {
       }
     } else {
       status = Status.unKnown;
-      message = error.toString();
+      message = Status.unKnown.message;
     }
   }
 

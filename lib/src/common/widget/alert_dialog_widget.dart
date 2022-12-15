@@ -53,7 +53,7 @@ class AlertDialogWidget extends StatelessWidget {
                     title ?? type.title,
                     style: Theme.of(context).textTheme.headline5?.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: Theme.of(context).canvasColor),
+                        color: const Color(0xff0F2851)),
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(
@@ -62,7 +62,7 @@ class AlertDialogWidget extends StatelessWidget {
                   Text(
                     content,
                     style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                        color: Theme.of(context).canvasColor.withOpacity(0.6),
+                        color:Color(0xff6F6C90),
                         fontWeight: FontWeight.normal),
                     textAlign: TextAlign.center,
                   ),
@@ -103,8 +103,8 @@ class AlertDialogWidget extends StatelessWidget {
         barrierDismissible: barrierDismissible ?? true,
         AlertDialogWidget(
           title: title,
-          content: content ?? 'systerm_error'.tr,
-          textButton: textButton ?? 'confirm'.tr,
+          content: content ?? 'Lỗi hệ thống'.tr,
+          textButton: textButton ?? 'Xác nhận'.tr,
           onPressButton: onPress ?? Get.back,
           type: typeOfDialog ?? TypeOfDialog.error,
         ));
