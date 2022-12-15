@@ -1,4 +1,5 @@
 import 'package:event_app/src/common/widget/app_bar_widget.dart';
+import 'package:event_app/src/common/widget/button_widget.dart';
 import 'package:event_app/src/common/widget/row_infor_with_icon_widget.dart';
 import 'package:event_app/src/data/model/presentation.dart';
 import 'package:event_app/src/presentation/sub_schedule_page/sub_schedule_controller.dart';
@@ -19,6 +20,61 @@ class SubSchedulePage extends GetView<SubScheduleController> {
               color: const Color.fromARGB(236, 4, 37, 87),
             ),
       ),
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        padding: EdgeInsets.fromLTRB(24.w, 20.h, 24.w, 20.h),
+        child: ButtonWidget(
+          lable: 'Đánh giá',
+          borderRadius: BorderRadius.all(Radius.circular(8.r)),
+          onPressed: () => showDialog(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                scrollable: true,
+                    title: Column(
+                      children: [
+                        Text(
+                          'Đánh giá sự kiện',
+                          style: TextStyle(
+                              fontSize: 20.sp,
+                              color: const Color(0xff0F2851),
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 12.h,
+                        ),
+                        Text(
+                          'Vui lòng cho chúng tôi biết trải nghiệm của bạn',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: const Color(0xff8A96BC), fontSize: 14.sp),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        TextField(
+                          controller: controller.ratingController,
+                          decoration: InputDecoration(
+                            hintText: 'Nhập đánh giá của bạn',
+                            hintStyle: TextStyle(fontSize: 14.sp, color:const Color(0xff8A96BC)),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12.r),
+                                  borderSide: BorderSide(
+                                      color: const Color(0xff0F2851)
+                                          .withOpacity(0.2))),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20.r),
+                                  borderSide: BorderSide(
+                                      color: const Color(0xff0F2851)
+                                          .withOpacity(0.2)))),
+                        ),
+                        SizedBox(height: 20.h,),
+                        ButtonWidget(lable: 'Đánh giá', borderRadius:BorderRadius.circular(8.r), onPressed: () => Get.back(),)
+                      ],
+                    ),
+                  
+                  )),
+        ),
+      ),
       body: SingleChildScrollView(
           child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
@@ -37,11 +93,10 @@ class SubSchedulePage extends GetView<SubScheduleController> {
           SizedBox(
             height: 40.h,
           ),
-          Obx(() =>RowInfoWithIconWidget(
-            iconData: Icons.calendar_today_rounded,
-            content: controller.date.value,
-          ) )
-          ,
+          Obx(() => RowInfoWithIconWidget(
+                iconData: Icons.calendar_today_rounded,
+                content: controller.date.value,
+              )),
           RowInfoWithIconWidget(
               content:
                   controller.subSchedule.value?.location ?? 'Chưa xác định',
@@ -61,7 +116,9 @@ class SubSchedulePage extends GetView<SubScheduleController> {
                   scrollDirection: Axis.horizontal,
                   child: Row(children: [
                     PresentationWidget(
-                      onTap: () => controller.onNavigateToPresentationDetailPage(controller.subSchedule.value!.presentation!),
+                        onTap: () =>
+                            controller.onNavigateToPresentationDetailPage(
+                                controller.subSchedule.value!.presentation!),
                         present: controller.subSchedule.value!.presentation!)
                   ]),
                 )
@@ -87,7 +144,8 @@ class SubSchedulePage extends GetView<SubScheduleController> {
 }
 
 class PresentationWidget extends StatelessWidget {
-  const PresentationWidget({Key? key, required this.present, this.onTap}) : super(key: key);
+  const PresentationWidget({Key? key, required this.present, this.onTap})
+      : super(key: key);
   final Presentation present;
   final void Function()? onTap;
 
@@ -102,9 +160,7 @@ class PresentationWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.r),
             color: Colors.white,
             border: Border.all(color: const Color(0xff5A75A7))),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(children: [
             CircleAvatar(
               child: Image.asset('assets/images/default/file.png'),
@@ -133,7 +189,7 @@ class PresentationWidget extends StatelessWidget {
             color: const Color(0xff6B7280),
           ),
           Text(
-           present.listSpeakerName ,
+            present.listSpeakerName,
             style: TextStyle(color: const Color(0xff0F75BD), fontSize: 16.sp),
           )
         ]),
@@ -141,4 +197,3 @@ class PresentationWidget extends StatelessWidget {
     );
   }
 }
-

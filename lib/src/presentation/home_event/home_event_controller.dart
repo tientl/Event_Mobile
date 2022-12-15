@@ -11,11 +11,8 @@ class HomeEventController extends GetxController {
   @override
   void onInit() {
     final argument = Get.arguments;
-    if (argument == null) {
-      AlertDialogWidget.show();
-    } else {
-      currentEvent.value = argument;
-    }
+    if (argument is Event) currentEvent.value = argument;
+
     super.onInit();
   }
 

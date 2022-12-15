@@ -28,11 +28,11 @@ extension TabItemExt on TabItem {
   IconData get icon {
     switch (this) {
       case TabItem.home:
-        return FontAwesomeIcons.houseChimneyMedical;
+        return FontAwesomeIcons.house;
       case TabItem.barcode:
-        return FontAwesomeIcons.book;
+        return FontAwesomeIcons.qrcode;
       case TabItem.schedule:
-        return FontAwesomeIcons.arrowsSpin;
+        return FontAwesomeIcons.solidCalendar;
       case TabItem.profile:
         return FontAwesomeIcons.solidUser;
       default:

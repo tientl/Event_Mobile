@@ -2,11 +2,13 @@ import 'package:event_app/src/app/app_routes/app_routes.dart';
 import 'package:event_app/src/common/widget/alert_dialog_widget.dart';
 import 'package:event_app/src/data/model/presentation.dart';
 import 'package:event_app/src/data/model/sub_schedule.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class SubScheduleController extends GetxController {
   final subSchedule = Rxn<SubSchedule>(null);
   final date = ''.obs;
+  final ratingController = TextEditingController();
 
   @override
   void onInit() {
@@ -39,5 +41,9 @@ class SubScheduleController extends GetxController {
       'location': subSchedule.value?.location ?? 'Chưa xác định'
     };
     Get.toNamed(AppRoutes.presentationDetail, arguments:argument );
+  }
+
+  onClickRatingSubSchedule(){
+    
   }
 }
