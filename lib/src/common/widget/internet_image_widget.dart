@@ -26,7 +26,7 @@ class InternetImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: padding?? EdgeInsets.all(8.r),
+      padding: padding?? EdgeInsets.zero,
       child: Container(
         clipBehavior: Clip.hardEdge,
         height: height,
