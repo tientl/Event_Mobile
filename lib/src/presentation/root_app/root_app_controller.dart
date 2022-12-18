@@ -83,6 +83,7 @@ class RootAppController extends GetxController {
         eluvate: ratingController.text,
         isEvent: true,
         eventId:currentEventId.value );
+    ratingController.text = '';
     
     if (resRating.isSuccess()){
       Get.back();

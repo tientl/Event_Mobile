@@ -68,6 +68,7 @@ class SubScheduleController extends GetxController {
       rating: currentRating.value.round(),
       userId: currentUser!.id,
     );
+     ratingController.text = '';
 
     if (ratingRes.isSuccess()) {
       Get.back();
