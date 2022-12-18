@@ -28,4 +28,21 @@ class UserRepositories {
       return ResponseData.failed(e.toString());
     }
   }
+  Future<ResponseData<bool>> ratingEvent({int? eventId, int? subScheduleId,required int userId,required int rating,required String eluvate,required bool isEvent}) async{
+    try{
+      final data = {
+        'event_id': eventId,
+        'sub_schedule_id': subScheduleId,
+        'partner_id': userId,
+        'rating': rating,
+        'evaluate': eluvate,
+        'is_event': isEvent,
+        'is_schedule':!isEvent
+      };
+      final res = await _apiProvider.post(AppConstant.rating, data: data);
+      return ResponseData.success(true, response: res);
+    }catch(e){
+      return ResponseData.failed(e);
+    }
+  }
 }

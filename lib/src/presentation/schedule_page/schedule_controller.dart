@@ -11,6 +11,7 @@ class ScheduleController extends GetxController {
   final currentUser = AppManager().currentUser;
   final currentDate = Rxn<DateTime>(null);
   final currentListSubSchedule = <SubSchedule>[].obs;
+  final eventId = 0.obs;
 
   @override
   void onInit() {
@@ -21,6 +22,7 @@ class ScheduleController extends GetxController {
       }
       listDate.value = argument.listDate;
       if (listDate.isNotEmpty) currentDate.value = listDate[0];
+      eventId.value = argument.id;
       onGetListSubscheduleByDate();
     }
     super.onInit();
@@ -40,7 +42,8 @@ class ScheduleController extends GetxController {
   onNavigateToSubSchedulePage(SubSchedule subSchedule) {
     final argument = {
       'subschedule': subSchedule,
-      'date': currentDate.value?.ddmmyyyy
+      'date': currentDate.value?.ddmmyyyy,
+      'event_id': eventId.value
     };
     Get.toNamed(AppRoutes.subSchedule, arguments: argument);
   }

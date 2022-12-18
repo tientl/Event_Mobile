@@ -4,6 +4,7 @@ import 'package:event_app/src/common/widget/row_infor_with_icon_widget.dart';
 import 'package:event_app/src/data/model/presentation.dart';
 import 'package:event_app/src/presentation/sub_schedule_page/sub_schedule_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -29,7 +30,7 @@ class SubSchedulePage extends GetView<SubScheduleController> {
           onPressed: () => showDialog(
               context: context,
               builder: (BuildContext context) => AlertDialog(
-                scrollable: true,
+                    scrollable: true,
                     title: Column(
                       children: [
                         Text(
@@ -51,11 +52,29 @@ class SubSchedulePage extends GetView<SubScheduleController> {
                         SizedBox(
                           height: 20.h,
                         ),
+                        RatingBar.builder(
+                          initialRating: 0,
+                          minRating: 1,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          itemPadding: const  EdgeInsets.symmetric(horizontal: 4.0),
+                          itemBuilder: (context, _) => const  Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          onRatingUpdate: (rating) {
+                            controller.onRatingUpdate(rating);
+                          },
+                        ),
+                        SizedBox(height: 20.h,),
                         TextField(
                           controller: controller.ratingController,
                           decoration: InputDecoration(
-                            hintText: 'Nhập đánh giá của bạn',
-                            hintStyle: TextStyle(fontSize: 14.sp, color:const Color(0xff8A96BC)),
+                              hintText: 'Nhập đánh giá của bạn',
+                              hintStyle: TextStyle(
+                                  fontSize: 14.sp,
+                                  color: const Color(0xff8A96BC)),
                               enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12.r),
                                   borderSide: BorderSide(
@@ -67,11 +86,16 @@ class SubSchedulePage extends GetView<SubScheduleController> {
                                       color: const Color(0xff0F2851)
                                           .withOpacity(0.2)))),
                         ),
-                        SizedBox(height: 20.h,),
-                        ButtonWidget(lable: 'Đánh giá', borderRadius:BorderRadius.circular(8.r), onPressed: () => Get.back(),)
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        ButtonWidget(
+                          lable: 'Đánh giá',
+                          borderRadius: BorderRadius.circular(8.r),
+                          onPressed: controller.onClickRatingSubSchedule,
+                        )
                       ],
                     ),
-                  
                   )),
         ),
       ),
