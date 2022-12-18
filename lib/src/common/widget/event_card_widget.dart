@@ -23,7 +23,7 @@ class EventCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Color(0xff5A75A7)),
+                border: Border.all(color: const Color(0xff5A75A7)),
                 boxShadow: [
                   BoxShadow(
                       color: Theme.of(context).indicatorColor.withOpacity(0.2),
@@ -39,6 +39,8 @@ class EventCard extends StatelessWidget {
                   InternetImageWidget(
                     imgUrl: event.eventImage,
                     borderRadius: 16,
+                    height: 72.r,
+                    width: 72.r,
                   ),
                   SizedBox(
                     width: 8.w,
@@ -62,14 +64,23 @@ class EventCard extends StatelessWidget {
                           event.company ?? '',
                           style: const TextStyle(
                               color: Color.fromARGB(255, 2, 2, 2)),
-                        )
+                        ),
+                        SizedBox(
+                          height: 8.h,
+                        ),
+                        if (event.isAlreadyOver ?? false)
+                          const Text(
+                            'Đã kết thúc',
+                            style: TextStyle(fontSize: 14, color: Colors.red),
+                          ),
                       ],
                     ),
                   )
                 ],
               ),
-              const Divider(
+              Divider(
                 height: 36,
+                color: const Color(0xff0F2851).withOpacity(0.4),
               ),
               Row(
                 children: [

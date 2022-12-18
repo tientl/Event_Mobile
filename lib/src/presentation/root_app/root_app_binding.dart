@@ -11,7 +11,7 @@ class RootAppBinding extends Bindings {
   void dependencies() {
     final userRepository = Get.find<UserRepositories>();
     Get.lazyPut<RootAppController>(() => RootAppController(userRepository));
-    Get.put<HomeEventController>(HomeEventController());
+    Get.put<HomeEventController>(HomeEventController(userRepository));
     Get.put<ScheduleController>(ScheduleController());
      Get.put<BarcodeController>(BarcodeController());
      Get.put<ProfileEventController>(ProfileEventController());
