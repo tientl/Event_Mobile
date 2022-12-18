@@ -1,7 +1,10 @@
+import 'package:event_app/src/common/widget/button_widget.dart';
 import 'package:event_app/src/data/model/enum/tab_item.dart';
 import 'package:event_app/src/presentation/root_app/root_app_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class RootApp extends GetView<RootAppController> {
@@ -14,6 +17,7 @@ class RootApp extends GetView<RootAppController> {
           body: controller.getBody(controller.currentTab.value),
           appBar: controller.getAppBar(tabItem: controller.currentTab.value, context: context),
           bottomNavigationBar: getBottomBarnavigation(context),
+          floatingActionButton: getFloatingActionButton(context),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
         ));
@@ -32,7 +36,93 @@ class RootApp extends GetView<RootAppController> {
   }
 
   
-
+  Widget getFloatingActionButton(BuildContext context) {
+    return Visibility(
+      visible: MediaQuery.of(context).viewInsets.bottom == 0,
+      child: SizedBox(
+        height: 55.r,
+        width: 55.r,
+        child: FloatingActionButton(
+          onPressed: () => showDialog(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                    scrollable: true,
+                    title: Column(
+                      children: [
+                        Text(
+                          'Đánh giá sự kiện',
+                          style: TextStyle(
+                              fontSize: 20.sp,
+                              color: const Color(0xff0F2851),
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 12.h,
+                        ),
+                        Text(
+                          'Vui lòng cho chúng tôi biết trải nghiệm của bạn',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: const Color(0xff8A96BC), fontSize: 14.sp),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        RatingBar.builder(
+                          initialRating: 0,
+                          minRating: 1,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          itemPadding: const  EdgeInsets.symmetric(horizontal: 4.0),
+                          itemBuilder: (context, _) => const  Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          onRatingUpdate: (rating) {
+                            controller.onRatingUpdate(rating);
+                          },
+                        ),
+                        SizedBox(height: 20.h,),
+                        TextField(
+                          controller: controller.ratingController,
+                          decoration: InputDecoration(
+                              hintText: 'Nhập đánh giá của bạn',
+                              hintStyle: TextStyle(
+                                  fontSize: 14.sp,
+                                  color: const Color(0xff8A96BC)),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12.r),
+                                  borderSide: BorderSide(
+                                      color: const Color(0xff0F2851)
+                                          .withOpacity(0.2))),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20.r),
+                                  borderSide: BorderSide(
+                                      color: const Color(0xff0F2851)
+                                          .withOpacity(0.2)))),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        ButtonWidget(
+                          lable: 'Đánh giá',
+                          borderRadius: BorderRadius.circular(8.r),
+                          onPressed: controller.onRatingEvent,
+                        )
+                      ],
+                    ),
+                  )), 
+          backgroundColor: Theme.of(context).primaryColor,
+          child: Icon(
+            FontAwesomeIcons.pen,
+            color: Colors.white,
+            size: 20.r,
+          ),
+        ),
+      ),
+    );
+  }
   Widget getBottomBarnavigation(BuildContext context) {
     return Container(
       height: 54.h,
