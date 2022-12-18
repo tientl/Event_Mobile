@@ -60,6 +60,7 @@ class SubScheduleController extends GetxController {
   }
 
   onClickRatingSubSchedule() async {
+ 
     final ratingRes = await userRepositories.ratingEvent(
       eluvate: ratingController.text,
       eventId: eventId.value,

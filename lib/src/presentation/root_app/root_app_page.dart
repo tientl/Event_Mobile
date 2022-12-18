@@ -69,22 +69,26 @@ class RootApp extends GetView<RootAppController> {
                           height: 20.h,
                         ),
                         RatingBar.builder(
-                          initialRating: 0,
+                          initialRating: 1,
                           minRating: 1,
                           direction: Axis.horizontal,
-                          allowHalfRating: true,
                           itemCount: 5,
-                          itemPadding: const  EdgeInsets.symmetric(horizontal: 4.0),
-                          itemBuilder: (context, _) => const  Icon(
+                          itemSize: 32.r,
+                          itemPadding:   EdgeInsets.symmetric(horizontal: 4.w),
+                          itemBuilder: (context, _) =>   Icon(
                             Icons.star,
                             color: Colors.amber,
+                            size: 32.r,
                           ),
                           onRatingUpdate: (rating) {
                             controller.onRatingUpdate(rating);
                           },
                         ),
                         SizedBox(height: 20.h,),
-                        TextField(
+                        Form(
+                          key: controller.formKey,
+                          child: TextFormField(
+                            validator: (value) => controller.onValidRating(value),
                           controller: controller.ratingController,
                           decoration: InputDecoration(
                               hintText: 'Nhập đánh giá của bạn',
@@ -101,7 +105,8 @@ class RootApp extends GetView<RootAppController> {
                                   borderSide: BorderSide(
                                       color: const Color(0xff0F2851)
                                           .withOpacity(0.2)))),
-                        ),
+                        ), ),
+                       
                         SizedBox(
                           height: 20.h,
                         ),

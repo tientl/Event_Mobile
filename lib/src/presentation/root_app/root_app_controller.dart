@@ -21,6 +21,7 @@ class RootAppController extends GetxController {
   final curentRating = 0.obs;
   final ratingController = TextEditingController();
   final currentUser = AppManager().currentUser;
+  final formKey = GlobalKey<FormState>();
 
   
   @override
@@ -76,6 +77,7 @@ class RootAppController extends GetxController {
     }
   }
   onRatingEvent() async {
+    if (!formKey.currentState!.validate()) return;
     final resRating = await userRepository.ratingEvent(
         userId: currentUser!.id,
         rating: curentRating.value,
@@ -96,6 +98,12 @@ class RootAppController extends GetxController {
 
   onRatingUpdate(double rating) {
     curentRating.value = rating.round();
+  }
+
+  onValidRating(String? rating){
+    if (rating == null || rating.isEmpty){
+      return "Vui lòng nhập đánh giá";
+    }
   }
 
   @override

@@ -58,10 +58,12 @@ class SubSchedulePage extends GetView<SubScheduleController> {
                           direction: Axis.horizontal,
                           allowHalfRating: true,
                           itemCount: 5,
+                          itemSize: 32.r,
                           itemPadding: const  EdgeInsets.symmetric(horizontal: 4.0),
-                          itemBuilder: (context, _) => const  Icon(
+                          itemBuilder: (context, _) =>   Icon(
                             Icons.star,
                             color: Colors.amber,
+                             size: 32.r,
                           ),
                           onRatingUpdate: (rating) {
                             controller.onRatingUpdate(rating);
