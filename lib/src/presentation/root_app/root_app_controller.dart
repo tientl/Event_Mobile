@@ -7,7 +7,6 @@ import 'package:event_app/src/data/model/event.dart';
 import 'package:event_app/src/presentation/barcode/barcode_page.dart';
 import 'package:event_app/src/presentation/home_event/home_event_page.dart';
 import 'package:event_app/src/presentation/profile_event/profile_event_page.dart';
-import 'package:event_app/src/presentation/root_app/root_app_page.dart';
 import 'package:event_app/src/presentation/schedule_page/schedule_page.dart';
 import 'package:event_app/src/repositories/user_repositories.dart';
 import 'package:flutter/material.dart';
