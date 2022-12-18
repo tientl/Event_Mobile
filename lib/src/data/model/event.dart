@@ -30,6 +30,7 @@ class Event {
     return listDate;
   }
 
+  bool? get isAlreadyOver => dateEnd == null ? null : dateEnd!.isBefore(DateTime.now());
 
   Event(
       {required this.id,

@@ -77,19 +77,23 @@ class ResponseData<T> {
   }
 
   Status _mapCodeToState(int statusCode) {
-    switch (statusCode) {
-      case 200:
-        return Status.success;
-      case 400:
-        return Status.invalidParam;
-      case 401:
-        return Status.unAuthorized;
-      case 404:
-        return Status.resourceNotFound;
-      case 500:
-        return Status.serverError;
-      default:
-        return Status.unKnown;
+    if (statusCode > 500) {
+      return Status.serverError;
+    } else {
+      switch (statusCode) {
+        case 200:
+          return Status.success;
+        case 400:
+          return Status.invalidParam;
+        case 401:
+          return Status.unAuthorized;
+        case 404:
+          return Status.resourceNotFound;
+        case 500:
+          return Status.serverError;
+        default:
+          return Status.unKnown;
+      }
     }
   }
 
