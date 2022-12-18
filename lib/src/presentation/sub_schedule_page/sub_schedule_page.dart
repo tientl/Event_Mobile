@@ -53,40 +53,47 @@ class SubSchedulePage extends GetView<SubScheduleController> {
                           height: 20.h,
                         ),
                         RatingBar.builder(
-                          initialRating: 0,
+                          initialRating: 1,
                           minRating: 1,
                           direction: Axis.horizontal,
-                          allowHalfRating: true,
                           itemCount: 5,
                           itemSize: 32.r,
-                          itemPadding: const  EdgeInsets.symmetric(horizontal: 4.0),
-                          itemBuilder: (context, _) =>   Icon(
+                          itemPadding:
+                              const EdgeInsets.symmetric(horizontal: 4.0),
+                          itemBuilder: (context, _) => Icon(
                             Icons.star,
                             color: Colors.amber,
-                             size: 32.r,
+                            size: 32.r,
                           ),
                           onRatingUpdate: (rating) {
                             controller.onRatingUpdate(rating);
                           },
                         ),
-                        SizedBox(height: 20.h,),
-                        TextField(
-                          controller: controller.ratingController,
-                          decoration: InputDecoration(
-                              hintText: 'Nhập đánh giá của bạn',
-                              hintStyle: TextStyle(
-                                  fontSize: 14.sp,
-                                  color: const Color(0xff8A96BC)),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(12.r),
-                                  borderSide: BorderSide(
-                                      color: const Color(0xff0F2851)
-                                          .withOpacity(0.2))),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20.r),
-                                  borderSide: BorderSide(
-                                      color: const Color(0xff0F2851)
-                                          .withOpacity(0.2)))),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Form(
+                          key: controller.formKey,
+                          child: TextFormField(
+                            validator: (value) =>
+                                controller.onValidRating(value),
+                            controller: controller.ratingController,
+                            decoration: InputDecoration(
+                                hintText: 'Nhập đánh giá của bạn',
+                                hintStyle: TextStyle(
+                                    fontSize: 14.sp,
+                                    color: const Color(0xff8A96BC)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12.r),
+                                    borderSide: BorderSide(
+                                        color: const Color(0xff0F2851)
+                                            .withOpacity(0.2))),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20.r),
+                                    borderSide: BorderSide(
+                                        color: const Color(0xff0F2851)
+                                            .withOpacity(0.2)))),
+                          ),
                         ),
                         SizedBox(
                           height: 20.h,

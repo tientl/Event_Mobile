@@ -12,6 +12,7 @@ class SubScheduleController extends GetxController {
   final UserRepositories userRepositories;
 
   SubScheduleController(this.userRepositories);
+  final formKey = GlobalKey<FormState>();
   final subSchedule = Rxn<SubSchedule>(null);
   final date = ''.obs;
   final currentRating = 0.0.obs;
@@ -59,7 +60,15 @@ class SubScheduleController extends GetxController {
     Get.toNamed(AppRoutes.presentationDetail, arguments: argument);
   }
 
+  String? onValidRating(String? rating){
+    if (rating == null || rating.isEmpty){
+      return "Vui lòng nhập đánh giá";
+    }
+    return null;
+  }
+
   onClickRatingSubSchedule() async {
+    if (!formKey.currentState!.validate()) return;
  
     final ratingRes = await userRepositories.ratingEvent(
       eluvate: ratingController.text,
