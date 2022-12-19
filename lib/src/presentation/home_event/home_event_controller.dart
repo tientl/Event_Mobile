@@ -3,6 +3,7 @@ import 'package:event_app/src/app/app_routes/app_routes.dart';
 import 'package:event_app/src/common/widget/alert_dialog_widget.dart';
 import 'package:event_app/src/data/model/enum/type_of_dialog.dart';
 import 'package:event_app/src/data/model/event.dart';
+import 'package:event_app/src/data/model/stall.dart';
 import 'package:event_app/src/repositories/user_repositories.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -16,6 +17,8 @@ class HomeEventController extends GetxController {
   final curentRating = 0.obs;
   final formKey = GlobalKey<FormState>();
   final currentUser = AppManager().currentUser;
+
+  List<Stall>? get listStall => currentEvent.value?.listStall;
 
   @override
   void onInit() {
@@ -43,6 +46,10 @@ class HomeEventController extends GetxController {
   onNavigateToListResgistration() async {
     await Get.toNamed(AppRoutes.listUser,
         arguments: currentEvent.value?.registrations);
+  }
+
+  onNavigateToPreviewImg(){
+    Get.toNamed(AppRoutes.previewImg, arguments:currentEvent.value?.mapImage ?? '');
   }
 
   onRatingEvent() async {

@@ -1,5 +1,6 @@
 import 'package:event_app/src/data/model/registration.dart';
 import 'package:event_app/src/data/model/sponsor.dart';
+import 'package:event_app/src/data/model/stall.dart';
 import 'package:event_app/src/data/model/sub_schedule.dart';
 import 'package:event_app/src/common/utils/util_datetime.dart';
 
@@ -18,6 +19,7 @@ class Event {
   List<Registration>? registrations;
   List<Registration>? speakers;
   List<SubSchedule>? listSubScheduler;
+  List<Stall>? listStall;
 
   List<DateTime> get listDate  {
     if (dateStart == null) return [];
@@ -47,6 +49,7 @@ class Event {
       this.registrations,
       this.speakers, 
       this.listSubScheduler,
+      this.listStall
       });
 
   factory Event.fromJson(Map<String, dynamic> json) => Event(
@@ -69,6 +72,7 @@ class Event {
       registrations: json['registrations'] == null
           ? null
           : Registration.getListRegistrationFromJson(json['registrations']),
+      listStall: json['booths'] == null ? null : Stall.getListStallFromJson(json['booths']),
       speakers: json['speakers'] == null
           ? null
           : Registration.getListRegistrationFromJson(json['speakers']),

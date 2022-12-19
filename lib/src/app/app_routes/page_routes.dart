@@ -6,6 +6,8 @@ import 'package:event_app/src/presentation/list_user_page/list_user_page.dart';
 import 'package:event_app/src/presentation/login_page/login_binding.dart';
 import 'package:event_app/src/presentation/presentation_detail_page/presentation_detail_binding.dart';
 import 'package:event_app/src/presentation/presentation_detail_page/presentation_detail_page.dart';
+import 'package:event_app/src/presentation/preview_img/preview_img_binding.dart';
+import 'package:event_app/src/presentation/preview_img/preview_img_page.dart';
 import 'package:event_app/src/presentation/root_app/root_app_binding.dart';
 import 'package:event_app/src/presentation/root_app/root_app_page.dart';
 import 'package:event_app/src/presentation/schedule_item_page/schedule_item_binding.dart';
@@ -50,6 +52,10 @@ class AppPages {
     GetPage(
         name: AppRoutes.presentationDetail,
         page: () => const PresentationDetailPage(),
-        binding: PresentationDetailBinding())
+        binding: PresentationDetailBinding()),
+    GetPage(
+        name: AppRoutes.previewImg,
+        page: () => const PreviewImagePage(),
+        binding: PreviewImgBinding())
   ];
 }
