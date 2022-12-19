@@ -7,5 +7,6 @@ abstract class AppRoutes {
   static const scheduleItem = '/schedule_item';
   static const subSchedule = '/sub_schedule';
   static const presentationDetail = '/presentation_detail';
+  static const previewImg = '/preview_img';
 
 }

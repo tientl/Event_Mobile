@@ -7,9 +7,7 @@ class ListSponsorController extends GetxController {
   @override
   void onInit() {
     final argument = Get.arguments;
-    if (argument == null) {
-      AlertDialogWidget.show();
-    } else {
+    if (argument != null) {
       currentListSponsor.value = argument;
     }
     super.onInit();
