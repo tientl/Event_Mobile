@@ -57,7 +57,12 @@ class HomePage extends GetView<HomeController> {
                 const SizedBox(
                   height: 25,
                 ),
-                SearchBarWidget(onSuffixIconTap: () => {}),
+                SearchBarWidget(
+                  controller: controller.searchController,
+                  onSuffixIconTap: () => {},
+                  hint: 'Nhập tên sự kiện',
+                  onChanged: controller.onChangeSearch,
+                ),
                 const SizedBox(
                   height: 20,
                 ),

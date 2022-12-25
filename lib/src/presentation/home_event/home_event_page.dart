@@ -5,7 +5,6 @@ import 'package:event_app/src/common/widget/button_widget.dart';
 import 'package:event_app/src/common/widget/internet_image_widget.dart';
 import 'package:event_app/src/data/model/registration.dart';
 import 'package:event_app/src/data/model/sponsor.dart';
-import 'package:event_app/src/data/model/stall.dart';
 import 'package:event_app/src/presentation/home_event/home_event_controller.dart';
 import 'package:event_app/src/presentation/home_event/widget/stall_widget.dart';
 import 'package:flutter/material.dart';
@@ -198,17 +197,61 @@ class HomeEventPage extends GetView<HomeEventController> {
                                   icon: const Icon(Icons.arrow_forward_ios)),
                             ),
                           ]),
-                    ),
-                    SizedBox(
-                      height: 16.h,
-                    ),
-                   InkWell(
-                    onTap: () => controller.onNavigateToPreviewImg(),
-                     child: InternetImageWidget(
-                      height: 200.h,
+                    ), 
+                    if (controller.currentEvent.value?.mapImage != null)
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 20.h),
                       width: AppConstant.width,
-                      imgUrl:controller.currentEvent.value?.mapImage),
-                   ),
+                      height: 160.h,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20.w, vertical: 16.h),
+                      decoration: BoxDecoration(
+                          color: Colors.blue.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(20.r)),
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            InternetImageWidget(
+                                padding: EdgeInsets.only(right: 12.w),
+                                height: 160.h,
+                                width: AppConstant.width / 2 - 10.w,
+                                imgUrl:
+                                    controller.currentEvent.value?.mapImage),
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Sơ đồ tổ chức sự kiện',
+                                    style: TextStyle(
+                                        fontSize: 22.sp,
+                                        color: const Color(0xff0F2851),
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  InkWell(
+                                    onTap: controller.onNavigateToPreviewImg,
+                                    child: Container(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 12.h),
+                                      child: Text(
+                                        'Xem ngay >>',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1
+                                            ?.copyWith(
+                                              fontStyle: FontStyle.italic,
+                                                fontSize: 16.sp,
+                                                color: const Color.fromARGB(
+                                                    255, 24, 39, 66)),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ]),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -393,20 +436,23 @@ class HomeEventPage extends GetView<HomeEventController> {
                         controller.listStall!.isNotEmpty)
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [Text(
-                          'Gian hàng',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText1
-                              ?.copyWith(color: Colors.black),
-                        ),
-                        SizedBox(height: 20.h,),
+                        children: [
+                          Text(
+                            'Gian hàng',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText1
+                                ?.copyWith(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
                           ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: controller.listStall!.length,
-                              itemBuilder: ((context, index) =>
-                                  StallWidget(stall: controller.listStall![index]))),
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: controller.listStall!.length,
+                              itemBuilder: ((context, index) => StallWidget(
+                                  stall: controller.listStall![index]))),
                         ],
                       )
                   ],
