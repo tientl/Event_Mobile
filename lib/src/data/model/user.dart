@@ -2,6 +2,7 @@ import 'package:event_app/src/data/model/event.dart';
 
 class User {
   final int id;
+  final String? avatarUrl;
   final String? userName;
   final String? passWord;
   final String? mobile;
@@ -29,10 +30,12 @@ class User {
     this.email,
     this.passWord,
     this.listEvent,
+    this.avatarUrl
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json['id'] ?? 0,
+        avatarUrl: json['avatar_url'] ?? '',
         userName: json['user_name'] ?? '',
         passWord: json['password'] ?? '',
         mobile: json['mobile'] ?? '',
