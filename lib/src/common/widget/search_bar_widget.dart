@@ -18,7 +18,7 @@ class SearchBarWidget extends StatelessWidget {
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(0),
           filled: true,
-          fillColor: Theme.of(context).canvasColor.withOpacity(0.6),
+          fillColor: Colors.white,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),

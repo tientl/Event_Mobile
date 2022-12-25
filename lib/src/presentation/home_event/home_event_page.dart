@@ -20,7 +20,7 @@ class HomeEventPage extends GetView<HomeEventController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -29,6 +29,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                 Wrap(
                   children: [
                     InternetImageWidget(
+                      padding: EdgeInsets.zero,
                       borderRadius: 0,
                       imgUrl: controller.currentEvent.value?.eventImage,
                       width: Get.width,

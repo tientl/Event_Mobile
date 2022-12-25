@@ -73,7 +73,7 @@ class RootAppController extends GetxController {
       case TabItem.barcode:
         return const QRCodePage();
       default:
-        return const ProfileEventPage();
+        return const ProfilePage();
     }
   }
   onRatingEvent() async {

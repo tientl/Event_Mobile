@@ -9,7 +9,9 @@ class ItemSchedularCardWidget extends StatelessWidget {
       {Key? key, this.onTap, required this.subschedular})
       : super(key: key);
   final SubSchedule subschedular;
-  bool  get isHappened => subschedular.timeScheduler == null ? true: subschedular.timeScheduler!.compareTo(DateTime.now())  < 0;
+  bool get isHappened => subschedular.timeScheduler == null
+      ? true
+      : subschedular.timeScheduler!.compareTo(DateTime.now()) < 0;
 
   final void Function()? onTap;
 
@@ -24,7 +26,8 @@ class ItemSchedularCardWidget extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.r),
               color: Colors.white,
-              border: Border.all(color:const Color(0xFF0F2851).withOpacity(0.5))),
+              border:
+                  Border.all(color: const Color(0xFF0F2851).withOpacity(0.5))),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -35,17 +38,21 @@ class ItemSchedularCardWidget extends StatelessWidget {
                     child: Text(
                       subschedular.name ?? 'Không có tên',
                       style: TextStyle(
-                          color:const Color(0xff0F2851),
+                          color: const Color(0xff0F2851),
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                 Visibility(
-                  visible: isHappened,
-                  child: const  Chip( padding: EdgeInsets.zero, label: Text('Đã diễn ra')))
+                  Visibility(
+                      visible: isHappened,
+                      child:  Chip(
+                        padding: EdgeInsets.zero,
+                        label: const Text('Đã diễn ra'),
+                        backgroundColor: Theme.of(context).primaryColor,
+                        labelStyle:const TextStyle(color: Colors.white),
+                      ))
                 ],
               ),
-        
               Text(
                 subschedular.location ?? 'Chưa cập nhật địa điểm',
                 style:
@@ -60,7 +67,9 @@ class ItemSchedularCardWidget extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: subschedular.presentation?.speaker?.length ?? 0,
                     itemBuilder: ((context, index) => InternetImageWidget(
-                        padding: EdgeInsets.only(right: 8.w), imgUrl: subschedular.presentation?.speaker?[index].urlImage))),
+                        padding: EdgeInsets.only(right: 8.w),
+                        imgUrl: subschedular
+                            .presentation?.speaker?[index].urlImage))),
               ),
               Divider(
                 height: 32.h,
