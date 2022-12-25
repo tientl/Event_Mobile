@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 
 class SearchBarWidget extends StatelessWidget {
   final void Function()? onSuffixIconTap;
+  final void Function(String)? onChanged;
   final String? hint;
   final Widget? suffixIcon;
+  final TextEditingController? controller;
   const SearchBarWidget(
-      {super.key, required this.onSuffixIconTap, this.hint, this.suffixIcon});
+      {super.key, required this.onSuffixIconTap, this.hint, this.suffixIcon, this.controller, this.onChanged});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       style: Theme.of(context).textTheme.bodyText2,
+      onChanged: onChanged,
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(0),
           filled: true,
