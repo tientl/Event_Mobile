@@ -6,6 +6,7 @@ abstract class AppConstant {
   static const login = '/users/login';
   static const confirmEvent = '/users/confirm';
   static const rating = '/users/rating';
+  static const changePass ='users/change_password';
 
   //size
   static final  height = Get.height;

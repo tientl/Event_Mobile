@@ -122,9 +122,9 @@ class AlertDialogFlatform extends StatelessWidget {
         : showDialog(
             context: context,
             builder: (context) => AlertDialogFlatform(
-                  cancelActionText: cancelActionText ?? 'cancel'.tr,
+                  cancelActionText: cancelActionText ?? 'Hủy'.tr,
                   content: content,
-                  defaultActionText: defaultActionText ?? 'ok'.tr,
+                  defaultActionText: defaultActionText ?? 'Đồng ý'.tr,
                   title: title,
                   onConfirm: () => onConfirm(),
                 ));
