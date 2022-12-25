@@ -83,7 +83,7 @@ class ProfilePage extends GetView<ProfileEventController> {
                         suffix: option == SettingOption.theme
                             ? getSwitchDependFlatform(context)
                             : null,
-                        onTap: () => controller.onTapSettingOption(option),
+                        onTap: () => controller.onTapSettingOption(option, context),
                       ),
                     )
                     .toList(),

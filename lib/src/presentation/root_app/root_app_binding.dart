@@ -14,6 +14,6 @@ class RootAppBinding extends Bindings {
     Get.put<HomeEventController>(HomeEventController(userRepository));
     Get.put<ScheduleController>(ScheduleController());
      Get.put<BarcodeController>(BarcodeController());
-     Get.put<ProfileEventController>(ProfileEventController());
+     Get.put<ProfileEventController>(ProfileEventController(userRepository));
   }
 }

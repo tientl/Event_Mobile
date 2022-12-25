@@ -56,4 +56,18 @@ class UserRepositories {
       return ResponseData.failed(e);
     }
   }
+
+  Future<ResponseData<bool>> changePass({ required int userId, required String newPass}) async{
+    try{
+      final data = {
+        'user_id': userId,
+        'new_pass': newPass
+      };
+
+      final res = await _apiProvider.post(AppConstant.changePass, data:  data);
+      return ResponseData.success(true, response:  res);
+    }catch(e){
+      return ResponseData.failed(e);
+    }
+  }
 }
