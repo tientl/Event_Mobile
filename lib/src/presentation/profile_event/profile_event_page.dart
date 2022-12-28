@@ -34,7 +34,7 @@ class ProfilePage extends GetView<ProfileEventController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      controller.currentuser.value?.userName ?? '',
+                      controller.currentuser.value?.fullName ?? '',
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                     SizedBox(

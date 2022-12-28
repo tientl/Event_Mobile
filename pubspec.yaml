@@ -49,6 +49,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   photo_view: ^0.14.0
   tiengviet: ^0.5.0
+  syncfusion_flutter_datagrid: ^20.4.38
 
 dev_dependencies:
   flutter_test:

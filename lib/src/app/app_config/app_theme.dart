@@ -28,14 +28,14 @@ final lightTheme = ThemeData(
           color: AppColors.kFF0F2851,
         ),
         bodyText1: TextStyle(
-            fontSize: 16.sp,
+            fontSize: 18.sp,
             color: AppColors.kFF0F2851,
             fontWeight: FontWeight.bold),
-        bodyText2: TextStyle(fontSize: 14.sp, color: AppColors.kFF0F2851),
+        bodyText2: TextStyle(fontSize: 16.sp, color: AppColors.kFF0F2851),
         button: TextStyle(
-            fontSize: 14.sp,
+            fontSize: 16.sp,
             fontWeight: FontWeight.bold,
             color: AppColors.kFFFBFDFF),
-        caption: TextStyle(fontSize: 12.sp, color: AppColors.kFFAAAAAA),
+        caption: TextStyle(fontSize: 14.sp, color: AppColors.kFFAAAAAA),
         overline: TextStyle(fontSize: 10.sp, color: AppColors.kFF0F2851)),
     colorScheme: ColorScheme.fromSwatch().copyWith(secondary: AppColors.white));

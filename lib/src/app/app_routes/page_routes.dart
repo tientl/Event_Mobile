@@ -1,3 +1,7 @@
+import 'package:event_app/src/presentation/admin_home_page/admin_home_binding.dart';
+import 'package:event_app/src/presentation/admin_home_page/admin_home_page.dart';
+import 'package:event_app/src/presentation/choice_event_page/choice_event_binding.dart';
+import 'package:event_app/src/presentation/choice_event_page/choice_event_page.dart';
 import 'package:event_app/src/presentation/home_page/home_binding.dart';
 import 'package:event_app/src/presentation/list_sponsor_page/list_ponsor_binding.dart';
 import 'package:event_app/src/presentation/list_sponsor_page/list_sponsor_page.dart';
@@ -56,6 +60,14 @@ class AppPages {
     GetPage(
         name: AppRoutes.previewImg,
         page: () => const PreviewImagePage(),
-        binding: PreviewImgBinding())
+        binding: PreviewImgBinding()),
+    GetPage(
+        name: AppRoutes.choiceEvent,
+        page: () => const ChoiceEventPage(),
+        binding: ChoiceEventBinding()),
+    GetPage(
+        name: AppRoutes.adminHome,
+        page: () => const AdminHomePage(),
+        binding: AdminHomeBinding())
   ];
 }

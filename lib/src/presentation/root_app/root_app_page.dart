@@ -17,7 +17,6 @@ class RootApp extends GetView<RootAppController> {
           body: controller.getBody(controller.currentTab.value),
           appBar: controller.getAppBar(tabItem: controller.currentTab.value, context: context),
           bottomNavigationBar: getBottomBarnavigation(context),
-         // floatingActionButton: getFloatingActionButton(context),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
         ));

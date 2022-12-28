@@ -23,7 +23,7 @@ class QRCodePage extends GetView<BarcodeController> {
                 width: AppConstant.width,
                 child: Column(children: [
                   Text(
-                     controller.currentUser?.userName ?? 'no_name'.tr,
+                     controller.currentUser?.fullName ?? 'no_name'.tr,
                     style: Theme.of(context)
                         .textTheme
                         .headline4

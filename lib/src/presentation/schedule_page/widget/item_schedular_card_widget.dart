@@ -46,9 +46,9 @@ class ItemSchedularCardWidget extends StatelessWidget {
                   Visibility(
                       visible: isHappened,
                       child:  Chip(
-                        padding: EdgeInsets.zero,
+                        padding: EdgeInsets.symmetric(horizontal: 4.w),
                         label: const Text('Đã diễn ra'),
-                        backgroundColor: Theme.of(context).primaryColor,
+                        backgroundColor: Theme.of(context).errorColor,
                         labelStyle:const TextStyle(color: Colors.white),
                       ))
                 ],

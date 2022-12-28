@@ -21,7 +21,7 @@ class RootAppController extends GetxController {
   final curentRating = 0.obs;
   final ratingController = TextEditingController();
   final currentUser = AppManager().currentUser;
-  final formKey = GlobalKey<FormState>();
+  final formKey = const GlobalObjectKey<FormState>(3);
 
   
   @override

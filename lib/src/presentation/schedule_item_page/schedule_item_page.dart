@@ -33,11 +33,11 @@ class ScheduleItemPage extends StatelessWidget {
           SizedBox(
             height: 32.h,
           ),
-          IconInforWidget(
+         const IconInforWidget(
               content: 'Thu 4, 23/07/2022', icon: Icons.calendar_month_rounded),
-          IconInforWidget(
+        const  IconInforWidget(
               content: 'Sảnh A khu nghỉ dưỡng ABDABD', icon: Icons.location_on),
-          IconInforWidget(
+        const  IconInforWidget(
               content: '12:00 - 13:00 (2 gio)', icon: Icons.timer),
               SizedBox(height: 20.h,),
               Text('Bai dien thuyet', style: TextStyle(fontSize: 32.sp),)]),

@@ -12,7 +12,7 @@ class SubScheduleController extends GetxController {
   final UserRepositories userRepositories;
 
   SubScheduleController(this.userRepositories);
-  final formKey = GlobalKey<FormState>();
+  final formKey =const GlobalObjectKey<FormState>(4);
   final subSchedule = Rxn<SubSchedule>(null);
   final date = ''.obs;
   final currentRating = 0.0.obs;

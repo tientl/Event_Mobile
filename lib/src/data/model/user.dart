@@ -7,7 +7,9 @@ class User {
   final String? passWord;
   final String? mobile;
   final String? email;
+  final String? fullName;
   final List<Event>? listEvent;
+  final bool? isAdmin;
   List<Event>? get listUnconfirmEvent => listEvent == null
       ? null
       : listEvent!
@@ -28,16 +30,20 @@ class User {
     this.userName,
     this.mobile,
     this.email,
+    this.fullName,
     this.passWord,
     this.listEvent,
+    this.isAdmin,
     this.avatarUrl
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json['id'] ?? 0,
+        isAdmin: json['is_admin'] ?? false,
         avatarUrl: json['avatar_url'] ?? '',
         userName: json['user_name'] ?? '',
         passWord: json['password'] ?? '',
+        fullName: json['full_name'] ?? '',
         mobile: json['mobile'] ?? '',
         email: json['email'] ?? '',
         listEvent: json['events'] == null
