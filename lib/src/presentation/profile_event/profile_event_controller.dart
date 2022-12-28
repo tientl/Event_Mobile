@@ -16,7 +16,7 @@ class ProfileEventController extends GetxController {
 
   ProfileEventController(this.userRepository);
   final currentuser = Rxn<User>(null);
-  final formKey = GlobalKey<FormState>();
+  final formKey = const GlobalObjectKey<FormState>(2);
   final newPassController = TextEditingController();
   final confirmPassController = TextEditingController();
   final settingOption = [
@@ -31,13 +31,6 @@ class ProfileEventController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    // if (!AppManager().isLogged()) {
-    //   AlertDialogWidget.show(onPress: (() => Get.close(2)));
-    // }
-    super.onReady();
-  }
 
   onValidRating(String? newPass) {
     if (newPass == null || newPass.isEmpty) {

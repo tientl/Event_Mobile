@@ -1,3 +1,4 @@
+import 'package:event_app/src/app/app_config/app_constant.dart';
 import 'package:event_app/src/common/widget/internet_image_widget.dart';
 import 'package:event_app/src/data/model/stall.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +16,29 @@ class StallWidget extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: EdgeInsets.only(bottom: 20.h),
-        child: SizedBox(
-          height: 132.h,
+        child: Container(
+           width: AppConstant.width - 100.w,
+      margin: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.r),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                offset: const Offset(0, 3),
+                color: Theme.of(context).primaryColor.withOpacity(0.2),
+                blurRadius: 5),
+            BoxShadow(
+                offset: const Offset(3, 3),
+                color: Theme.of(context).primaryColor.withOpacity(0.2),
+                blurRadius: 5),
+            BoxShadow(
+                offset: const Offset(3, 0),
+                color: Theme.of(context).primaryColor.withOpacity(0.2),
+                blurRadius: 5)
+          ]),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: 88.h,
@@ -66,9 +87,10 @@ class StallWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 16.h,),
-               Text(stall.desc ?? 'Chưa có mô tả',
+              SizedBox(height: 8.h,),
+               Text( (stall.desc == null || stall.desc!.isEmpty) ?  'Chưa có mô tả' : stall.desc!,
                           style: TextStyle(fontSize: 16.sp, color: const Color(0xff424347))),
+              SizedBox(height: 12.h,)
             ],
           ),
         ),

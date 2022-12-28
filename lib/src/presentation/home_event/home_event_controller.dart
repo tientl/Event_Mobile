@@ -15,7 +15,7 @@ class HomeEventController extends GetxController {
   final currentEvent = Rxn<Event>(null);
   final ratingController = TextEditingController();
   final curentRating = 0.obs;
-  final formKey = GlobalKey<FormState>();
+  final formKey = const GlobalObjectKey<FormState>(1);
   final currentUser = AppManager().currentUser;
 
   List<Stall>? get listStall => currentEvent.value?.listStall;

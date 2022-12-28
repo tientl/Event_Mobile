@@ -8,5 +8,7 @@ abstract class AppRoutes {
   static const subSchedule = '/sub_schedule';
   static const presentationDetail = '/presentation_detail';
   static const previewImg = '/preview_img';
+  static const choiceEvent = '/choice_event';
+  static const adminHome = '/admin_home';
 
 }

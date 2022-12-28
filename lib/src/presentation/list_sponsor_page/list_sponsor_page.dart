@@ -43,7 +43,7 @@ class SponsorCardWidget extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(16.r),
         decoration: BoxDecoration(
-            border: Border.all(color: Color(0xff5A75A7)),
+            border: Border.all(color:const Color(0xff5A75A7)),
             borderRadius: BorderRadius.circular(20.r),
             color: Colors.white,
             boxShadow: [
@@ -90,7 +90,7 @@ class SponsorCardWidget extends StatelessWidget {
                     Text(
                       sponsor.urlSponsor ?? '',
                       style:
-                          TextStyle(color: Color(0xff677294), fontSize: 14.sp),
+                          TextStyle(color:const Color(0xff677294), fontSize: 14.sp),
                     ),
                     SizedBox(
                       height: 8.h,
@@ -110,7 +110,7 @@ class SponsorCardWidget extends StatelessWidget {
                             Text(
                               'Hien vat',
                               style: TextStyle(
-                                  color: Color(0xff677294), fontSize: 14.sp),
+                                  color:const Color(0xff677294), fontSize: 14.sp),
                             )
                           ],
                         ),
@@ -132,7 +132,7 @@ class SponsorCardWidget extends StatelessWidget {
                                 Text(
                                   sponsor.sponsorType ?? '',
                                   style: TextStyle(
-                                      color: Color(0xff677294),
+                                      color:const Color(0xff677294),
                                       fontSize: 14.sp),
                                 )
                               ],
@@ -146,12 +146,12 @@ class SponsorCardWidget extends StatelessWidget {
               )
             ],
           ),
-          Divider(height: 20.h, color: Color.fromARGB(255, 4, 67, 202)),
+          Divider(height: 20.h, color:const Color.fromARGB(255, 4, 67, 202)),
           Text(
             sponsor.slogan ?? '',
-            style: TextStyle(color: Color(0xff677294), fontSize: 18.sp),
+            style: TextStyle(color:const Color(0xff677294), fontSize: 18.sp),
           ),
-          Divider(height: 20.h, color: Color.fromARGB(255, 4, 67, 202)),
+          Divider(height: 20.h, color:const Color.fromARGB(255, 4, 67, 202)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

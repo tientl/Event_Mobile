@@ -21,6 +21,11 @@ class Event {
   List<SubSchedule>? listSubScheduler;
   List<Stall>? listStall;
 
+  int get totalUnCheckIn {
+    if (registrations == null) return 0;
+    return registrations!.where((element) => element.isCheckIn != true).length;
+  }
+
   List<DateTime> get listDate  {
     if (dateStart == null) return [];
     late DateTime date = dateStart!;

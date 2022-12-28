@@ -150,7 +150,7 @@ class CommonStyle {
     return InputDecoration(
         contentPadding: const EdgeInsets.fromLTRB(15, 4, 0, 12),
         border: InputBorder.none,
-        hintText: hintText ?? 'find'.tr,
+        hintText: hintText ?? 'Tìm kiếm'.tr,
         hintStyle: Theme.of(context).textTheme.bodyText1?.copyWith(
             color: Theme.of(context).hintColor, fontWeight: FontWeight.normal),
         suffixIcon: const Icon(Icons.search),

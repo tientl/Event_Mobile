@@ -62,7 +62,7 @@ class AlertDialogWidget extends StatelessWidget {
                   Text(
                     content,
                     style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                        color:Color(0xff6F6C90),
+                        color: const Color(0xff6F6C90),
                         fontWeight: FontWeight.normal),
                     textAlign: TextAlign.center,
                   ),
