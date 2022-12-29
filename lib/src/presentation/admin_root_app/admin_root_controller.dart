@@ -46,6 +46,7 @@ class AdminRootAppController extends GetxController {
       case TabItem.adminProfile:
         return AppBarWidget(
           backgroundcolor: Theme.of(context).scaffoldBackgroundColor,
+          leading: null,
           title: tabItem.name,
           titleStyle: Theme.of(context).textTheme.bodyText1?.copyWith(
                 color: const Color.fromARGB(236, 4, 37, 87),

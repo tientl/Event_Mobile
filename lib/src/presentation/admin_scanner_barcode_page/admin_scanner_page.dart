@@ -13,7 +13,7 @@ class AdminScannerPage extends GetView<AdminScannerController> {
     return Scaffold(
       body: MobileScanner(
           allowDuplicates: true,
-          onDetect: controller.onDetect),
+          onDetect:(barcode, args) async => await controller.onDetect(barcode, args) ,),
     );
   }
 }
