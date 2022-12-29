@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class CommonStyle {
@@ -156,5 +157,21 @@ class CommonStyle {
         suffixIcon: const Icon(Icons.search),
         suffixIconColor: Theme.of(context).canvasColor,
         focusColor: Theme.of(context).canvasColor);
+  }
+    static List<BoxShadow>? boxShadowDefault({required BuildContext context}) {
+    return [
+      BoxShadow(
+          offset: Offset(0, 4.r),
+          blurRadius: 4.r,
+          color: Theme.of(context).primaryColor.withOpacity(0.1)),
+      BoxShadow(
+          offset: Offset(-4.r, 0.r),
+          blurRadius: 4.r,
+          color: Theme.of(context).primaryColor.withOpacity(0.1)),
+      BoxShadow(
+          offset: Offset(4.r, 0),
+          blurRadius: 4.r,
+          color: Theme.of(context).primaryColor.withOpacity(0.1))
+    ];
   }
 }

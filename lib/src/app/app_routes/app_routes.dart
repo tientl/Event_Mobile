@@ -10,5 +10,7 @@ abstract class AppRoutes {
   static const previewImg = '/preview_img';
   static const choiceEvent = '/choice_event';
   static const adminHome = '/admin_home';
+  static const adminRootApp = '/admin_root_app';
+  static const success = '/success';
 
 }

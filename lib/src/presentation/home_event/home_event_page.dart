@@ -10,7 +10,6 @@ import 'package:event_app/src/presentation/home_event/widget/stall_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:event_app/src/common/utils/util_datetime.dart';
 

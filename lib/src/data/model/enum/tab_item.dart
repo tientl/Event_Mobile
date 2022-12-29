@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-enum TabItem { home, schedule, barcode, profile }
+enum TabItem { adminHome, qrScanner, adminProfile, home, schedule, barcode, profile }
 
 extension TabItemExt on TabItem {
   String get name {
@@ -14,6 +14,12 @@ extension TabItemExt on TabItem {
         return 'Barcode';
       case TabItem.profile:
         return 'Hồ sơ';
+      case TabItem.adminHome: 
+      return 'Trang chủ';
+      case TabItem.adminProfile:
+      return 'Hồ sơ';
+      case TabItem.qrScanner:
+      return 'Quét mã QR';
     }
   }
 
@@ -28,13 +34,17 @@ extension TabItemExt on TabItem {
   IconData get icon {
     switch (this) {
       case TabItem.home:
+        case TabItem.adminHome: 
         return FontAwesomeIcons.house;
       case TabItem.barcode:
         return FontAwesomeIcons.qrcode;
       case TabItem.schedule:
         return FontAwesomeIcons.solidCalendar;
       case TabItem.profile:
+      case TabItem.adminProfile:
         return FontAwesomeIcons.solidUser;
+    case TabItem.qrScanner:
+    return Icons.qr_code_scanner;
       default:
         return FontAwesomeIcons.houseChimneyMedical;
     }

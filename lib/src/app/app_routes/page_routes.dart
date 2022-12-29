@@ -1,5 +1,5 @@
-import 'package:event_app/src/presentation/admin_home_page/admin_home_binding.dart';
-import 'package:event_app/src/presentation/admin_home_page/admin_home_page.dart';
+import 'package:event_app/src/presentation/admin_root_app/admin_root_app.dart';
+import 'package:event_app/src/presentation/admin_root_app/admin_root_binding.dart';
 import 'package:event_app/src/presentation/choice_event_page/choice_event_binding.dart';
 import 'package:event_app/src/presentation/choice_event_page/choice_event_page.dart';
 import 'package:event_app/src/presentation/home_page/home_binding.dart';
@@ -18,6 +18,8 @@ import 'package:event_app/src/presentation/schedule_item_page/schedule_item_bind
 import 'package:event_app/src/presentation/schedule_page/schedule_page.dart';
 import 'package:event_app/src/presentation/sub_schedule_page/sub_schedule_binding.dart';
 import 'package:event_app/src/presentation/sub_schedule_page/sub_schedule_page.dart';
+import 'package:event_app/src/presentation/success_page/success_binding.dart';
+import 'package:event_app/src/presentation/success_page/success_page.dart';
 import 'package:get/get.dart';
 import '../../presentation/home_page/home_page.dart';
 import '../../presentation/login_page/login_page.dart';
@@ -66,8 +68,10 @@ class AppPages {
         page: () => const ChoiceEventPage(),
         binding: ChoiceEventBinding()),
     GetPage(
-        name: AppRoutes.adminHome,
-        page: () => const AdminHomePage(),
-        binding: AdminHomeBinding())
+        name: AppRoutes.adminRootApp,
+        page: () => const AdminRootApp(),
+        binding: AdminRootAppBinding()),
+    GetPage(name: AppRoutes.success, page: () =>const SuccessPage(), binding: SuccessBinding())
+  
   ];
 }
