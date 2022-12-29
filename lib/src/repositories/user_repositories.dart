@@ -57,16 +57,31 @@ class UserRepositories {
     }
   }
 
-  Future<ResponseData<bool>> changePass({ required int userId, required String newPass}) async{
-    try{
-      final data = {
-        'user_id': userId,
-        'new_pass': newPass
-      };
+  Future<ResponseData<bool>> changePass(
+      {required int userId, required String newPass}) async {
+    try {
+      final data = {'user_id': userId, 'new_pass': newPass};
 
-      final res = await _apiProvider.post(AppConstant.changePass, data:  data);
-      return ResponseData.success(true, response:  res);
-    }catch(e){
+      final res = await _apiProvider.post(AppConstant.changePass, data: data);
+      return ResponseData.success(true, response: res);
+    } catch (e) {
+      return ResponseData.failed(e);
+    }
+  }
+
+  Future<ResponseData<User?>> scannerQR(
+      {required int userId, required int eventId}) async {
+    try {
+      final data = {'user_id': userId, 'event_id': eventId};
+
+      final scannerRes =
+          await _apiProvider.post(AppConstant.scannerQR, data: data);
+      if (scannerRes!= null){
+        final user = User.fromJson(scannerRes);
+         return ResponseData.success(user, response: scannerRes);
+      }
+      return ResponseData.success(null, response: scannerRes);
+    } catch (e) {
       return ResponseData.failed(e);
     }
   }
