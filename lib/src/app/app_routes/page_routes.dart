@@ -1,3 +1,5 @@
+import 'package:event_app/src/presentation/admin_find_page/admin_find_binding.dart';
+import 'package:event_app/src/presentation/admin_find_page/admin_find_page.dart';
 import 'package:event_app/src/presentation/admin_root_app/admin_root_app.dart';
 import 'package:event_app/src/presentation/admin_root_app/admin_root_binding.dart';
 import 'package:event_app/src/presentation/choice_event_page/choice_event_binding.dart';
@@ -71,7 +73,13 @@ class AppPages {
         name: AppRoutes.adminRootApp,
         page: () => const AdminRootApp(),
         binding: AdminRootAppBinding()),
-    GetPage(name: AppRoutes.success, page: () =>const SuccessPage(), binding: SuccessBinding())
-  
+    GetPage(
+        name: AppRoutes.success,
+        page: () => const SuccessPage(),
+        binding: SuccessBinding()),
+    GetPage(
+        name: AppRoutes.adminSearch,
+        page: () => const AdminFindPage(),
+        binding: AdminFindBinding())
   ];
 }

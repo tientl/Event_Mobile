@@ -1,4 +1,5 @@
 import 'package:event_app/src/app/app_config/app_constant.dart';
+import 'package:event_app/src/app/app_routes/app_routes.dart';
 import 'package:event_app/src/common/style.dart';
 import 'package:event_app/src/presentation/admin_home_page/admin_home_controller.dart';
 import 'package:flutter/material.dart';
@@ -55,46 +56,50 @@ class AdminHomePage extends GetView<AdminHomeController> {
                     Container(
                       height: 32.h,
                     ),
-                    Container(
-                        alignment: Alignment.centerLeft,
-                        height: 44.h,
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                  offset: const Offset(0, 3),
-                                  blurRadius: 8.r,
-                                  color: Theme.of(context)
-                                      .primaryColor
-                                      .withOpacity(0.2)),
-                              BoxShadow(
-                                  offset: const Offset(3, 0),
-                                  blurRadius: 8.r,
-                                  color: Theme.of(context)
-                                      .primaryColor
-                                      .withOpacity(0.2)),
-                              BoxShadow(
-                                  offset: const Offset(3, 3),
-                                  blurRadius: 8.r,
-                                  color: Theme.of(context)
-                                      .primaryColor
-                                      .withOpacity(0.2)),
-                            ],
-                            color: Theme.of(context).backgroundColor,
-                            borderRadius: BorderRadius.circular(5.r)),
-                        child: TextField(
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText1
-                              ?.copyWith(fontWeight: FontWeight.normal),
-                          textAlignVertical: TextAlignVertical.center,
-                          maxLines: 1,
-                          cursorColor: Theme.of(context).primaryColor,
-                          decoration:
-                              CommonStyle.searchBarStyle(context: context),
-                          onChanged: (String keyword) {
-                            //TODO: add late with logic homepage
-                          },
-                        )),
+                    InkWell(
+                      onTap:() =>  Get.toNamed(AppRoutes.adminSearch),
+                      child: Container(
+                          alignment: Alignment.centerLeft,
+                          height: 44.h,
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    offset: const Offset(0, 3),
+                                    blurRadius: 8.r,
+                                    color: Theme.of(context)
+                                        .primaryColor
+                                        .withOpacity(0.2)),
+                                BoxShadow(
+                                    offset: const Offset(3, 0),
+                                    blurRadius: 8.r,
+                                    color: Theme.of(context)
+                                        .primaryColor
+                                        .withOpacity(0.2)),
+                                BoxShadow(
+                                    offset: const Offset(3, 3),
+                                    blurRadius: 8.r,
+                                    color: Theme.of(context)
+                                        .primaryColor
+                                        .withOpacity(0.2)),
+                              ],
+                              color: Theme.of(context).backgroundColor,
+                              borderRadius: BorderRadius.circular(5.r)),
+                          child: TextField(
+                            enabled: false,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText1
+                                ?.copyWith(fontWeight: FontWeight.normal),
+                            textAlignVertical: TextAlignVertical.center,
+                            maxLines: 1,
+                            cursorColor: Theme.of(context).primaryColor,
+                            decoration:
+                                CommonStyle.searchBarStyle(context: context),
+                            onChanged: (String keyword) {
+                              //TODO: add late with logic homepage
+                            },
+                          )),
+                    ),
                   ]),
                 ),
               ),

@@ -10,13 +10,15 @@ import 'package:event_app/src/common/utils/util_datetime.dart';
 class AdminHomeController extends GetxController {
   final event = Rxn<Event>(null);
   final user = AppManager().currentUser;
-   final medicalTestDataSource = MedicalTestDataSource([]).obs;
+  final medicalTestDataSource = MedicalTestDataSource([]).obs;
 
   @override
   void onInit() {
-    if (AppManager().currentEvent != null && AppManager().currentEvent?.registrations != null) {
+    if (AppManager().currentEvent != null &&
+        AppManager().currentEvent?.registrations != null) {
       event.value = AppManager().currentEvent;
-       medicalTestDataSource.value = MedicalTestDataSource(event.value!.registrations!);
+      medicalTestDataSource.value =
+          MedicalTestDataSource(event.value!.registrations!);
     }
     super.onInit();
   }
@@ -28,6 +30,12 @@ class AdminHomeController extends GetxController {
     }
     super.onReady();
   }
+
+  upDateDataSource() {
+    medicalTestDataSource.value =
+        MedicalTestDataSource(AppManager().currentEvent!.registrations!);
+    medicalTestDataSource.refresh();
+  }
 }
 
 class MedicalTestDataSource extends DataGridSource {
@@ -38,7 +46,8 @@ class MedicalTestDataSource extends DataGridSource {
               DataGridCell<String>(
                   columnName: 'ID'.tr, value: registrations.id.toString()),
               DataGridCell<String>(
-                  columnName: 'Thời gian check-in'.tr, value: registrations.checkIntime?.ddmmyyyy ?? '-'),
+                  columnName: 'Thời gian check-in'.tr,
+                  value: registrations.checkIntime?.hhmmddmmyyyy ?? '-'),
             ]))
         .toList();
   }

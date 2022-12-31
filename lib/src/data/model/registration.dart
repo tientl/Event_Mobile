@@ -1,15 +1,15 @@
 class Registration {
   final int id;
-  final String? name;
-  final String? email;
-  final String? mobile;
-  final String? urlImage;
-  final String? ticket;
-  final String? company;
-  final String? role;
-  final String? function;
-  final bool? isCheckIn;
-  final DateTime? checkIntime;
+   String? name;
+   String? email;
+   String? mobile;
+   String? urlImage;
+   String? ticket;
+   String? company;
+   String? role;
+   String? function;
+   bool? isCheckIn;
+   DateTime? checkIntime;
 
   Registration(
       {required this.id,
@@ -44,5 +44,10 @@ class Registration {
         .map((registrations) => Registration.fromJson(registrations))
         .toList();
     return listRegistration;
+  }
+
+  updateCheckInTime(DateTime dateTime){
+    isCheckIn = true;
+    checkIntime = dateTime;
   }
 }
