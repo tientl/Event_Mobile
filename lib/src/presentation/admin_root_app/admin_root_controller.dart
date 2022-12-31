@@ -3,6 +3,7 @@ import 'package:event_app/src/common/widget/app_bar_widget.dart';
 import 'package:event_app/src/data/model/enum/tab_item.dart';
 import 'package:event_app/src/data/model/event.dart';
 import 'package:event_app/src/presentation/admin_home_page/admin_home_page.dart';
+import 'package:event_app/src/presentation/admin_profile_page/admin_profile_page.dart';
 import 'package:event_app/src/presentation/admin_scanner_barcode_page/admin_scanner_page.dart';
 import 'package:event_app/src/repositories/user_repositories.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +65,8 @@ class AdminRootAppController extends GetxController {
         return const AdminHomePage();
       case TabItem.qrScanner:
       return const AdminScannerPage();
+      case TabItem.adminProfile:
+      return const AdminProfilePage();
       default:
         return const AdminHomePage();
     }

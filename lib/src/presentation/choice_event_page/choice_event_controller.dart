@@ -2,7 +2,6 @@ import 'package:event_app/src/app/app_manager.dart';
 import 'package:event_app/src/app/app_routes/app_routes.dart';
 import 'package:event_app/src/common/widget/alert_dialog_widget.dart';
 import 'package:event_app/src/data/model/event.dart';
-import 'package:event_app/src/repositories/user_repositories.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 

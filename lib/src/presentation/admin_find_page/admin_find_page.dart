@@ -1,7 +1,6 @@
 import 'package:event_app/src/common/widget/app_bar_widget.dart';
 import 'package:event_app/src/common/widget/button_widget.dart';
 import 'package:event_app/src/data/model/registration.dart';
-import 'package:event_app/src/data/model/user.dart';
 import 'package:event_app/src/presentation/admin_find_page/admin_find_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

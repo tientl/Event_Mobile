@@ -76,8 +76,8 @@ class AdminRootApp extends GetView<AdminRootAppController> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            _buildTabItem(TabItem.home, context),
-            _buildTabItem(TabItem.profile, context),
+            _buildTabItem(TabItem.adminHome, context),
+            _buildTabItem(TabItem.adminProfile, context),
           ],
         ),
       ),
