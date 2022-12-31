@@ -91,4 +91,10 @@ class Event {
         listEventJson.map((event) => Event.fromJson(event)).toList();
     return listEvent;
   }
+
+  updateCheckIn(int id){
+    if (registrations == null) return;
+    final index = registrations!.indexWhere((element) => element.id == id);
+    registrations![index].checkIntime = DateTime.now();
+  }
 }
