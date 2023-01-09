@@ -3,8 +3,8 @@ import 'package:event_app/src/common/widget/app_bar_widget.dart';
 import 'package:event_app/src/data/model/enum/tab_item.dart';
 import 'package:event_app/src/data/model/event.dart';
 import 'package:event_app/src/presentation/admin_home_page/admin_home_page.dart';
-import 'package:event_app/src/presentation/admin_profile_page/admin_profile_page.dart';
 import 'package:event_app/src/presentation/admin_scanner_barcode_page/admin_scanner_page.dart';
+import 'package:event_app/src/presentation/profile_event/profile_event_page.dart';
 import 'package:event_app/src/repositories/user_repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +18,6 @@ class AdminRootAppController extends GetxController {
   final curentRating = 0.obs;
   final currentUser = AppManager().currentUser;
 
-  
   @override
   void onInit() {
     final argument = Get.arguments;
@@ -64,18 +63,15 @@ class AdminRootAppController extends GetxController {
       case TabItem.adminHome:
         return const AdminHomePage();
       case TabItem.qrScanner:
-      return const AdminScannerPage();
+        return const AdminScannerPage();
       case TabItem.adminProfile:
-      return const AdminProfilePage();
+        return const ProfilePage();
       default:
         return const AdminHomePage();
     }
   }
 
-  onTapFloatingButton(){
+  onTapFloatingButton() {
     currentTab.value = TabItem.qrScanner;
   }
-
-
-
 }

@@ -31,31 +31,6 @@ class AdminFindPage extends GetView<AdminFindController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Id người tham gia',
-                      style: TextStyle(
-                          fontSize: 13.sp, color: const Color(0xff9BA6B0)),
-                    ),
-                    SizedBox(
-                      height: 12.h,
-                    ),
-                    TextFormField(
-                      controller: controller.idTextController,
-                      decoration: InputDecoration(
-                          hintText: 'Nhập id người tham gia',
-                          hintStyle: TextStyle(
-                              fontSize: 14.sp, color: const Color(0xff8A96BC)),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.r),
-                              borderSide: BorderSide(
-                                  color: const Color(0xff0F2851)
-                                      .withOpacity(0.2))),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20.r),
-                              borderSide: BorderSide(
-                                  color: const Color(0xff0F2851)
-                                      .withOpacity(0.2)))),
-                    ),
                     SizedBox(
                       height: 20.h,
                     ),
