@@ -13,12 +13,10 @@ class AdminFindController extends GetxController {
 
   onFind() {
     registationsResult.value = registations!
-        .where((element) => (TiengViet.parse(element.name!)
-            .toLowerCase()
-            .contains(
-                TiengViet.parse(nameController.text.trim()).toLowerCase())) &&  (TiengViet.parse(element.id.toString())
-            .toLowerCase()
-            .contains(
+        .where((element) =>
+            (TiengViet.parse(element.name!).toLowerCase().contains(
+                TiengViet.parse(nameController.text.trim()).toLowerCase())) &&
+            (TiengViet.parse(element.id.toString()).toLowerCase().contains(
                 TiengViet.parse(idTextController.text.trim()).toLowerCase())))
         .toList();
   }

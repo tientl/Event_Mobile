@@ -1,4 +1,5 @@
 import 'package:event_app/src/app/app_manager.dart';
+import 'package:event_app/src/app/app_routes/app_routes.dart';
 import 'package:event_app/src/common/utils/sf_datagrid_util.dart';
 import 'package:event_app/src/common/widget/alert_dialog_widget.dart';
 import 'package:event_app/src/data/model/event.dart';
@@ -17,8 +18,10 @@ class AdminHomeController extends GetxController {
     if (AppManager().currentEvent != null &&
         AppManager().currentEvent?.registrations != null) {
       event.value = AppManager().currentEvent;
-      medicalTestDataSource.value =
-          MedicalTestDataSource(event.value!.registrations!);
+      medicalTestDataSource.value = MedicalTestDataSource(event
+          .value!.registrations!
+          .where((element) => element.isCheckIn == true)
+          .toList());
     }
     super.onInit();
   }
@@ -32,9 +35,23 @@ class AdminHomeController extends GetxController {
   }
 
   upDateDataSource() {
-    medicalTestDataSource.value =
-        MedicalTestDataSource(AppManager().currentEvent!.registrations!);
+    medicalTestDataSource.value = MedicalTestDataSource(AppManager()
+        .currentEvent!
+        .registrations!
+        .where((element) => element.isCheckIn == true)
+        .toList());
     medicalTestDataSource.refresh();
+  }
+
+  onNavigateToListRegistation() {
+    Get.toNamed(AppRoutes.adminListUser, arguments: event.value?.registrations);
+  }
+
+  onNavigateToListNoCheckIn() {
+    final argument = event.value?.registrations
+        ?.where((element) => element.isCheckIn == false)
+        .toList();
+    Get.toNamed(AppRoutes.adminListUser, arguments: argument);
   }
 }
 
@@ -44,7 +61,8 @@ class MedicalTestDataSource extends DataGridSource {
     dataGridRows = registrations
         .map<DataGridRow>((registrations) => DataGridRow(cells: [
               DataGridCell<String>(
-                  columnName: 'ID'.tr, value: registrations.id.toString()),
+                  columnName: 'Họ và tên'.tr,
+                  value: registrations.name.toString()),
               DataGridCell<String>(
                   columnName: 'Thời gian check-in'.tr,
                   value: registrations.checkIntime?.hhmmddmmyyyy ?? '-'),
