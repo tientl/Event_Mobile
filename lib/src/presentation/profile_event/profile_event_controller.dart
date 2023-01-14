@@ -19,6 +19,7 @@ class ProfileEventController extends GetxController {
   final formKey = const GlobalObjectKey<FormState>(2);
   final newPassController = TextEditingController();
   final confirmPassController = TextEditingController();
+  final addAppBar = false.obs;
   final settingOption = [
     SettingOption.changePass,
     SettingOption.notify,
@@ -27,10 +28,10 @@ class ProfileEventController extends GetxController {
 
   @override
   void onInit() {
+    addAppBar.value = Get.arguments == true;
     currentuser.value = AppManager().currentUser;
     super.onInit();
   }
-
 
   onValidRating(String? newPass) {
     if (newPass == null || newPass.isEmpty) {

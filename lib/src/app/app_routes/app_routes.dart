@@ -16,4 +16,5 @@ abstract class AppRoutes {
   static const adminListUser = '/adminListUser';
   static const service = '/services';
   static const editProfile = '/edit_profile';
+  static const profile = '/profile';
 }

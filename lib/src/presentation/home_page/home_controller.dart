@@ -43,7 +43,10 @@ class HomeController extends GetxController
     final confirmRes = await userRepositories.confirmEvent(
         listEventUnconfirm[index].id, AppManager().currentUser!.id);
     if (confirmRes.isSuccess() && confirmRes.data != null) {
-      user!.listEvent!.where((element) => element == listEventUnconfirm[index]).first.isComfirm = true;
+      user!.listEvent!
+          .where((element) => element == listEventUnconfirm[index])
+          .first
+          .isComfirm = true;
       listEventUnconfirm[index].isComfirm = true;
       listEventConfirm.insert(0, listEventUnconfirm[index]);
       listEventUnconfirm.removeAt(index);
@@ -58,20 +61,24 @@ class HomeController extends GetxController
     Get.toNamed(AppRoutes.rootApp, arguments: event);
   }
 
+  void onNavigateProfile() {
+    Get.toNamed(AppRoutes.profile, arguments: true);
+  }
+
   onChangeSearch(String value) {
-      
     final searchKey = TiengViet.parse(value.trim()).toLowerCase();
     if (tabController.index == 0 && user?.listConfirmEvent != null) {
       listEventConfirm.value = user!.listConfirmEvent!
-          .where((p0) =>  TiengViet.parse(p0.name!).toLowerCase().contains(searchKey))
-          .toList(); 
+          .where((p0) =>
+              TiengViet.parse(p0.name!).toLowerCase().contains(searchKey))
+          .toList();
     } else {
       if (user?.listUnconfirmEvent != null) {
         listEventUnconfirm.value = user!.listUnconfirmEvent!
-            .where((p0) => TiengViet.parse(p0.name!).toLowerCase().contains(searchKey))
+            .where((p0) =>
+                TiengViet.parse(p0.name!).toLowerCase().contains(searchKey))
             .toList();
       }
     }
   }
 }
-

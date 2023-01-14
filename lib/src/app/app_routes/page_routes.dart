@@ -9,7 +9,6 @@ import 'package:event_app/src/presentation/choice_event_page/choice_event_page.d
 import 'package:event_app/src/presentation/choice_service_page/choice_service_binding.dart';
 import 'package:event_app/src/presentation/choice_service_page/choice_service_page.dart';
 import 'package:event_app/src/presentation/edit_profile_page/edit_profile_binding.dart';
-import 'package:event_app/src/presentation/edit_profile_page/edit_profile_controller.dart';
 import 'package:event_app/src/presentation/edit_profile_page/edit_profile_page.dart';
 import 'package:event_app/src/presentation/home_page/home_binding.dart';
 import 'package:event_app/src/presentation/list_sponsor_page/list_ponsor_binding.dart';
@@ -21,6 +20,8 @@ import 'package:event_app/src/presentation/presentation_detail_page/presentation
 import 'package:event_app/src/presentation/presentation_detail_page/presentation_detail_page.dart';
 import 'package:event_app/src/presentation/preview_img/preview_img_binding.dart';
 import 'package:event_app/src/presentation/preview_img/preview_img_page.dart';
+import 'package:event_app/src/presentation/profile_event/profile_event_binding.dart';
+import 'package:event_app/src/presentation/profile_event/profile_event_page.dart';
 import 'package:event_app/src/presentation/root_app/root_app_binding.dart';
 import 'package:event_app/src/presentation/root_app/root_app_page.dart';
 import 'package:event_app/src/presentation/schedule_item_page/schedule_item_binding.dart';
@@ -99,6 +100,10 @@ class AppPages {
     GetPage(
         name: AppRoutes.editProfile,
         page: () => const EditProfilePage(),
-        binding: EditProfileBinding())
+        binding: EditProfileBinding()),
+    GetPage(
+        name: AppRoutes.profile,
+        page: () => const ProfilePage(),
+        binding: ProfileBinding())
   ];
 }
