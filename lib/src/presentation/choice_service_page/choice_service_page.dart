@@ -1,7 +1,6 @@
 import 'package:event_app/src/common/widget/app_bar_widget.dart';
 import 'package:event_app/src/common/widget/button_widget.dart';
 import 'package:event_app/src/common/widget/text_field_widget.dart';
-import 'package:event_app/src/data/model/service.dart';
 import 'package:event_app/src/presentation/choice_service_page/choice_service_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

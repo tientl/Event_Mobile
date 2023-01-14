@@ -46,11 +46,14 @@ class HomePage extends GetView<HomeController> {
                         color: Theme.of(context).canvasColor,
                       ),
                     ),
-                    const InternetImageWidget(
-                      imgUrl: null,
-                      borderRadius: 100,
-                      width: 35,
-                      height: 35,
+                    InkWell(
+                      onTap: controller.onNavigateProfile,
+                      child: const InternetImageWidget(
+                        imgUrl: null,
+                        borderRadius: 100,
+                        width: 35,
+                        height: 35,
+                      ),
                     )
                   ],
                 ),

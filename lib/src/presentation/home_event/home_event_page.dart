@@ -189,6 +189,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                           )
                         ],
                       ),
+                      if (controller.currentUser?.isVip == true)
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100.r),

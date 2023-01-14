@@ -1,4 +1,3 @@
-import 'package:event_app/src/app/app_config/app_constant.dart';
 import 'package:event_app/src/common/widget/app_bar_widget.dart';
 import 'package:event_app/src/common/widget/button_widget.dart';
 import 'package:event_app/src/common/widget/internet_image_widget.dart';
@@ -44,6 +43,11 @@ class EditProfilePage extends GetView<EditProfileController> {
                 onPress: () => editUserName(context),
               ),
               EditProfileWidget(
+                title: 'Số điện thoại',
+                content: controller.currentUser?.mobile ?? '-',
+                onPress: () => editPhone(context),
+              ),
+              EditProfileWidget(
                 title: 'Email',
                 content: controller.currentUser?.email ?? '-',
                 onPress: () => editEmail(context),
@@ -51,6 +55,66 @@ class EditProfilePage extends GetView<EditProfileController> {
             ],
           )),
     );
+  }
+
+  Future<dynamic> editPhone(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+              scrollable: true,
+              title: Column(
+                children: [
+                  Text(
+                    'Đổi số điện thoại',
+                    style: TextStyle(
+                        fontSize: 20.sp,
+                        color: const Color(0xff0F2851),
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 12.h,
+                  ),
+                  Text(
+                    'Số điện thoại đang sử dụng và hoạt động bình thường',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: const Color(0xff8A96BC), fontSize: 14.sp),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Form(
+                    key: controller.formKeyUserName,
+                    child: TextFormField(
+                      validator: (value) => controller.onValidRating(value),
+                      controller: controller.userNamaeController,
+                      decoration: InputDecoration(
+                          hintText: 'Nhập số điện thoại',
+                          hintStyle: TextStyle(
+                              fontSize: 14.sp, color: const Color(0xff8A96BC)),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.r),
+                              borderSide: BorderSide(
+                                  color: const Color(0xff0F2851)
+                                      .withOpacity(0.2))),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.r),
+                              borderSide: BorderSide(
+                                  color: const Color(0xff0F2851)
+                                      .withOpacity(0.2)))),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  ButtonWidget(
+                    lable: 'Xác nhận',
+                    borderRadius: BorderRadius.circular(8.r),
+                    onPressed: () => {},
+                  )
+                ],
+              ),
+            ));
   }
 
   Future<dynamic> editEmail(BuildContext context) {
@@ -277,7 +341,7 @@ class EditProfileWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.r),
                   color: Theme.of(context).dividerColor.withOpacity(0.2)),
               child: Icon(
-                Icons.arrow_forward_ios,
+                Icons.edit,
                 size: 20.r,
               ),
             )
