@@ -52,6 +52,8 @@ dependencies:
   syncfusion_flutter_datagrid: ^20.4.38
   qr_code_scanner: ^1.0.1
   mobile_scanner: ^2.1.0
+  firebase_messaging: ^14.2.1
+  firebase_core: ^2.4.1
 
 dev_dependencies:
   flutter_test:
