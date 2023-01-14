@@ -48,11 +48,11 @@ class HomePage extends GetView<HomeController> {
                     ),
                     InkWell(
                       onTap: controller.onNavigateProfile,
-                      child: const InternetImageWidget(
-                        imgUrl: null,
+                      child: InternetImageWidget(
+                        imgUrl: controller.user?.avatarUrl,
                         borderRadius: 100,
-                        width: 35,
-                        height: 35,
+                        width: 40,
+                        height: 40,
                       ),
                     )
                   ],
