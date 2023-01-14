@@ -19,7 +19,7 @@ class HomeEventPage extends GetView<HomeEventController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -91,83 +91,80 @@ class HomeEventPage extends GetView<HomeEventController> {
                     ))
               ]),
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 20.w),
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
                       height: 20.h,
                     ),
-                      Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Nhà tài trợ',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1
-                          ?.copyWith(color: Colors.black),
-                    ),
-                    TextButton(
-                        onPressed: () =>
-                            controller.onNavigateToListSponsor(),
-                        child: Text(
-                          'Xem tất cả',
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Nhà tài trợ',
                           style: Theme.of(context)
                               .textTheme
-                              .bodyText2
-                              ?.copyWith(
-                                  color: Theme.of(context).primaryColor,
-                                  fontWeight: FontWeight.bold),
-                        ))
-                  ],
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                SizedBox(
-                  height: 88.h,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount:
-                        controller.currentEvent.value?.sponsor?.length ?? 0,
-                    itemBuilder: (context, index) => SponsorCardWidget(
-                      sponsor:
-                          controller.currentEvent.value!.sponsor![index],
+                              .bodyText1
+                              ?.copyWith(color: Colors.black),
+                        ),
+                        TextButton(
+                            onPressed: () =>
+                                controller.onNavigateToListSponsor(),
+                            child: Text(
+                              'Xem tất cả',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  ?.copyWith(
+                                      color: Theme.of(context).primaryColor,
+                                      fontWeight: FontWeight.bold),
+                            ))
+                      ],
                     ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Text('Giới thiệu',
-                    style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                          color: Colors.black,
-                        )),
-                SizedBox(
-                  height: 12.h,
-                ),
-                Text(
-                    controller.currentEvent.value?.description ??
-                        'Chưa có thông tin giới thiệu',
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                          color: Colors.grey,
-                        )),
-                SizedBox(
-                  height: 20.h,
-                ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    SizedBox(
+                      height: 88.h,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount:
+                            controller.currentEvent.value?.sponsor?.length ?? 0,
+                        itemBuilder: (context, index) => SponsorCardWidget(
+                          sponsor:
+                              controller.currentEvent.value!.sponsor![index],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Text('Giới thiệu',
+                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                              color: Colors.black,
+                            )),
+                    SizedBox(
+                      height: 12.h,
+                    ),
+                    Text(
+                        controller.currentEvent.value?.description ??
+                            'Chưa có thông tin giới thiệu',
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                              color: Colors.grey,
+                            )),
+                    SizedBox(
+                      height: 20.h,
+                    ),
                   ],
                 ),
               ),
-            
+
               Container(
                 width: Get.width,
-                padding: EdgeInsets.symmetric(
-                    horizontal: 16.w, vertical: 12.h),
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
                 decoration: BoxDecoration(
-                 
-                    color:
-                        Theme.of(context).primaryColor.withOpacity(0.1)),
+                    color: Theme.of(context).primaryColor.withOpacity(0.1)),
                 child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -177,16 +174,19 @@ class HomeEventPage extends GetView<HomeEventController> {
                           SizedBox(
                             width: 12.w,
                           ),
-                          Text(
-                            '${controller.currentEvent.value?.registrations?.length} người tham gia',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText1
-                                ?.copyWith(
-                                    color: const Color.fromARGB(
-                                        255, 24, 39, 66)),
-                          ),
-                       
+                          TextButton(
+                            onPressed: () =>
+                                controller.onNavigateToListResgistration(),
+                            child: Text(
+                              '${controller.currentEvent.value?.registrations?.length} người tham gia',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                      color: const Color.fromARGB(
+                                          255, 24, 39, 66)),
+                            ),
+                          )
                         ],
                       ),
                       Container(
@@ -197,22 +197,21 @@ class HomeEventPage extends GetView<HomeEventController> {
                             color: Colors.white,
                             iconSize: 20.r,
                             constraints: const BoxConstraints(),
-                            onPressed: () => controller
-                                .onNavigateToListResgistration(),
-                            icon: const Icon(Icons.group)),
+                            onPressed: () =>
+                                controller.onNavigateToSevicesPage(),
+                            icon: const Icon(Icons.room_service)),
                       ),
-                       Container(
+                      Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100.r),
                             color: Theme.of(context).primaryColor),
                         child: IconButton(
                             color: Colors.white,
-                            iconSize: 16.r,
+                            iconSize: 20.r,
                             constraints: const BoxConstraints(),
-                            onPressed: ()=> showDialog(
+                            onPressed: () => showDialog(
                                 context: context,
-                                builder: (BuildContext context) =>
-                                    AlertDialog(
+                                builder: (BuildContext context) => AlertDialog(
                                       scrollable: true,
                                       title: Column(
                                         children: [
@@ -220,10 +219,8 @@ class HomeEventPage extends GetView<HomeEventController> {
                                             'Đánh giá sự kiện',
                                             style: TextStyle(
                                                 fontSize: 20.sp,
-                                                color: const Color(
-                                                    0xff0F2851),
-                                                fontWeight:
-                                                    FontWeight.bold),
+                                                color: const Color(0xff0F2851),
+                                                fontWeight: FontWeight.bold),
                                           ),
                                           SizedBox(
                                             height: 12.h,
@@ -232,8 +229,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                                             'Vui lòng cho chúng tôi biết trải nghiệm của bạn',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                color: const Color(
-                                                    0xff8A96BC),
+                                                color: const Color(0xff8A96BC),
                                                 fontSize: 14.sp),
                                           ),
                                           SizedBox(
@@ -245,18 +241,15 @@ class HomeEventPage extends GetView<HomeEventController> {
                                             direction: Axis.horizontal,
                                             itemCount: 5,
                                             itemSize: 32.r,
-                                            itemPadding:
-                                                EdgeInsets.symmetric(
-                                                    horizontal: 4.w),
-                                            itemBuilder: (context, _) =>
-                                                Icon(
+                                            itemPadding: EdgeInsets.symmetric(
+                                                horizontal: 4.w),
+                                            itemBuilder: (context, _) => Icon(
                                               Icons.star,
                                               color: Colors.amber,
                                               size: 32.r,
                                             ),
                                             onRatingUpdate: (rating) {
-                                              controller
-                                                  .onRatingUpdate(rating);
+                                              controller.onRatingUpdate(rating);
                                             },
                                           ),
                                           SizedBox(
@@ -265,12 +258,10 @@ class HomeEventPage extends GetView<HomeEventController> {
                                           Form(
                                             key: controller.formKey,
                                             child: TextFormField(
-                                              validator: (value) =>
-                                                  controller
-                                                      .onValidRating(
-                                                          value),
-                                              controller: controller
-                                                  .ratingController,
+                                              validator: (value) => controller
+                                                  .onValidRating(value),
+                                              controller:
+                                                  controller.ratingController,
                                               decoration: InputDecoration(
                                                   hintText:
                                                       'Nhập đánh giá của bạn',
@@ -283,9 +274,10 @@ class HomeEventPage extends GetView<HomeEventController> {
                                                           BorderRadius.circular(
                                                               12.r),
                                                       borderSide: BorderSide(
-                                                          color: const Color(0xff0F2851)
-                                                              .withOpacity(
-                                                                  0.2))),
+                                                          color:
+                                                              const Color(0xff0F2851)
+                                                                  .withOpacity(
+                                                                      0.2))),
                                                   focusedBorder: OutlineInputBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -300,17 +292,17 @@ class HomeEventPage extends GetView<HomeEventController> {
                                           ButtonWidget(
                                             lable: 'Đánh giá',
                                             borderRadius:
-                                                BorderRadius.circular(
-                                                    8.r),
-                                            onPressed:
-                                                controller.onRatingEvent,
+                                                BorderRadius.circular(8.r),
+                                            onPressed: controller.onRatingEvent,
                                           )
                                         ],
                                       ),
                                     )),
-                            icon: const Icon(Icons.edit)),
+                            icon: const Icon(
+                              Icons.star,
+                            )),
                       ),
-                       Container(
+                      Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100.r),
                             color: Theme.of(context).primaryColor),
@@ -322,13 +314,13 @@ class HomeEventPage extends GetView<HomeEventController> {
                             icon: const Icon(Icons.map)),
                       ),
                     ]),
-              ), 
+              ),
               //   SizedBox(
               //   height: 24.h,
               // ),
               // Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.r)),
               // child: Column(children:const [
-                
+
               // ])
               // ,),
               //   Container(
@@ -468,7 +460,7 @@ class HomeEventPage extends GetView<HomeEventController> {
               //         //               )),
               //         //       icon: const Icon(FontAwesomeIcons.pen)),
               //         // ),
-                    
+
               //       ]),
               // ),
               // if (controller.currentEvent.value?.mapImage != null)
@@ -525,9 +517,9 @@ class HomeEventPage extends GetView<HomeEventController> {
               //         )
               //       ]),
               //),
-             
+
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 20.w),
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: Column(
                   children: [
                     Row(
@@ -554,47 +546,46 @@ class HomeEventPage extends GetView<HomeEventController> {
                             )),
                       ],
                     ),
-                     SizedBox(
-                height: 108.h,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount:
-                      controller.currentEvent.value?.speakers?.length ??
-                          0,
-                  itemBuilder: (context, index) => SpeakerCardWidget(
-                    speaker:
-                        controller.currentEvent.value!.speakers![index],
-                  ),
-                ),
-              ),
-              SizedBox(height: 20.h),
-                 if (controller.listStall != null &&
-                  controller.listStall!.isNotEmpty)
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Gian hàng',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1
-                          ?.copyWith(color: Colors.black),
-                    ),
                     SizedBox(
-                      height: 20.h,
+                      height: 108.h,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount:
+                            controller.currentEvent.value?.speakers?.length ??
+                                0,
+                        itemBuilder: (context, index) => SpeakerCardWidget(
+                          speaker:
+                              controller.currentEvent.value!.speakers![index],
+                        ),
+                      ),
                     ),
-                    ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: controller.listStall!.length,
-                        itemBuilder: ((context, index) => StallWidget(
-                            stall: controller.listStall![index]))),
-                  ],
-                )
+                    SizedBox(height: 20.h),
+                    if (controller.listStall != null &&
+                        controller.listStall!.isNotEmpty)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Gian hàng',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText1
+                                ?.copyWith(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: controller.listStall!.length,
+                              itemBuilder: ((context, index) => StallWidget(
+                                  stall: controller.listStall![index]))),
+                        ],
+                      )
                   ],
                 ),
               ),
-             
             ],
           ),
         ),

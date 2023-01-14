@@ -48,8 +48,13 @@ class HomeEventController extends GetxController {
         arguments: currentEvent.value?.registrations);
   }
 
-  onNavigateToPreviewImg(){
-    Get.toNamed(AppRoutes.previewImg, arguments:currentEvent.value?.mapImage ?? '');
+  onNavigateToPreviewImg() {
+    Get.toNamed(AppRoutes.previewImg,
+        arguments: currentEvent.value?.mapImage ?? '');
+  }
+
+  onNavigateToSevicesPage() {
+    Get.toNamed(AppRoutes.service);
   }
 
   onRatingEvent() async {

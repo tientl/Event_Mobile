@@ -1,4 +1,5 @@
 import 'package:event_app/src/data/model/registration.dart';
+import 'package:event_app/src/data/model/service.dart';
 import 'package:event_app/src/data/model/sponsor.dart';
 import 'package:event_app/src/data/model/stall.dart';
 import 'package:event_app/src/data/model/sub_schedule.dart';
@@ -6,12 +7,12 @@ import 'package:event_app/src/common/utils/util_datetime.dart';
 
 class Event {
   final int id;
-   String? name;
-   String? company;
-   String? eventImage;
-   String? mapImage;
-   DateTime? dateStart;
-   DateTime? dateEnd;
+  String? name;
+  String? company;
+  String? eventImage;
+  String? mapImage;
+  DateTime? dateStart;
+  DateTime? dateEnd;
   bool isComfirm;
   String? address;
   String? description;
@@ -20,24 +21,26 @@ class Event {
   List<Registration>? speakers;
   List<SubSchedule>? listSubScheduler;
   List<Stall>? listStall;
+  List<Service>? services;
 
   int get totalUnCheckIn {
     if (registrations == null) return 0;
     return registrations!.where((element) => element.isCheckIn != true).length;
   }
 
-  List<DateTime> get listDate  {
+  List<DateTime> get listDate {
     if (dateStart == null) return [];
     late DateTime date = dateStart!;
     late List<DateTime> listDate = [];
-    while (date.isSameDate(dateEnd)){
+    while (date.isSameDate(dateEnd)) {
       listDate.add(date);
-      date = date.add( const Duration(days: 1));
+      date = date.add(const Duration(days: 1));
     }
     return listDate;
   }
 
-  bool? get isAlreadyOver => dateEnd == null ? null : dateEnd!.isBefore(DateTime.now());
+  bool? get isAlreadyOver =>
+      dateEnd == null ? null : dateEnd!.isBefore(DateTime.now());
 
   Event(
       {required this.id,
@@ -52,10 +55,10 @@ class Event {
       this.description,
       this.sponsor,
       this.registrations,
-      this.speakers, 
+      this.speakers,
       this.listSubScheduler,
-      this.listStall
-      });
+      this.listStall,
+      this.services});
 
   factory Event.fromJson(Map<String, dynamic> json) => Event(
       id: json['id'] ?? 0,
@@ -77,13 +80,18 @@ class Event {
       registrations: json['registrations'] == null
           ? null
           : Registration.getListRegistrationFromJson(json['registrations']),
-      listStall: json['booths'] == null ? null : Stall.getListStallFromJson(json['booths']),
+      listStall: json['booths'] == null
+          ? null
+          : Stall.getListStallFromJson(json['booths']),
       speakers: json['speakers'] == null
           ? null
           : Registration.getListRegistrationFromJson(json['speakers']),
-           listSubScheduler: json['sub_schedules'] == null
+      listSubScheduler: json['sub_schedules'] == null
           ? null
-          : SubSchedule.getListSubScheduler(json['sub_schedules'] as List));
+          : SubSchedule.getListSubScheduler(json['sub_schedules'] as List),
+      services: json['services'] == null
+          ? null
+          : Service.getSevicesFromJson(json['services'] as List));
 
   static List<Event>? getListEventFromJson(List? listEventJson) {
     if (listEventJson == null) return null;
@@ -92,7 +100,7 @@ class Event {
     return listEvent;
   }
 
-  updateCheckIn(int id){
+  updateCheckIn(int id) {
     if (registrations == null) return;
     final index = registrations!.indexWhere((element) => element.id == id);
     registrations![index].checkIntime = DateTime.now();

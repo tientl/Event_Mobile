@@ -19,7 +19,7 @@ class UserCardWidget extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.r),
                 border: Border.all(color: const Color(0xff5A75A7)),
@@ -37,8 +37,8 @@ class UserCardWidget extends StatelessWidget {
                 children: [
                   InternetImageWidget(
                     imgUrl: registration.urlImage ?? '',
-                    height: 100,
-                    width: 100,
+                    height: 80.r,
+                    width: 80.r,
                     borderRadius: 16.r,
                   ),
                   SizedBox(
@@ -47,7 +47,9 @@ class UserCardWidget extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 8.h,),
+                      SizedBox(
+                        height: 8.h,
+                      ),
                       Text(
                         registration.name ?? '',
                         style: Theme.of(context)
@@ -80,44 +82,50 @@ class UserCardWidget extends StatelessWidget {
                       SizedBox(
                         height: 12.h,
                       ),
-                      if( registration.mobile?.isNotEmpty ?? false)
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.phone,
-                            size: 16.r,
+                      if (registration.mobile?.isNotEmpty ?? false)
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: 8.h,
                           ),
-                          SizedBox(
-                            width: 8.w,
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.phone,
+                                size: 16.r,
+                              ),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                registration.mobile ?? '',
+                                style: TextStyle(
+                                    color: const Color(0xff677294),
+                                    fontSize: 14.sp),
+                              ),
+                            ],
                           ),
-                          Text(
-                            registration.mobile ?? '',
-                            style: TextStyle(
-                                color: const Color(0xff677294),
-                                fontSize: 14.sp),
-                          ),
-                        ],
-                      ),
+                        ),
+                      if (registration.email?.isNotEmpty ?? false)
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.email,
+                              size: 16.r,
+                            ),
+                            SizedBox(
+                              width: 8.w,
+                            ),
+                            Text(
+                              registration.email ?? '',
+                              style: TextStyle(
+                                  color: const Color(0xff677294),
+                                  fontSize: 14.sp),
+                            ),
+                          ],
+                        ),
                       SizedBox(
                         height: 8.h,
-                      ),   if( registration.email?.isNotEmpty ?? false)
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.email,
-                            size: 16.r,
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
-                          Text(
-                            registration.email ?? '',
-                            style: TextStyle(
-                                color: const Color(0xff677294),
-                                fontSize: 14.sp),
-                          ),
-                        ],
-                      ),
+                      )
                     ],
                   )
                 ],
