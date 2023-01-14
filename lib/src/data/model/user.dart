@@ -12,6 +12,7 @@ class User {
   final String? company;
   final List<Event>? listEvent;
   final bool? isAdmin;
+  final bool? isVip;
   List<Event>? get listUnconfirmEvent => listEvent == null
       ? null
       : listEvent!
@@ -27,32 +28,33 @@ class User {
           )
           .toList();
 
-  User({
-    required this.id,
-    this.userName,
-    this.mobile,
-    this.email,
-    this.fullName,
-    this.passWord,
-    this.listEvent,
-    this.isAdmin,
-    this.avatarUrl,
-     this.company, this.position
-  });
+  User(
+      {required this.id,
+      this.userName,
+      this.mobile,
+      this.email,
+      this.isVip,
+      this.fullName,
+      this.passWord,
+      this.listEvent,
+      this.isAdmin,
+      this.avatarUrl,
+      this.company,
+      this.position});
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        id: json['id'] ?? 0,
-        isAdmin: json['is_admin'] ?? false,
-        avatarUrl: json['avatar_url'] ?? '',
-        userName: json['user_name'] ?? '',
-        passWord: json['password'] ?? '',
-        fullName: json['full_name'] ?? '',
-        mobile: json['mobile'] ?? '',
-        email: json['email'] ?? '',
-        listEvent: json['events'] == null
-            ? null
-            : Event.getListEventFromJson(json['events'] as List),
-        position: json['position'] ?? '',
-        company: json['company'] ?? ''
-      );
+      id: json['id'] ?? 0,
+      isAdmin: json['is_admin'] ?? false,
+      isVip: json['is_vip'] ?? false,
+      avatarUrl: json['avatar_url'] ?? '',
+      userName: json['user_name'] ?? '',
+      passWord: json['password'] ?? '',
+      fullName: json['full_name'] ?? '',
+      mobile: json['mobile'] ?? '',
+      email: json['email'] ?? '',
+      listEvent: json['events'] == null
+          ? null
+          : Event.getListEventFromJson(json['events'] as List),
+      position: json['position'] ?? '',
+      company: json['company'] ?? '');
 }

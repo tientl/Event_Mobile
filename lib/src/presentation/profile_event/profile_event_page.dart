@@ -1,3 +1,4 @@
+import 'package:event_app/src/app/app_routes/app_routes.dart';
 import 'package:event_app/src/common/widget/internet_image_widget.dart';
 import 'package:event_app/src/data/model/enum/setting_option.dart';
 import 'package:event_app/src/presentation/profile_event/profile_event_controller.dart';
@@ -28,6 +29,7 @@ class ProfilePage extends GetView<ProfileEventController> {
             height: 16.h,
           ),
           SettingOptionWidget(
+            onTap: () => Get.toNamed(AppRoutes.editProfile),
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

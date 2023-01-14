@@ -6,6 +6,11 @@ import 'package:event_app/src/presentation/admin_root_app/admin_root_app.dart';
 import 'package:event_app/src/presentation/admin_root_app/admin_root_binding.dart';
 import 'package:event_app/src/presentation/choice_event_page/choice_event_binding.dart';
 import 'package:event_app/src/presentation/choice_event_page/choice_event_page.dart';
+import 'package:event_app/src/presentation/choice_service_page/choice_service_binding.dart';
+import 'package:event_app/src/presentation/choice_service_page/choice_service_page.dart';
+import 'package:event_app/src/presentation/edit_profile_page/edit_profile_binding.dart';
+import 'package:event_app/src/presentation/edit_profile_page/edit_profile_controller.dart';
+import 'package:event_app/src/presentation/edit_profile_page/edit_profile_page.dart';
 import 'package:event_app/src/presentation/home_page/home_binding.dart';
 import 'package:event_app/src/presentation/list_sponsor_page/list_ponsor_binding.dart';
 import 'package:event_app/src/presentation/list_sponsor_page/list_sponsor_page.dart';
@@ -86,6 +91,14 @@ class AppPages {
     GetPage(
         name: AppRoutes.adminListUser,
         page: () => const AdminListUserPage(),
-        binding: AdminListUserBinding())
+        binding: AdminListUserBinding()),
+    GetPage(
+        name: AppRoutes.service,
+        page: () => const ChoiceServicePage(),
+        binding: ChoiceServiceBinding()),
+    GetPage(
+        name: AppRoutes.editProfile,
+        page: () => const EditProfilePage(),
+        binding: EditProfileBinding())
   ];
 }

@@ -37,6 +37,45 @@ class CommonStyle {
         floatingLabelBehavior: FloatingLabelBehavior.always);
   }
 
+  static InputDecoration containerTextFieldStyle(
+      {String? lable = "",
+      String? hintText = "",
+      Color? hintTextColor,
+      Color? backgroundColor,
+      required BuildContext context}) {
+    return InputDecoration(
+        filled: true,
+        fillColor: Theme.of(context).backgroundColor,
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8.w)),
+            borderSide:
+                BorderSide(width: 0, color: Theme.of(context).dividerColor)),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8.w)),
+            borderSide:
+                BorderSide(width: 0, color: Theme.of(context).dividerColor)),
+        disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8.w)),
+            borderSide:
+                BorderSide(width: 0, color: Theme.of(context).dividerColor)),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8.w)),
+            borderSide:
+                BorderSide(width: 0, color: Theme.of(context).dividerColor)),
+        contentPadding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 16.h),
+        hintText: hintText,
+        hintStyle: Theme.of(context)
+            .textTheme
+            .bodyText2
+            ?.copyWith(color: hintTextColor ?? Theme.of(context).dividerColor),
+        labelText: lable,
+        labelStyle: Theme.of(context)
+            .textTheme
+            .bodyText2
+            ?.copyWith(fontWeight: FontWeight.w500),
+        floatingLabelBehavior: FloatingLabelBehavior.always);
+  }
+
   static InputDecoration outlineDropdownButton(
       {String lable = '',
       required BuildContext context,
@@ -132,8 +171,8 @@ class CommonStyle {
       required BuildContext context,
       EdgeInsets? padding}) {
     return ButtonStyle(
-      padding:
-          MaterialStateProperty.all<EdgeInsets>(padding ?? const EdgeInsets.all(8)),
+      padding: MaterialStateProperty.all<EdgeInsets>(
+          padding ?? const EdgeInsets.all(8)),
       textStyle: MaterialStateProperty.all<TextStyle>(
           Theme.of(context).textTheme.button?.copyWith(color: borderColor) ??
               TextStyle(fontSize: 14, color: borderColor)),
@@ -158,7 +197,8 @@ class CommonStyle {
         suffixIconColor: Theme.of(context).canvasColor,
         focusColor: Theme.of(context).canvasColor);
   }
-    static List<BoxShadow>? boxShadowDefault({required BuildContext context}) {
+
+  static List<BoxShadow>? boxShadowDefault({required BuildContext context}) {
     return [
       BoxShadow(
           offset: Offset(0, 4.r),
