@@ -21,9 +21,9 @@ class ChoiceServicePage extends GetView<ChoiceServiceControlller> {
         color: Theme.of(context).backgroundColor,
         padding: EdgeInsets.fromLTRB(24.w, 8.h, 24.w, 30.h),
         child: ButtonWidget(
-          lable: 'Tiếp tục'.tr,
+          lable: 'Xác nhận'.tr,
           borderRadius: BorderRadius.all(Radius.circular(8.r)),
-          onPressed: () => {},
+          onPressed: controller.onSubmit,
         ),
       ),
       body: SingleChildScrollView(
@@ -97,7 +97,7 @@ class CheckBoxWidget extends StatelessWidget {
                 height: 8.h,
               ),
               Visibility(
-                visible: isEdit,
+                visible: isEdit && value,
                 child: TextFieldWidget(
                   hintText: 'Nhập thông tin',
                   controller: controller,

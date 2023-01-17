@@ -14,6 +14,7 @@ class Event {
   DateTime? dateStart;
   DateTime? dateEnd;
   bool isComfirm;
+  bool? isVip;
   String? address;
   String? description;
   List<Sponsor>? sponsor;
@@ -51,6 +52,7 @@ class Event {
       this.dateStart,
       this.dateEnd,
       this.isComfirm = false,
+      this.isVip,
       this.address,
       this.description,
       this.sponsor,
@@ -72,6 +74,7 @@ class Event {
       dateEnd:
           json['date_end'] == null ? null : DateTime.parse(json['date_end']),
       isComfirm: json['is_confirm'] ?? false,
+      isVip: json['is_vip'] ?? false,
       description: json['event_description'] ?? 'Chưa có thông tin giới thiệu',
       address: json['address'] ?? '',
       sponsor: json['sponsors'] == null
