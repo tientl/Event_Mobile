@@ -12,6 +12,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:event_app/src/common/utils/util_datetime.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class HomeEventPage extends GetView<HomeEventController> {
   const HomeEventPage({super.key});
@@ -108,35 +109,47 @@ class HomeEventPage extends GetView<HomeEventController> {
                               .bodyText1
                               ?.copyWith(color: Colors.black),
                         ),
-                        TextButton(
-                            onPressed: () =>
-                                controller.onNavigateToListSponsor(),
-                            child: Text(
-                              'Xem tất cả',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  ?.copyWith(
-                                      color: Theme.of(context).primaryColor,
-                                      fontWeight: FontWeight.bold),
-                            ))
+                        if (controller.currentEvent.value?.sponsor?.isEmpty ==
+                            false)
+                          TextButton(
+                              onPressed: () =>
+                                  controller.onNavigateToListSponsor(),
+                              child: Text(
+                                'Xem tất cả',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    ?.copyWith(
+                                        color: Theme.of(context).primaryColor,
+                                        fontWeight: FontWeight.bold),
+                              ))
                       ],
                     ),
                     SizedBox(
                       height: 8.h,
                     ),
-                    SizedBox(
-                      height: 88.h,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount:
-                            controller.currentEvent.value?.sponsor?.length ?? 0,
-                        itemBuilder: (context, index) => SponsorCardWidget(
-                          sponsor:
-                              controller.currentEvent.value!.sponsor![index],
-                        ),
-                      ),
-                    ),
+                    controller.currentEvent.value?.sponsor?.isEmpty == false
+                        ? SizedBox(
+                            height: 88.h,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: controller
+                                      .currentEvent.value?.sponsor?.length ??
+                                  0,
+                              itemBuilder: (context, index) =>
+                                  SponsorCardWidget(
+                                sponsor: controller
+                                    .currentEvent.value!.sponsor![index],
+                              ),
+                            ),
+                          )
+                        : Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Không có nhà tài trợ',
+                              style: Theme.of(context).textTheme.bodyText2,
+                            ),
+                          ),
                     SizedBox(
                       height: 20.h,
                     ),
@@ -159,7 +172,6 @@ class HomeEventPage extends GetView<HomeEventController> {
                   ],
                 ),
               ),
-
               Container(
                 width: Get.width,
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
@@ -189,6 +201,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                           )
                         ],
                       ),
+                      const Spacer(),
                       if (controller.isVip)
                         Container(
                           decoration: BoxDecoration(
@@ -203,6 +216,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                               icon: const Icon(Icons.room_service)),
                         ),
                       Container(
+                        margin: EdgeInsets.only(left: 20.w),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100.r),
                             color: Theme.of(context).primaryColor),
@@ -304,6 +318,7 @@ class HomeEventPage extends GetView<HomeEventController> {
                             )),
                       ),
                       Container(
+                        margin: EdgeInsets.only(left: 20.w),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100.r),
                             color: Theme.of(context).primaryColor),
@@ -316,211 +331,8 @@ class HomeEventPage extends GetView<HomeEventController> {
                       ),
                     ]),
               ),
-              //   SizedBox(
-              //   height: 24.h,
-              // ),
-              // Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.r)),
-              // child: Column(children:const [
-
-              // ])
-              // ,),
-              //   Container(
-              //   width: Get.width,
-              //   padding: EdgeInsets.symmetric(
-              //       horizontal: 16.w, vertical: 12.h),
-              //   decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(28.r),
-              //       color:
-              //           Theme.of(context).primaryColor.withOpacity(0.14)),
-              //   child: Row(
-              //       mainAxisSize: MainAxisSize.max,
-              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //       children: [
-              //         Row(
-              //           children: [
-              //             SizedBox(
-              //               width: 12.w,
-              //             ),
-              //             Text(
-              //               'Đánh giá sự kiện',
-              //               style: Theme.of(context)
-              //                   .textTheme
-              //                   .bodyText1
-              //                   ?.copyWith(
-              //                       color: const Color.fromARGB(
-              //                           255, 24, 39, 66)),
-              //             ),
-              //           ],
-              //         ),
-              //         // Container(
-              //         //   decoration: BoxDecoration(
-              //         //       borderRadius: BorderRadius.circular(100.r),
-              //         //       color: Theme.of(context).primaryColor),
-              //         //   child: IconButton(
-              //         //       color: Colors.white,
-              //         //       iconSize: 16.r,
-              //         //       constraints: const BoxConstraints(),
-              //         //       onPressed: () => showDialog(
-              //         //           context: context,
-              //         //           builder: (BuildContext context) =>
-              //         //               AlertDialog(
-              //         //                 scrollable: true,
-              //         //                 title: Column(
-              //         //                   children: [
-              //         //                     Text(
-              //         //                       'Đánh giá sự kiện',
-              //         //                       style: TextStyle(
-              //         //                           fontSize: 20.sp,
-              //         //                           color: const Color(
-              //         //                               0xff0F2851),
-              //         //                           fontWeight:
-              //         //                               FontWeight.bold),
-              //         //                     ),
-              //         //                     SizedBox(
-              //         //                       height: 12.h,
-              //         //                     ),
-              //         //                     Text(
-              //         //                       'Vui lòng cho chúng tôi biết trải nghiệm của bạn',
-              //         //                       textAlign: TextAlign.center,
-              //         //                       style: TextStyle(
-              //         //                           color: const Color(
-              //         //                               0xff8A96BC),
-              //         //                           fontSize: 14.sp),
-              //         //                     ),
-              //         //                     SizedBox(
-              //         //                       height: 20.h,
-              //         //                     ),
-              //         //                     RatingBar.builder(
-              //         //                       initialRating: 1,
-              //         //                       minRating: 1,
-              //         //                       direction: Axis.horizontal,
-              //         //                       itemCount: 5,
-              //         //                       itemSize: 32.r,
-              //         //                       itemPadding:
-              //         //                           EdgeInsets.symmetric(
-              //         //                               horizontal: 4.w),
-              //         //                       itemBuilder: (context, _) =>
-              //         //                           Icon(
-              //         //                         Icons.star,
-              //         //                         color: Colors.amber,
-              //         //                         size: 32.r,
-              //         //                       ),
-              //         //                       onRatingUpdate: (rating) {
-              //         //                         controller
-              //         //                             .onRatingUpdate(rating);
-              //         //                       },
-              //         //                     ),
-              //         //                     SizedBox(
-              //         //                       height: 20.h,
-              //         //                     ),
-              //         //                     Form(
-              //         //                       key: controller.formKey,
-              //         //                       child: TextFormField(
-              //         //                         validator: (value) =>
-              //         //                             controller
-              //         //                                 .onValidRating(
-              //         //                                     value),
-              //         //                         controller: controller
-              //         //                             .ratingController,
-              //         //                         decoration: InputDecoration(
-              //         //                             hintText:
-              //         //                                 'Nhập đánh giá của bạn',
-              //         //                             hintStyle: TextStyle(
-              //         //                                 fontSize: 14.sp,
-              //         //                                 color: const Color(
-              //         //                                     0xff8A96BC)),
-              //         //                             enabledBorder: OutlineInputBorder(
-              //         //                                 borderRadius:
-              //         //                                     BorderRadius.circular(
-              //         //                                         12.r),
-              //         //                                 borderSide: BorderSide(
-              //         //                                     color: const Color(0xff0F2851)
-              //         //                                         .withOpacity(
-              //         //                                             0.2))),
-              //         //                             focusedBorder: OutlineInputBorder(
-              //         //                                 borderRadius:
-              //         //                                     BorderRadius.circular(
-              //         //                                         20.r),
-              //         //                                 borderSide: BorderSide(
-              //         //                                     color: const Color(0xff0F2851).withOpacity(0.2)))),
-              //         //                       ),
-              //         //                     ),
-              //         //                     SizedBox(
-              //         //                       height: 20.h,
-              //         //                     ),
-              //         //                     ButtonWidget(
-              //         //                       lable: 'Đánh giá',
-              //         //                       borderRadius:
-              //         //                           BorderRadius.circular(
-              //         //                               8.r),
-              //         //                       onPressed:
-              //         //                           controller.onRatingEvent,
-              //         //                     )
-              //         //                   ],
-              //         //                 ),
-              //         //               )),
-              //         //       icon: const Icon(FontAwesomeIcons.pen)),
-              //         // ),
-
-              //       ]),
-              // ),
-              // if (controller.currentEvent.value?.mapImage != null)
-              // Container(
-              //   margin: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
-              //   width: AppConstant.width,
-              //   height: 160.h,
-              //   padding: EdgeInsets.symmetric(
-              //       horizontal: 20.w, vertical: 16.h),
-              //   decoration: BoxDecoration(
-              //       color: Colors.grey.withOpacity(0.1),
-              //       borderRadius: BorderRadius.circular(20.r)),
-              //   child: Row(
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: [
-              //         InternetImageWidget(
-              //             padding: EdgeInsets.only(right: 20.w),
-              //             height: 160.h,
-              //             width: AppConstant.width / 2 - 10.w,
-              //             imgUrl:
-              //                 controller.currentEvent.value?.mapImage),
-              //         Expanded(
-              //           child: Column(
-              //             mainAxisAlignment:
-              //                 MainAxisAlignment.spaceBetween,
-              //             children: [
-              //               Text(
-              //                 'Sơ đồ tổ chức sự kiện',
-              //                 style: TextStyle(
-              //                     fontSize: 22.sp,
-              //                     color: const Color(0xff0F2851),
-              //                     fontWeight: FontWeight.bold),
-              //               ),
-              //               InkWell(
-              //                 onTap: controller.onNavigateToPreviewImg,
-              //                 child: Container(
-              //                   padding:
-              //                       EdgeInsets.symmetric(vertical: 12.h),
-              //                   child: Text(
-              //                     'Xem ngay >>',
-              //                     style: Theme.of(context)
-              //                         .textTheme
-              //                         .bodyText1
-              //                         ?.copyWith(
-              //                           fontStyle: FontStyle.italic,
-              //                             fontSize: 16.sp,
-              //                             color: const Color.fromARGB(
-              //                                 255, 24, 39, 66)),
-              //                   ),
-              //                 ),
-              //               ),
-              //             ],
-              //           ),
-              //         )
-              //       ]),
-              //),
-
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                 child: Column(
                   children: [
                     Row(
@@ -533,33 +345,48 @@ class HomeEventPage extends GetView<HomeEventController> {
                               .bodyText1
                               ?.copyWith(color: Colors.black),
                         ),
-                        TextButton(
-                            onPressed: () =>
-                                controller.onNavigateToListSpeaker(),
-                            child: Text(
-                              'Xem tất cả',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  ?.copyWith(
-                                      color: Theme.of(context).primaryColor,
-                                      fontWeight: FontWeight.bold),
-                            )),
+                        if (controller.currentEvent.value?.speakers?.isEmpty ==
+                            false)
+                          TextButton(
+                              onPressed: () =>
+                                  controller.onNavigateToListSpeaker(),
+                              child: Text(
+                                'Xem tất cả',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    ?.copyWith(
+                                        color: Theme.of(context).primaryColor,
+                                        fontWeight: FontWeight.bold),
+                              )),
                       ],
                     ),
-                    SizedBox(
-                      height: 108.h,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount:
-                            controller.currentEvent.value?.speakers?.length ??
-                                0,
-                        itemBuilder: (context, index) => SpeakerCardWidget(
-                          speaker:
-                              controller.currentEvent.value!.speakers![index],
-                        ),
-                      ),
-                    ),
+                    controller.currentEvent.value?.speakers?.isEmpty == false
+                        ? SizedBox(
+                            height: 108.h,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: controller
+                                      .currentEvent.value?.speakers?.length ??
+                                  0,
+                              itemBuilder: (context, index) =>
+                                  SpeakerCardWidget(
+                                speaker: controller
+                                    .currentEvent.value!.speakers![index],
+                              ),
+                            ),
+                          )
+                        : Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Không có diễn giả',
+                                  style: Theme.of(context).textTheme.bodyText2,
+                                ),
+                              ),
+                            ],
+                          ),
                     SizedBox(height: 20.h),
                     if (controller.listStall != null &&
                         controller.listStall!.isNotEmpty)
