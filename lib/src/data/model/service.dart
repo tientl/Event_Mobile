@@ -12,8 +12,11 @@ class Service {
       name: json['name'],
       isEdit: json['is_edit'] ?? false);
 
-  Map<String, dynamic> toJson() =>
-      {'id': id, 'required_answer': requiredAnswer};
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'required_answer': requiredAnswer,
+        'name': name,
+      };
 
   static getSevicesFromJson(List? json) {
     if (json == null) return null;

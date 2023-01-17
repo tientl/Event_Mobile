@@ -17,6 +17,7 @@ class HomeEventController extends GetxController {
   final curentRating = 0.obs;
   final formKey = const GlobalObjectKey<FormState>(1);
   final currentUser = AppManager().currentUser;
+  bool get isVip => currentEvent.value?.isVip == true;
 
   List<Stall>? get listStall => currentEvent.value?.listStall;
 
@@ -54,7 +55,11 @@ class HomeEventController extends GetxController {
   }
 
   onNavigateToSevicesPage() {
-    Get.toNamed(AppRoutes.service);
+    final arguments = {
+      'services': currentEvent.value?.services,
+      'id_event': currentEvent.value?.id
+    };
+    Get.toNamed(AppRoutes.service, arguments: arguments);
   }
 
   onRatingEvent() async {

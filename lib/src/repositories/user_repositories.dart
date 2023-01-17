@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:event_app/src/app/app_config/app_constant.dart';
 import 'package:event_app/src/common/network/api_provider.dart';
 import 'package:event_app/src/common/network/api_response.dart';
+import 'package:event_app/src/data/model/service.dart';
 import 'package:event_app/src/data/model/user.dart';
 
 class UserRepositories {
@@ -76,11 +79,29 @@ class UserRepositories {
 
       final scannerRes =
           await _apiProvider.post(AppConstant.scannerQR, data: data);
-      if (scannerRes!= null){
+      if (scannerRes != null) {
         final user = User.fromJson(scannerRes);
-         return ResponseData.success(user, response: scannerRes);
+        return ResponseData.success(user, response: scannerRes);
       }
       return ResponseData.success(null, response: scannerRes);
+    } catch (e) {
+      return ResponseData.failed(e);
+    }
+  }
+
+  Future<ResponseData> submitService(
+      {required int userId,
+      required int eventdId,
+      required List<Map<String, dynamic>> services}) async {
+    try {
+      final data = {
+        'partner_id': userId,
+        'event_id': eventdId,
+        'services': services
+      };
+      final res =
+          await _apiProvider.post(AppConstant.submitService, data: data);
+      return ResponseData.success(true, response: res);
     } catch (e) {
       return ResponseData.failed(e);
     }

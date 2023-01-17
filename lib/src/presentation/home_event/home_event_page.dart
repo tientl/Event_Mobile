@@ -189,19 +189,19 @@ class HomeEventPage extends GetView<HomeEventController> {
                           )
                         ],
                       ),
-                      if (controller.currentUser?.isVip == true)
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100.r),
-                            color: Theme.of(context).primaryColor),
-                        child: IconButton(
-                            color: Colors.white,
-                            iconSize: 20.r,
-                            constraints: const BoxConstraints(),
-                            onPressed: () =>
-                                controller.onNavigateToSevicesPage(),
-                            icon: const Icon(Icons.room_service)),
-                      ),
+                      if (controller.isVip)
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100.r),
+                              color: Theme.of(context).primaryColor),
+                          child: IconButton(
+                              color: Colors.white,
+                              iconSize: 20.r,
+                              constraints: const BoxConstraints(),
+                              onPressed: () =>
+                                  controller.onNavigateToSevicesPage(),
+                              icon: const Icon(Icons.room_service)),
+                        ),
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100.r),
