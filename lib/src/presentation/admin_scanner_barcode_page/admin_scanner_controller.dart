@@ -19,24 +19,20 @@ class AdminScannerController extends GetxController {
   final currentUser = AppManager().currentUser;
   final currentEvent = AppManager().currentEvent;
 
-  onDetect(Barcode barcode , MobileScannerArguments? args)async  {
-    final eventId =  int.parse(jsonDecode(barcode.rawValue!)['id_event']);
-     final userId =  int.parse(jsonDecode(barcode.rawValue!)['id_user']);
+  onDetect(Barcode barcode, MobileScannerArguments? args) async {
+    final eventId = int.parse(jsonDecode(barcode.rawValue!)['id_event']);
+    final userId = int.parse(jsonDecode(barcode.rawValue!)['id_user']);
 
-      final scannerRes = await userRepositories.scannerQR(
-          userId: userId, eventId:  eventId);
-      if (scannerRes.isSuccess()){
-       Get.toNamed(AppRoutes.success, arguments:scannerRes.data );
-       final adminHomeController = Get.find<AdminHomeController>();
-       AppManager().currentEvent!.updateCheckIn(userId);
-       adminHomeController.upDateDataSource();
-      }
-      else{
-        AlertDialogWidget.show();
-      }
+    final scannerRes =
+        await userRepositories.scannerQR(userId: userId, eventId: eventId);
+    if (scannerRes.isSuccess()) {
+      final adminHomeController = Get.find<AdminHomeController>();
+      AppManager().currentEvent!.updateCheckIn(userId);
+      adminHomeController.upDateDataSource();
+      adminHomeController.update();
+      Get.toNamed(AppRoutes.success, arguments: scannerRes.data);
+    } else {
+      AlertDialogWidget.show();
+    }
   }
-
-
-   
-
 }

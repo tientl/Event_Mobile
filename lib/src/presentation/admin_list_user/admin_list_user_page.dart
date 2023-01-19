@@ -1,3 +1,4 @@
+import 'package:event_app/src/app/app_config/app_constant.dart';
 import 'package:event_app/src/common/widget/app_bar_widget.dart';
 import 'package:event_app/src/presentation/admin_list_user/admin_list_user_controller.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,12 @@ class AdminListUserPage extends GetView<AdminListUserController> {
       ),
       body: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-          child: _buildDataGrid(context)),
+          child: Column(
+            children: [
+              SizedBox(
+                  height: AppConstant.height, child: _buildDataGrid(context)),
+            ],
+          )),
     );
   }
 
