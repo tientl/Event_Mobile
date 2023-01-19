@@ -14,18 +14,8 @@ class AdminRootAppController extends GetxController {
 
   AdminRootAppController(this.userRepository);
   final currentTab = TabItem.adminHome.obs;
-  final currentEventId = 0.obs;
   final curentRating = 0.obs;
   final currentUser = AppManager().currentUser;
-
-  @override
-  void onInit() {
-    final argument = Get.arguments;
-    if (argument is Event) {
-      currentEventId.value = argument.id;
-    }
-    super.onInit();
-  }
 
   void onChangeTabItem(TabItem tabItem) {
     currentTab.value = tabItem;

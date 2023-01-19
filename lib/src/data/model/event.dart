@@ -108,5 +108,6 @@ class Event {
     if (registrations == null) return;
     final index = registrations!.indexWhere((element) => element.id == id);
     registrations![index].checkIntime = DateTime.now();
+    registrations![index].isCheckIn = true;
   }
 }

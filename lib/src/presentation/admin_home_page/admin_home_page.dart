@@ -114,110 +114,113 @@ class AdminHomePage extends GetView<AdminHomeController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        InkWell(
-                          onTap: () => controller.onNavigateToListRegistation(),
-                          child: Container(
-                            width: AppConstant.width / 2 - 30.w,
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20.w, vertical: 20.h),
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(colors: [
-                                Color(0xff7A3CDA),
-                                Color(0xff9046FF)
-                              ]),
-                              borderRadius: BorderRadius.circular(20.r),
-                              //color: const Color(0xff7A3CDA)
-                            ),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Icon(
-                                        Icons.person,
-                                        color: Colors.white,
-                                        size: 36.r,
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 20.h),
-                                  RichText(
-                                      text: TextSpan(children: <TextSpan>[
-                                    TextSpan(
-                                        text:
-                                            '${controller.event.value?.registrations?.length ?? 0}',
-                                        style: TextStyle(
-                                            fontSize: 28.sp,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w500)),
-                                  ])),
-                                  SizedBox(
-                                    height: 12.h,
-                                  ),
-                                  Text('NGƯỜI THAM DỰ',
-                                      style: TextStyle(
-                                        fontSize: 16.sp,
-                                        color: Colors.white,
-                                      ))
+                    Obx(
+                      () => Row(
+                        children: [
+                          InkWell(
+                            onTap: () =>
+                                controller.onNavigateToListRegistation(),
+                            child: Container(
+                              width: AppConstant.width / 2 - 30.w,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20.w, vertical: 20.h),
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(colors: [
+                                  Color(0xff7A3CDA),
+                                  Color(0xff9046FF)
                                 ]),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20.w,
-                        ),
-                        InkWell(
-                          onTap: () => controller.onNavigateToListNoCheckIn(),
-                          child: Container(
-                            width: AppConstant.width / 2 - 30.w,
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20.w, vertical: 20.h),
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(colors: [
-                                Color(0xff2BCAE5),
-                                Color(0xff2BCAE5)
-                              ]),
-                              borderRadius: BorderRadius.circular(20.r),
-                              //color: const Color(0xff7A3CDA)
-                            ),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Icon(
-                                        Icons.language,
-                                        color: Colors.white,
-                                        size: 36.r,
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 20.h),
-                                  RichText(
-                                      text: TextSpan(children: <TextSpan>[
-                                    TextSpan(
-                                        text:
-                                            '${controller.event.value?.totalUnCheckIn}',
+                                borderRadius: BorderRadius.circular(20.r),
+                                //color: const Color(0xff7A3CDA)
+                              ),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Icon(
+                                          Icons.person,
+                                          color: Colors.white,
+                                          size: 36.r,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 20.h),
+                                    RichText(
+                                        text: TextSpan(children: <TextSpan>[
+                                      TextSpan(
+                                          text:
+                                              '${controller.event.value?.registrations?.length ?? 0}',
+                                          style: TextStyle(
+                                              fontSize: 28.sp,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500)),
+                                    ])),
+                                    SizedBox(
+                                      height: 12.h,
+                                    ),
+                                    Text('NGƯỜI THAM DỰ',
                                         style: TextStyle(
-                                            fontSize: 28.sp,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w500)),
-                                  ])),
-                                  SizedBox(
-                                    height: 12.h,
-                                  ),
-                                  Text('CHƯA CHECK-IN',
-                                      style: TextStyle(
-                                        fontSize: 16.sp,
-                                        color: Colors.white,
-                                      ))
-                                ]),
+                                          fontSize: 16.sp,
+                                          color: Colors.white,
+                                        ))
+                                  ]),
+                            ),
                           ),
-                        )
-                      ],
+                          SizedBox(
+                            width: 20.w,
+                          ),
+                          InkWell(
+                            onTap: () => controller.onNavigateToListNoCheckIn(),
+                            child: Container(
+                              width: AppConstant.width / 2 - 30.w,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20.w, vertical: 20.h),
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(colors: [
+                                  Color(0xff2BCAE5),
+                                  Color(0xff2BCAE5)
+                                ]),
+                                borderRadius: BorderRadius.circular(20.r),
+                                //color: const Color(0xff7A3CDA)
+                              ),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Icon(
+                                          Icons.language,
+                                          color: Colors.white,
+                                          size: 36.r,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 20.h),
+                                    RichText(
+                                        text: TextSpan(children: <TextSpan>[
+                                      TextSpan(
+                                          text:
+                                              '${controller.event.value?.totalUnCheckIn}',
+                                          style: TextStyle(
+                                              fontSize: 28.sp,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500)),
+                                    ])),
+                                    SizedBox(
+                                      height: 12.h,
+                                    ),
+                                    Text('CHƯA CHECK-IN',
+                                        style: TextStyle(
+                                          fontSize: 16.sp,
+                                          color: Colors.white,
+                                        ))
+                                  ]),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 28.h,
@@ -230,6 +233,9 @@ class AdminHomePage extends GetView<AdminHomeController> {
                       height: 20.h,
                     ),
                     Obx(() => _buildDataGrid(context)),
+                    SizedBox(
+                      height: 40.h,
+                    )
                   ],
                 )),
           ],
