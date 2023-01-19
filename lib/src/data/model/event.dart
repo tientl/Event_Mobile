@@ -33,10 +33,11 @@ class Event {
     if (dateStart == null) return [];
     late DateTime date = dateStart!;
     late List<DateTime> listDate = [];
-    while (date.isSameDate(dateEnd)) {
+    while (!date.isSameDate(dateEnd)) {
       listDate.add(date);
       date = date.add(const Duration(days: 1));
     }
+    if (dateEnd != null) listDate.add(dateEnd!);
     return listDate;
   }
 
