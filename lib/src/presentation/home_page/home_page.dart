@@ -131,8 +131,8 @@ class HomePage extends GetView<HomeController> {
                                               onPressed: () => controller
                                                   .onNavigateEventRootApp(
                                                       controller
-                                                              .listEventConfirm[
-                                                          index]),
+                                                          .listEventConfirm
+                                                          .value[index]),
                                               event: controller
                                                   .listEventConfirm[index],
                                             )),

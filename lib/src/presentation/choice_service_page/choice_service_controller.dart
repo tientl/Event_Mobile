@@ -22,8 +22,8 @@ class ChoiceServiceControlller extends GetxController {
     if (argument['services'] is List<Service> && argument['id_event'] is int) {
       eventId.value = argument['id_event'];
       services.value = argument['services'];
-      textController.value =
-          List.generate(3, (_) => TextEditingController(text: ''));
+      textController.value = List.generate(
+          services.length, (_) => TextEditingController(text: ''));
     }
     super.onInit();
   }
